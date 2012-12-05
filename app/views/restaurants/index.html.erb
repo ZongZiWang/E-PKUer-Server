@@ -1,0 +1,53 @@
+<h1>Listing restaurants</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Location name</th>
+    <th>Location zone</th>
+    <th>Location latitude</th>
+    <th>Location longitude</th>
+    <th>Category</th>
+    <th>Average cost</th>
+    <th>Description</th>
+    <th>Evaluation service</th>
+    <th>Evaluation taste</th>
+    <th>Evaluation environment</th>
+    <th>Dishes</th>
+    <th>Recommendations</th>
+    <th>Info time</th>
+    <th>Info tel</th>
+    <th>Info summary</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @restaurants.each do |restaurant| %>
+  <tr>
+    <td><%= restaurant.name %></td>
+    <td><%= restaurant.location_name %></td>
+    <td><%= restaurant.location_zone %></td>
+    <td><%= restaurant.location_latitude %></td>
+    <td><%= restaurant.location_longitude %></td>
+    <td><%= restaurant.category %></td>
+    <td><%= restaurant.average_cost %></td>
+    <td><%= restaurant.description %></td>
+    <td><%= restaurant.evaluation_service %></td>
+    <td><%= restaurant.evaluation_taste %></td>
+    <td><%= restaurant.evaluation_environment %></td>
+    <td><%= restaurant.dishes %></td>
+    <td><%= restaurant.recommendations %></td>
+    <td><%= restaurant.info_time %></td>
+    <td><%= restaurant.info_tel %></td>
+    <td><%= restaurant.info_summary %></td>
+    <td><%= link_to 'Show', restaurant %></td>
+    <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
+    <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Restaurant', new_restaurant_path %>

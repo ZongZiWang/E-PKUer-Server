@@ -1,0 +1,85 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @restaurant.name %>
+</p>
+
+<p>
+  <b>Location name:</b>
+  <%= @restaurant.location_name %>
+</p>
+
+<p>
+  <b>Location zone:</b>
+  <%= @restaurant.location_zone %>
+</p>
+
+<p>
+  <b>Location latitude:</b>
+  <%= @restaurant.location_latitude %>
+</p>
+
+<p>
+  <b>Location longitude:</b>
+  <%= @restaurant.location_longitude %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @restaurant.category %>
+</p>
+
+<p>
+  <b>Average cost:</b>
+  <%= @restaurant.average_cost %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @restaurant.description %>
+</p>
+
+<p>
+  <b>Evaluation service:</b>
+  <%= @restaurant.evaluation_service %>
+</p>
+
+<p>
+  <b>Evaluation taste:</b>
+  <%= @restaurant.evaluation_taste %>
+</p>
+
+<p>
+  <b>Evaluation environment:</b>
+  <%= @restaurant.evaluation_environment %>
+</p>
+
+<p>
+  <b>Dishes:</b>
+  <%= @restaurant.dishes %>
+</p>
+
+<p>
+  <b>Recommendations:</b>
+  <%= @restaurant.recommendations %>
+</p>
+
+<p>
+  <b>Info time:</b>
+  <%= @restaurant.info_time %>
+</p>
+
+<p>
+  <b>Info tel:</b>
+  <%= @restaurant.info_tel %>
+</p>
+
+<p>
+  <b>Info summary:</b>
+  <%= @restaurant.info_summary %>
+</p>
+
+
+<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
+<%= link_to 'Back', restaurants_path %>
