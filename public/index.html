@@ -1,241 +1,411 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <title>Ruby on Rails: Welcome aboard</title>
-    <style type="text/css" media="screen">
-      body {
-        margin: 0;
-        margin-bottom: 25px;
-        padding: 0;
-        background-color: #f0f0f0;
-        font-family: "Lucida Grande", "Bitstream Vera Sans", "Verdana";
-        font-size: 13px;
-        color: #333;
-      }
+<head>
+<meta charset="utf-8">
+<style>
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+margin: 0;
+padding: 0;
+}
+body {
+font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+font-size: 14px;
+line-height: 21px;
+color: #666;
+margin: 10px 13px 10px 13px;
+}
+::selection {
+background: rgba(0,0,0,.7);
+color: #fff;
+}
+::-moz-selection {
+background: rgba(0,0,0,.7);
+color: #fff;
+}
+a {
+color: #0069d6;
+}
+a:hover {
+color: #0050a3;
+text-decoration: none;
+}
+a img {
+border: none;
+}
+p {
+margin-bottom: 9px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+color: #6c71c4;
+line-height: 36px;
+}
+h1 {
+margin-bottom: 18px;
+font-size: 30px;
+}
+h2 {
+font-size: 24px;
+}
+h3 {
+font-size: 18px;
+}
+h4 {
+font-size: 16px;
+}
+h5 {
+font-size: 14px;
+}
+h6 {
+font-size: 13px;
+}
+hr {
+margin: 0 0 19px;
+border: 0;
+border-bottom: 1px solid #ccc;
+}
+blockquote {
+padding: 13px 13px 21px 15px;
+margin-bottom: 18px;
+font-family:georgia,serif;
+font-style: italic;
+}
+blockquote:before {
+content:"\201C";
+font-size:40px;
+margin-left:-10px;
+font-family:georgia,serif;
+color:#eee;
+}
+blockquote p {
+font-size: 14px;
+font-weight: 300;
+line-height: 18px;
+margin-bottom: 0;
+font-style: italic;
+}
+code, pre {
+font-family: Monaco, Andale Mono, Courier New, monospace;
+}
+code {
+background-color: #fee9cc;
+color: rgba(0, 0, 0, 0.75);
+padding: 1px 3px;
+border-radius: 3px;
+}
+em {
+font-style: normal;
+font-weight: bold;
+color: #555;
+border-radius: 3px;
+background-color: #fffdf7;
+}
+pre {
+background-color: #fffdf7;
+display: block;
+padding: 14px;
+font-size: 12px;
+margin: 0 0 10px 0;
+line-height: 15px;
+border: 1px solid #d9d9d9;
+white-space: pre-wrap;
+word-wrap: break-word;
+}
+pre.error {
+background-color: #fff2fd;
+}
+pre code {
+background-color: transparent;
+color: #bc670f;
+font-size: 12px;
+}
+li {
+margin-bottom: 5px;
+}
+@media screen and (min-width: 940px) {
+body {
+width: 900px;
+margin:10px auto;
+}
+}
 
-      h1 {
-        font-size: 28px;
-        color: #000;
-      }
+td, th {
+vertical-align: top;
+padding: 2px 6px;
+}
+h2 {
+margin-bottom: 10px;
+}
+table ul {
+margin: 0;
+padding: 0 0 0 0;
+list-style-type: none;
+}
+.required {
+background-color: #ff8000;
+color: white;
+}
+.optional {
+background-color: #5fce04;
+color: white;
+}
 
-      a  {color: #03c}
-      a:hover {
-        background-color: #03c;
-        color: white;
-        text-decoration: none;
-      }
+td:last-child {
+max-width: 300px;
+}
+</style>
+<title>汴地吃货 API 文档</title>
+</head>
 
+<body>
+<h1>汴地吃货 API 文档</h1>
 
-      #page {
-        background-color: #f0f0f0;
-        width: 750px;
-        margin: 0;
-        margin-left: auto;
-        margin-right: auto;
-      }
+<h2>API 版本：1</h2>
 
-      #content {
-        float: left;
-        background-color: white;
-        border: 3px solid #aaa;
-        border-top: none;
-        padding: 25px;
-        width: 500px;
-      }
+<pre style="line-height: 20px;"><code>GET*</code>, <code>POST*</code>: need login
+<code class="required">data_type</code>: required parameter
+<code class="optional">data_type</code>: optional parameter
+</pre>
 
-      #sidebar {
-        float: right;
-        width: 175px;
-      }
+<hr />
 
-      #footer {
-        clear: both;
-      }
+<h2>数据类型</h2>
 
-      #header, #about, #getting-started {
-        padding-left: 75px;
-        padding-right: 30px;
-      }
+<ul>
+<li><code>bool</code> 1</li>
+<li><code>int</code> 31415926</li>
+<li><code>str</code> "this is a string"</li>
+<li><code>time</code> "2012-07-14 00:00:00"</li>
+<li><code>date</code> "2012-07-14"</li>  
+</ul>
 
+<h2>HTTP 状态码</h2>
 
-      #header {
-        background-image: url("assets/rails.png");
-        background-repeat: no-repeat;
-        background-position: top left;
-        height: 64px;
-      }
-      #header h1, #header h2 {margin: 0}
-      #header h2 {
-        color: #888;
-        font-weight: normal;
-        font-size: 16px;
-      }
+<ul>
+<li><code>200</code> 正常。</li>
+<li><code>400</code> 请求格式错误。</li>
+<li><code>403</code> 没有权限。（如未登录）</li>
+<li><code>404</code> 请求的资源不存在。</li>
+<li><code>501</code> 尚未实现此功能。</li>
+<li><code>503</code> 暂时无法提供服务。</li>
+<li><code>418</code> 我是一只咖啡壶☆</li>  
+</ul>
 
+<h2>Error Code</h2>
 
-      #about h3 {
-        margin: 0;
-        margin-bottom: 10px;
-        font-size: 14px;
-      }
+<p>若返回的字典含有 <code>error_code</code>，客户端要处理错误，且不应将 <code>error_code</code> 本身暴露给用户。</p>
+<p>若同时含有 <code>error</code>，要将 <code>error</code> 的内容显示给用户。</p>
+<p>如遇 <code>NotLoggedIn</code>，应将用户跳转至登录界面。</p>
 
-      #about-content {
-        background-color: #ffd;
-        border: 1px solid #fc0;
-        margin-left: -55px;
-        margin-right: -10px;
-      }
-      #about-content table {
-        margin-top: 10px;
-        margin-bottom: 10px;
-        font-size: 11px;
-        border-collapse: collapse;
-      }
-      #about-content td {
-        padding: 10px;
-        padding-top: 3px;
-        padding-bottom: 3px;
-      }
-      #about-content td.name  {color: #555}
-      #about-content td.value {color: #000}
+<hr />
 
-      #about-content ul {
-        padding: 0;
-        list-style-type: none;
-      }
+<h2>/restaurants</h2>
 
-      #about-content.failure {
-        background-color: #fcc;
-        border: 1px solid #f00;
-      }
-      #about-content.failure p {
-        margin: 0;
-        padding: 10px;
-      }
+<table>
 
+<thead>
+<tr>
+<th align="left">Address</th>
+<th align="left">Method</th>
+<th align="left">Parameter</th>
+<th align="left">Return</th>
+<th align="left">Description</th>
+</tr>
+</thead>
 
-      #getting-started {
-        border-top: 1px solid #ccc;
-        margin-top: 25px;
-        padding-top: 15px;
-      }
-      #getting-started h1 {
-        margin: 0;
-        font-size: 20px;
-      }
-      #getting-started h2 {
-        margin: 0;
-        font-size: 14px;
-        font-weight: normal;
-        color: #333;
-        margin-bottom: 25px;
-      }
-      #getting-started ol {
-        margin-left: 0;
-        padding-left: 0;
-      }
-      #getting-started li {
-        font-size: 18px;
-        color: #888;
-        margin-bottom: 25px;
-      }
-      #getting-started li h2 {
-        margin: 0;
-        font-weight: normal;
-        font-size: 18px;
-        color: #333;
-      }
-      #getting-started li p {
-        color: #555;
-        font-size: 13px;
-      }
+<tbody> 
 
+<tr>
+<td align="left">.json/</td>
+<td align="left"><code>GET</code></td>
+<td align="left">none</td>
+<td align="left"><pre>[
+  {
+    "id": 1,
+    "name": "农园",
+    "image_url": "images/nongyuan.jpg",
+    "busy": "宽松",
+    "recommendations": "麻辣香锅, 煲汤",
+    "evaluation": 3.0,
+  },
+  {
+    "id": 2,
+    "name": "家园",
+    "image_url": "images/jiayuan.jpg",
+    "busy": "拥挤",
+    "recommendations": "炒河粉",
+    "evaluation": 4.0,
+  },
+  {
+    "id": 3,
+    "name": "康中食堂",
+    "image_url": "images/kangzhong.jpg",
+    "busy": "还好",
+    "recommendations": "鸡腿饭",
+    "evaluation": 3.5,
+  }
+]</pre></td>
+<td align="left">返回支持的食堂列表。</td>
+</tr>
 
-      #sidebar ul {
-        margin-left: 0;
-        padding-left: 0;
-      }
-      #sidebar ul h3 {
-        margin-top: 25px;
-        font-size: 16px;
-        padding-bottom: 10px;
-        border-bottom: 1px solid #ccc;
-      }
-      #sidebar li {
-        list-style-type: none;
-      }
-      #sidebar ul.links li {
-        margin-bottom: 5px;
-      }
+<tr>
+<td align="left">/:id.json/</td>
+<td align="left"><code>GET</code></td>
+<td align="left">none</td>
+<td align="left">
+<pre>{
+  "id": 1
+  "name": "农园",
+  "image_url": "images/nongyuan.jpg",
+  "busy": "宽松",
+  "recommendations": "麻辣香锅, 煲汤",
+  "evaluation": 3.0,
+  "evaluation_service": 4,
+  "evaluation_taste": 2,
+  "evaluation_environment": 3,
+  "location_name": "二教西侧",
+  "location_zone": "近教学楼",
+  "location_latitude": 40.000,
+  "location_longitude": 120.000,
+  "info_time": "11:30-13:00 17:00-19:00",
+  "info_tel": 62750000,
+  "info_summary": "离教学楼最近的地方",
+  "average_cost": 5.50,
+  "category": "大众",
+  "description": "农园这个地方真不错，到处的饭菜都是自己选的",
+  "dishes": "1, 2, 3, 4, 5, 6, 7, 8",
+  },
+}</pre>
+<pre title="404" class="error">{"error_code": "RestaurantNotFound"}</pre>
+</td>
+<td align="left">返回 <code>id</code> 食堂的详细信息。</td>
+</tr>
 
-      .filename {
-        font-style: italic;
-      }
-    </style>
-    <script type="text/javascript">
-      function about() {
-        info = document.getElementById('about-content');
-        if (window.XMLHttpRequest)
-          { xhr = new XMLHttpRequest(); }
-        else
-          { xhr = new ActiveXObject("Microsoft.XMLHTTP"); }
-        xhr.open("GET","rails/info/properties",false);
-        xhr.send("");
-        info.innerHTML = xhr.responseText;
-        info.style.display = 'block'
-      }
-    </script>
-  </head>
-  <body>
-    <div id="page">
-      <div id="sidebar">
-        <ul id="sidebar-items">
-          <li>
-            <h3>Browse the documentation</h3>
-            <ul class="links">
-              <li><a href="http://guides.rubyonrails.org/">Rails Guides</a></li>
-              <li><a href="http://api.rubyonrails.org/">Rails API</a></li>
-              <li><a href="http://www.ruby-doc.org/core/">Ruby core</a></li>
-              <li><a href="http://www.ruby-doc.org/stdlib/">Ruby standard library</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
+<tr>
+<td align="left">/:id/comment.json/</td>
+<td align="left"><code>GET</code></td>
+<td align="left">
+<ul>
+<li><code class="optional">int</code> start</li>
+</ul>
+</td>
+<td align="left"><pre>[
+  {
+    "id": 2312,
+    "writer_id": 1,
+    "writer_nickname": "ZongZi",
+    "time": "2012-07-08 19:03:30",
+    "evaluation": 4.0,
+    "evaluation_service": 3,
+    "evaluation_taste": 5,
+    "evaluation_environment": 4,
+    "cost": 5.5,
+    "time": "2012-07-07 10:03:31",
+    "content": "这里的菜太难吃了",
+  },
+  {
+    "id": 2313,
+    "writer_id": 79,
+    "writer_nickname": "Who",
+    "evaluation": 4.33
+    "evaluation_service": 4,
+    "evaluation_taste": 5,
+    "evaluation_environment": 4,
+    "cost": 7.5,
+    "time": "2012-07-08 19:03:31",
+    "content": "不知道有什么好吃的。",
+  }
+]</pre>
+<pre title="404" class="error">{"error_code": "RestaurantNotFound"}</pre>
+</td>
+<td align="left">返回 <code>id</code> 食堂最近 10 条评论，从第 <code>start</code> 条开始（默认为 0）。<br />若客户端在同一页面加载更多评论，须注意新的评论导致的重复。</td>
+</tr>
 
-      <div id="content">
-        <div id="header">
-          <h1>Welcome aboard</h1>
-          <h2>You&rsquo;re riding Ruby on Rails!</h2>
-        </div>
+</tbody>
+</table>
 
-        <div id="about">
-          <h3><a href="rails/info/properties" onclick="about(); return false">About your application&rsquo;s environment</a></h3>
-          <div id="about-content" style="display: none"></div>
-        </div>
+<hr />
 
-        <div id="getting-started">
-          <h1>Getting started</h1>
-          <h2>Here&rsquo;s how to get rolling:</h2>
+<h2>/dishes</h2>
 
-          <ol>
-            <li>
-              <h2>Use <code>rails generate</code> to create your models and controllers</h2>
-              <p>To see all available options, run it without parameters.</p>
-            </li>
+<table>
 
-            <li>
-              <h2>Set up a default route and remove <span class="filename">public/index.html</span></h2>
-              <p>Routes are set up in <span class="filename">config/routes.rb</span>.</p>
-            </li>
+<thead>
+<tr>
+<th align="left">Address</th>
+<th align="left">Method</th>
+<th align="left">Parameter</th>
+<th align="left">Return</th>
+<th align="left">Description</th>
+</tr>
+</thead>
 
-            <li>
-              <h2>Create your database</h2>
-              <p>Run <code>rake db:create</code> to create your database. If you're not using SQLite (the default), edit <span class="filename">config/database.yml</span> with your username and password.</p>
-            </li>
-          </ol>
-        </div>
-      </div>
+<tr>
+<td align="left">/:id.json/</td>
+<td align="left"><code>GET</code></td>
+<td align="left">none</td>
+<td align="left">
+<pre>{
+  "id": 1,
+  "name": "咖喱牛肉铁板饭",
+  "image_url": "images/niuroufan.jpg",
+  "evaluation": 8
+  "cost": 6.0,
+  "category": "饭",
+  "description": "顾名思义就是咖喱牛肉放在铁板上",
+}</pre>
+<pre title="404" class="error">{"error_code": "DishNotFound"}</pre>
+</td>
+<td align="left">返回 <code>id</code> 菜肴的详细信息。</td>
+</tr>
 
-      <div id="footer">&nbsp;</div>
-    </div>
-  </body>
+<tr>
+<td align="left">/:id/comment.json/</td>
+<td align="left"><code>GET</code></td>
+<td align="left">
+<ul>
+<li><code class="optional">int</code> start</li>
+</ul>
+</td>
+<td align="left"><pre>[
+  {
+    "id": 2353,
+    "writer_id": 1,
+    "writer_nickname": "ZongZi",
+    "evaluation": 5,
+    "time": "2012-07-08 19:03:30",
+    "content": "这个不好吃",
+  },
+  {
+    "id": 2313,
+    "writer_id": 79,
+    "writer_nickname": "Who",
+    "evaluation": 9,
+    "time": "2012-07-08 19:03:31",
+    "content": "特别好吃",
+  }
+]</pre>
+<pre title="404" class="error">{"error_code": "DishNotFound"}</pre>
+</td>
+<td align="left">返回 <code>id</code> 菜肴最近 10 条评论，从第 <code>start</code> 条开始（默认为 0）。<br />若客户端在同一页面加载更多评论，须注意新的评论导致的重复。</td>
+</tr>
+
+</tbody>
+</table>
+
+<hr />
+
+</body>
 </html>
+
