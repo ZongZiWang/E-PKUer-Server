@@ -3,6 +3,14 @@ require 'test_helper'
 class DishesControllerTest < ActionController::TestCase
   setup do
     @dish = dishes(:one)
+	@update = {
+		:name => 'Rice dumplings',
+		:image_url => 'http://i2.dpfile.com/2011-07-08/8599217_b.jpg',
+		:evaluation => 8,
+		:cost => 6.0,
+		:category => 'Rice',
+		:description => 'Good food'
+	}
   end
 
   test "should get index" do
@@ -18,7 +26,7 @@ class DishesControllerTest < ActionController::TestCase
 
   test "should create dish" do
     assert_difference('Dish.count') do
-      post :create, dish: { category: @dish.category, cost: @dish.cost, description: @dish.description, evaluation: @dish.evaluation, name: @dish.name }
+      post :create, :dish => @update 
     end
 
     assert_redirected_to dish_path(assigns(:dish))
@@ -35,7 +43,7 @@ class DishesControllerTest < ActionController::TestCase
   end
 
   test "should update dish" do
-    put :update, id: @dish, dish: { category: @dish.category, cost: @dish.cost, description: @dish.description, evaluation: @dish.evaluation, name: @dish.name }
+    put :update, :id => @dish.to_param, :dish => @update
     assert_redirected_to dish_path(assigns(:dish))
   end
 

@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th>id</th>
     <th>Name</th>
     <th>Image</th>
     <th>Evaluation</th>
@@ -15,6 +16,7 @@
 
 <% @dishes.each do |dish| %>
   <tr>
+    <td><%= dish.id %></td>
     <td><%= dish.name %></td>
     <td><%= image_tag(dish.image_url) %></td>
     <td><%= dish.evaluation %></td>

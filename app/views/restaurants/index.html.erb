@@ -29,7 +29,7 @@
 
 <% @restaurants.each do |restaurant| %>
   <tr>
-    <td><%= restaurant._id %></td>
+    <td><%= restaurant.id %></td>
     <td><%= restaurant.name %></td>
     <td><%= image_tag(restaurant.image_url) %></td>
     <td><%= restaurant.busy %></td>
