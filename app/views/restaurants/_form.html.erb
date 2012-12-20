@@ -16,6 +16,34 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
+    <%= f.label :image_url %><br />
+    <%= f.text_field :image_url %>
+  </div>
+  <div class="field">
+    <%= f.label :busy %><br />
+    <%= f.text_field :busy %>
+  </div>
+  <div class="field">
+    <%= f.label :recommendations %><br />
+    <%= f.text_field :recommendations %>
+  </div>
+  <div class="field">
+    <%= f.label :evaluation %><br />
+    <%= f.text_field :evaluation %>
+  </div>
+  <div class="field">
+    <%= f.label :evaluation_service %><br />
+    <%= f.text_field :evaluation_service %>
+  </div>
+  <div class="field">
+    <%= f.label :evaluation_taste %><br />
+    <%= f.text_field :evaluation_taste %>
+  </div>
+  <div class="field">
+    <%= f.label :evaluation_environment %><br />
+    <%= f.text_field :evaluation_environment %>
+  </div>
+  <div class="field">
     <%= f.label :location_name %><br />
     <%= f.text_field :location_name %>
   </div>
@@ -32,38 +60,6 @@
     <%= f.text_field :location_longitude %>
   </div>
   <div class="field">
-    <%= f.label :category %><br />
-    <%= f.text_field :category %>
-  </div>
-  <div class="field">
-    <%= f.label :average_cost %><br />
-    <%= f.text_field :average_cost %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.label :evaluation_service %><br />
-    <%= f.text_field :evaluation_service %>
-  </div>
-  <div class="field">
-    <%= f.label :evaluation_taste %><br />
-    <%= f.text_field :evaluation_taste %>
-  </div>
-  <div class="field">
-    <%= f.label :evaluation_environment %><br />
-    <%= f.text_field :evaluation_environment %>
-  </div>
-  <div class="field">
-    <%= f.label :dishes %><br />
-    <%= f.text_field :dishes %>
-  </div>
-  <div class="field">
-    <%= f.label :recommendations %><br />
-    <%= f.text_field :recommendations %>
-  </div>
-  <div class="field">
     <%= f.label :info_time %><br />
     <%= f.text_field :info_time %>
   </div>
@@ -74,6 +70,22 @@
   <div class="field">
     <%= f.label :info_summary %><br />
     <%= f.text_field :info_summary %>
+  </div>
+  <div class="field">
+    <%= f.label :average_cost %><br />
+    <%= f.text_field :average_cost %>
+  </div>
+  <div class="field">
+    <%= f.label :category %><br />
+    <%= f.text_field :category %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :dishes %><br />
+    <%= f.text_field :dishes %>
   </div>
   <div class="actions">
     <%= f.submit %>

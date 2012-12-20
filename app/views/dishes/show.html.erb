@@ -6,8 +6,13 @@
 </p>
 
 <p>
-  <b>Category:</b>
-  <%= @dish.category %>
+  <b>Image:</b>
+  <%= image_tag(@dish.image_url) %>
+</p>
+
+<p>
+  <b>Evaluation:</b>
+  <%= @dish.evaluation %>
 </p>
 
 <p>
@@ -16,13 +21,13 @@
 </p>
 
 <p>
-  <b>Description:</b>
-  <%= @dish.description %>
+  <b>Category:</b>
+  <%= @dish.category %>
 </p>
 
 <p>
-  <b>Evaluation:</b>
-  <%= @dish.evaluation %>
+  <b>Description:</b>
+  <%= @dish.description %>
 </p>
 
 

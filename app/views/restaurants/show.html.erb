@@ -6,6 +6,41 @@
 </p>
 
 <p>
+  <b>Image:</b>
+  <%= image_tag(@restaurant.image_url) %>
+</p>
+
+<p>
+  <b>Busy:</b>
+  <%= @restaurant.busy %>
+</p>
+
+<p>
+  <b>Recommendations:</b>
+  <%= @restaurant.recommendations %>
+</p>
+
+<p>
+  <b>Evaluation:</b>
+  <%= @restaurant.evaluation %>
+</p>
+
+<p>
+  <b>Evaluation service:</b>
+  <%= @restaurant.evaluation_service %>
+</p>
+
+<p>
+  <b>Evaluation taste:</b>
+  <%= @restaurant.evaluation_taste %>
+</p>
+
+<p>
+  <b>Evaluation environment:</b>
+  <%= @restaurant.evaluation_environment %>
+</p>
+
+<p>
   <b>Location name:</b>
   <%= @restaurant.location_name %>
 </p>
@@ -26,46 +61,6 @@
 </p>
 
 <p>
-  <b>Category:</b>
-  <%= @restaurant.category %>
-</p>
-
-<p>
-  <b>Average cost:</b>
-  <%= @restaurant.average_cost %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @restaurant.description %>
-</p>
-
-<p>
-  <b>Evaluation service:</b>
-  <%= @restaurant.evaluation_service %>
-</p>
-
-<p>
-  <b>Evaluation taste:</b>
-  <%= @restaurant.evaluation_taste %>
-</p>
-
-<p>
-  <b>Evaluation environment:</b>
-  <%= @restaurant.evaluation_environment %>
-</p>
-
-<p>
-  <b>Dishes:</b>
-  <%= @restaurant.dishes %>
-</p>
-
-<p>
-  <b>Recommendations:</b>
-  <%= @restaurant.recommendations %>
-</p>
-
-<p>
   <b>Info time:</b>
   <%= @restaurant.info_time %>
 </p>
@@ -78,6 +73,26 @@
 <p>
   <b>Info summary:</b>
   <%= @restaurant.info_summary %>
+</p>
+
+<p>
+  <b>Average cost:</b>
+  <%= @restaurant.average_cost %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @restaurant.category %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @restaurant.description %>
+</p>
+
+<p>
+  <b>Dishes:</b>
+  <%= @restaurant.dishes %>
 </p>
 
 
