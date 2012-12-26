@@ -419,35 +419,37 @@ max-width: 300px;
 </tr>
 
 <tr>
-<td align="left">/:id/comment.json/</td>
+<td align="left">/:id/comments.json/</td>
 <td align="left"><code>GET</code></td>
 <td align="left">
 <ul>
 <li><code class="optional">int</code> start</li>
 </ul>
 </td>
-<td align="left"><pre>[
-  {
-    "id": 2312,
-    "restaurant_id": 1,
-    "user_id": 1,
-    "user_name": "ZongZi",
-    "evaluation": 4.0,
-    "cost": 5.5,
-    "time": "2012-07-07 10:03:31",
-    "content": "这里的菜太难吃了",
-  },
-  {
-    "id": 2313,
-    "restaurant_id": 1,
-    "user_id": 79,
-    "user_name": "Who",
-    "evaluation": 4.33
-    "cost": 7.5,
-    "time": "2012-07-08 19:03:31",
-    "content": "不知道有什么好吃的。",
-  }
-]</pre>
+<td align="left"><pre>
+[
+    {
+        "content": "好吃哈哈哈",
+        "cost": 5,
+        "evaluation": 5,
+        "id": 1,
+        "restaurant_id": 1,
+        "time": "2012-12-27 00:49:36",
+        "user_id": 1,
+        "user_name": "jimdtc"
+    },
+    {
+        "content": "这也是好东西",
+        "cost": 4,
+        "evaluation": 4,
+        "id": 3,
+        "restaurant_id": 1,
+        "time": "2012-12-27 00:49:36",
+        "user_id": 3,
+        "user_name": "jim"
+    }
+]
+</pre>
 <pre title="404" class="error">{"error_code": "RestaurantNotFound"}</pre>
 </td>
 <td align="left">返回 <code>id</code> 食堂最近 10 条评论，从第 <code>start</code> 条开始（默认为 0）。<br />若客户端在同一页面加载更多评论，须注意新的评论导致的重复。</td>
@@ -537,7 +539,7 @@ max-width: 300px;
 </tr>
 
 <!--tr>
-<td align="left">/:id/comment.json/</td>
+<td align="left">/:id/comments.json/</td>
 <td align="left"><code>GET</code></td>
 <td align="left">
 <ul>
