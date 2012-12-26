@@ -1,4 +1,6 @@
 Epkuer::Application.routes.draw do
+
+
   get 'admin' => 'admin#index'
   post 'users/signup' => 'users#create'
 
@@ -7,6 +9,10 @@ Epkuer::Application.routes.draw do
 	  post 'users/login' => :create
 	  delete 'users/logout' => :destroy
   end
+  
+
+  resources :restaurant_comments
+
 
   resources :users
 

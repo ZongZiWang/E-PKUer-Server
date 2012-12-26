@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Restaurant:</b>
+  <%= @restaurant_comment.restaurant_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @restaurant_comment.user_id %>
+</p>
+
+<p>
+  <b>User name:</b>
+  <%= @restaurant_comment.user_name %>
+</p>
+
+<p>
+  <b>Evaluation:</b>
+  <%= @restaurant_comment.evaluation %>
+</p>
+
+<p>
+  <b>Cost:</b>
+  <%= @restaurant_comment.cost %>
+</p>
+
+<p>
+  <b>Time:</b>
+  <%= @restaurant_comment.time %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @restaurant_comment.content %>
+</p>
+
+
+<%= link_to 'Edit', edit_restaurant_comment_path(@restaurant_comment) %> |
+<%= link_to 'Back', restaurant_comments_path %>

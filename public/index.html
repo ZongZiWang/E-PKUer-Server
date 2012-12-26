@@ -418,7 +418,7 @@ max-width: 300px;
 <td align="left">返回 <code>id</code> 食堂的详细信息。</td>
 </tr>
 
-<!--tr>
+<tr>
 <td align="left">/:id/comment.json/</td>
 <td align="left"><code>GET</code></td>
 <td align="left">
@@ -430,8 +430,8 @@ max-width: 300px;
   {
     "id": 2312,
     "restaurant_id": 1,
-    "writer_id": 1,
-    "writer_nickname": "ZongZi",
+    "user_id": 1,
+    "user_name": "ZongZi",
     "evaluation": 4.0,
     "cost": 5.5,
     "time": "2012-07-07 10:03:31",
@@ -440,8 +440,8 @@ max-width: 300px;
   {
     "id": 2313,
     "restaurant_id": 1,
-    "writer_id": 79,
-    "writer_nickname": "Who",
+    "user_id": 79,
+    "user_name": "Who",
     "evaluation": 4.33
     "cost": 7.5,
     "time": "2012-07-08 19:03:31",
@@ -451,7 +451,7 @@ max-width: 300px;
 <pre title="404" class="error">{"error_code": "RestaurantNotFound"}</pre>
 </td>
 <td align="left">返回 <code>id</code> 食堂最近 10 条评论，从第 <code>start</code> 条开始（默认为 0）。<br />若客户端在同一页面加载更多评论，须注意新的评论导致的重复。</td>
-</tr-->
+</tr>
 
 </tbody>
 </table>
@@ -548,8 +548,8 @@ max-width: 300px;
   {
     "id": 2353,
     "dish_id": 1,
-    "writer_id": 1,
-    "writer_nickname": "ZongZi",
+    "user_id": 1,
+    "user_name": "ZongZi",
     "evaluation": 5,
     "time": "2012-07-08 19:03:30",
     "content": "这个不好吃",
@@ -557,8 +557,8 @@ max-width: 300px;
   {
     "id": 2313,
     "dish_id": 2,
-    "writer_id": 79,
-    "writer_nickname": "Who",
+    "user_id": 79,
+    "user_name": "Who",
     "evaluation": 9,
     "time": "2012-07-08 19:03:31",
     "content": "特别好吃",
