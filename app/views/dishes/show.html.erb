@@ -32,7 +32,7 @@
 
 <p>
   <b>Restaurant:</b>
-  <%= @dish.restaurant.name %>
+  <% if @dish.restaurant %><%= @dish.restaurant.name %><% end %>
 </p>
 
 

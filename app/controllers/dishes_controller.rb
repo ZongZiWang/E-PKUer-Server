@@ -6,7 +6,7 @@ class DishesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @dishes }
+      format.json { render json: @dishes.to_json(except: [ :created_at, :updated_at ]) }
     end
   end
 
@@ -17,7 +17,7 @@ class DishesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @dish }
+      format.json { render json: @dish.to_json(except: [ :created_at, :updated_at ]) }
     end
   end
 

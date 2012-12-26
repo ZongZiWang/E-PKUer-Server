@@ -5,6 +5,7 @@ class DishesControllerTest < ActionController::TestCase
     @dish = dishes(:one)
 	@update = {
 		:name => 'Rice dumplings',
+		:restaurant_id => restaurants(:one)[:id],
 		:image_url => 'http://i2.dpfile.com/2011-07-08/8599217_b.jpg',
 		:evaluation => 8,
 		:cost => 6.0,

@@ -186,8 +186,8 @@ max-width: 300px;
 <li><code>bool</code> 1</li>
 <li><code>int</code> 31415926</li>
 <li><code>str</code> "this is a string"</li>
-<li><code>time</code> "2012-09-10 00:00:00"</li>
-<li><code>date</code> "2012-09-10"</li>  
+<!--li><code>time</code> "2012-09-10 00:00:00"</li>
+<li><code>date</code> "2012-09-10"</li-->  
 </ul>
 
 <h2>HTTP 状态码</h2>
@@ -200,7 +200,7 @@ max-width: 300px;
 <li><code>422</code> 传递参数不正确。</li>
 <li><code>501</code> 尚未实现此功能。</li>
 <li><code>503</code> 暂时无法提供服务。</li>
-<li><code>418</code> 我是一只咖啡壶☆</li>  
+<!--li><code>418</code> 我是一只咖啡壶☆</li-->  
 </ul>
 
 <h2>Error Code</h2>
@@ -231,18 +231,40 @@ max-width: 300px;
 <td align="left">.json/</td>
 <td align="left"><code>GET</code></td>
 <td align="left">none</td>
-<td align="left"><pre>[
+<td align="left"><pre>
+[
     {
         "id": 6,
-        "name": "username1",
+        "name": "username1"
     },
     {
         "id": 7,
-        "name": "username2",
+        "name": "username2"
+    },
+    {
+        "id": 8,
+        "name": "username3"
+    },
+    {
+        "id": 9,
+        "name": "username4"
     }
 ]
 </pre></td>
 <td align="left">返回用户列表。</td>
+</tr>
+
+<tr>
+<td align="left">/:id.json/</td>
+<td align="left"><code>GET</code></td>
+<td align="left">none</td>
+<td align="left"><pre>
+{
+    "id": 6,
+    "name": "username1"
+}
+</pre></td>
+<td align="left">返回用户信息。</td>
 </tr>
 
 <tr>
@@ -262,14 +284,16 @@ max-width: 300px;
     "name": "username4"
 }
 </pre>
-<pre title="404" class="error">{
+<pre title="404" class="error">
+{
     "name": [
         "has already been taken"
     ],
     "password": [
-        "doesn't match confirmation"
+        "Missing password"
     ]
-}</pre>
+}
+</pre>
 </td>
 <td align="left">注册用户</td>
 </tr>
@@ -287,7 +311,8 @@ max-width: 300px;
 <ul>
   <li><code>0</code> success</li>
 </ul>
-<pre title="404" class="error">{
+<pre title="404" class="error">
+{
     "error": "Invalid user/password combination"
 }</pre>
 </td>
@@ -303,7 +328,8 @@ max-width: 300px;
 <ul>
   <li><code>0</code> success</li>
 </ul>
-<pre title="404" class="error">{
+<pre title="404" class="error">
+{
     "error": "NotLoggedIn"
 }</pre>
 </td>
@@ -335,32 +361,26 @@ max-width: 300px;
 <td align="left">.json/</td>
 <td align="left"><code>GET</code></td>
 <td align="left">none</td>
-<td align="left"><pre>[
-  {
-    "id": 1,
-    "name": "农园",
-    "image_url": "images/nongyuan.jpg",
-    "busy": "宽松",
-    "recommendations": "麻辣香锅, 煲汤",
-    "evaluation": 3.0,
-  },
-  {
-    "id": 2,
-    "name": "家园",
-    "image_url": "images/jiayuan.jpg",
-    "busy": "拥挤",
-    "recommendations": "炒河粉",
-    "evaluation": 4.0,
-  },
-  {
-    "id": 3,
-    "name": "康中食堂",
-    "image_url": "images/kangzhong.jpg",
-    "busy": "还好",
-    "recommendations": "鸡腿饭",
-    "evaluation": 3.5,
-  }
-]</pre></td>
+<td align="left"><pre>
+[
+    {
+        "busy": "忙死了",
+        "evaluation": "3.0",
+        "id": 1,
+        "image_url": "http://photo.8j.com/2/07/03/30/8/1-07033014076604018.jpg",
+        "name": "农园",
+        "recommendations": "麻辣香锅, 煲汤"
+    },
+    {
+        "busy": "不忙",
+        "evaluation": "5",
+        "id": 2,
+        "image_url": "http://img.blog.163.com/photo/PDETsugPWr_9KqVlFqHyaA==/2852185939009525547.jpg",
+        "name": "康博斯",
+        "recommendations": "鸡腿饭"
+    }
+]
+</pre></td>
 <td align="left">返回支持的食堂列表。</td>
 </tr>
 
@@ -369,35 +389,36 @@ max-width: 300px;
 <td align="left"><code>GET</code></td>
 <td align="left">none</td>
 <td align="left">
-<pre>{
-  "id": 1
-  "name": "农园",
-  "image_url": "images/nongyuan.jpg",
-  "busy": "宽松",
-  "recommendations": "麻辣香锅, 煲汤",
-  "evaluation": 3.0,
-  "evaluation_service": 4,
-  "evaluation_taste": 2,
-  "evaluation_environment": 3,
-  "location_name": "二教西侧",
-  "location_zone": "近教学楼",
-  "location_latitude": 40.000,
-  "location_longitude": 120.000,
-  "info_time": "11:30-13:00 17:00-19:00",
-  "info_tel": 62750000,
-  "info_summary": "离教学楼最近的地方",
-  "average_cost": 5.50,
-  "category": "大众",
-  "description": "农园这个地方真不错，到处的饭菜都是自己选的",
-  "dishes": "1, 2, 3, 4, 5, 6, 7, 8",
-  },
-}</pre>
+<pre>
+{
+    "average_cost": 5.5,
+    "busy": "忙死了",
+    "category": "大众",
+    "description": "农园这个地方真不错，到处的饭菜都是自己选的",
+    "evaluation": "3.0",
+    "id": 1,
+    "image_url": "http://photo.8j.com/2/07/03/30/8/1-07033014076604018.jpg",
+    "info_summary": "离教学楼最近的地方",
+    "info_tel": "62750000",
+    "info_time": "11:30-13:00 17:00-19:00",
+    "location_latitude": 40,
+    "location_longitude": 120,
+    "location_name": "二教西侧",
+    "location_zone": "近教学楼",
+    "name": "农园",
+    "recommendations": "麻辣香锅, 煲汤",
+    "dishesID": [
+        1,
+        2
+    ]
+}
+</pre>
 <pre title="404" class="error">{"error_code": "RestaurantNotFound"}</pre>
 </td>
 <td align="left">返回 <code>id</code> 食堂的详细信息。</td>
 </tr>
 
-<tr>
+<!--tr>
 <td align="left">/:id/comment.json/</td>
 <td align="left"><code>GET</code></td>
 <td align="left">
@@ -408,25 +429,20 @@ max-width: 300px;
 <td align="left"><pre>[
   {
     "id": 2312,
+    "restaurant_id": 1,
     "writer_id": 1,
     "writer_nickname": "ZongZi",
-    "time": "2012-07-08 19:03:30",
     "evaluation": 4.0,
-    "evaluation_service": 3,
-    "evaluation_taste": 5,
-    "evaluation_environment": 4,
     "cost": 5.5,
     "time": "2012-07-07 10:03:31",
     "content": "这里的菜太难吃了",
   },
   {
     "id": 2313,
+    "restaurant_id": 1,
     "writer_id": 79,
     "writer_nickname": "Who",
     "evaluation": 4.33
-    "evaluation_service": 4,
-    "evaluation_taste": 5,
-    "evaluation_environment": 4,
     "cost": 7.5,
     "time": "2012-07-08 19:03:31",
     "content": "不知道有什么好吃的。",
@@ -435,7 +451,7 @@ max-width: 300px;
 <pre title="404" class="error">{"error_code": "RestaurantNotFound"}</pre>
 </td>
 <td align="left">返回 <code>id</code> 食堂最近 10 条评论，从第 <code>start</code> 条开始（默认为 0）。<br />若客户端在同一页面加载更多评论，须注意新的评论导致的重复。</td>
-</tr>
+</tr-->
 
 </tbody>
 </table>
@@ -457,25 +473,70 @@ max-width: 300px;
 </thead>
 
 <tr>
+<td align="left">.json/</td>
+<td align="left"><code>GET</code></td>
+<td align="left">none</td>
+<td align="left">
+<pre>
+[
+    {
+        "category": "好吃的",
+        "cost": 5,
+        "description": "太好吃了",
+        "evaluation": 10,
+        "id": 1,
+        "image_url": "http://sms.jmcatv.com.cn/09duanwu/images/2008528104427759.jpg",
+        "name": "粽子",
+        "restaurant_id": 1
+    },
+    {
+        "category": "饭",
+        "cost": 6,
+        "description": "顾名思义就是咖喱牛肉放在铁板上",
+        "evaluation": 8,
+        "id": 2,
+        "image_url": "http://i2.dpfile.com/2011-07-08/8599217_b.jpg",
+        "name": "咖喱牛肉铁板饭",
+        "restaurant_id": 1
+    },
+    {
+        "category": "盖浇饭",
+        "cost": 7,
+        "description": "好吃的鱼香肉丝盖浇饭",
+        "evaluation": 9,
+        "id": 4,
+        "image_url": "http://i1.dpfile.com/2009-06-07/2147233_b.jpg(700x700)/thumb.jpg",
+        "name": "鱼香肉丝饭",
+        "restaurant_id": 2
+    }
+]
+</pre></td>
+<td align="left">返回支持的菜肴列表。</td>
+</tr>
+
+<tr>
 <td align="left">/:id.json/</td>
 <td align="left"><code>GET</code></td>
 <td align="left">none</td>
 <td align="left">
-<pre>{
-  "id": 1,
-  "name": "咖喱牛肉铁板饭",
-  "image_url": "images/niuroufan.jpg",
-  "evaluation": 8
-  "cost": 6.0,
-  "category": "饭",
-  "description": "顾名思义就是咖喱牛肉放在铁板上",
-}</pre>
+<pre>
+{
+    "category": "好吃的",
+    "cost": 5,
+    "description": "太好吃了",
+    "evaluation": 10,
+    "id": 1,
+    "image_url": "http://sms.jmcatv.com.cn/09duanwu/images/2008528104427759.jpg",
+    "name": "粽子",
+    "restaurant_id": 1
+}
+</pre>
 <pre title="404" class="error">{"error_code": "DishNotFound"}</pre>
 </td>
 <td align="left">返回 <code>id</code> 菜肴的详细信息。</td>
 </tr>
 
-<tr>
+<!--tr>
 <td align="left">/:id/comment.json/</td>
 <td align="left"><code>GET</code></td>
 <td align="left">
@@ -486,6 +547,7 @@ max-width: 300px;
 <td align="left"><pre>[
   {
     "id": 2353,
+    "dish_id": 1,
     "writer_id": 1,
     "writer_nickname": "ZongZi",
     "evaluation": 5,
@@ -494,6 +556,7 @@ max-width: 300px;
   },
   {
     "id": 2313,
+    "dish_id": 2,
     "writer_id": 79,
     "writer_nickname": "Who",
     "evaluation": 9,
@@ -504,7 +567,7 @@ max-width: 300px;
 <pre title="404" class="error">{"error_code": "DishNotFound"}</pre>
 </td>
 <td align="left">返回 <code>id</code> 菜肴最近 10 条评论，从第 <code>start</code> 条开始（默认为 0）。<br />若客户端在同一页面加载更多评论，须注意新的评论导致的重复。</td>
-</tr>
+</tr-->
 
 </tbody>
 </table>

@@ -6,7 +6,7 @@ class RestaurantsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @restaurants }
+      format.json { render json: @restaurants.to_json(only: [ :id, :name, :image_url, :busy, :recommendations, :evaluation ]) }
     end
   end
 
@@ -17,7 +17,7 @@ class RestaurantsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @restaurant }
+      format.json { render json: @restaurant.to_json(except: [ :created_at, :updated_at ], methods: :dishesID) }
     end
   end
 

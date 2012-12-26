@@ -77,7 +77,11 @@
 
 <p>
   <b>Dishes:</b>
-  <%= @restaurant.dishes %>
+  <% dishes_name = Array.new %>
+  <% @restaurant.dishes.each do |dish| %>
+	  <% dishes_name.push dish.name %>
+  <% end %>
+  <%= dishes_name %>
 </p>
 
 

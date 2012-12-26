@@ -9,9 +9,6 @@ class RestaurantsControllerTest < ActionController::TestCase
 		:busy => 'loose',
 		:recommendations => 'Malaxiangguo, baotang',
 		:evaluation => 3.0,
-		:evaluation_service => 4,
-		:evaluation_taste => 2,
-		:evaluation_environment => 3,
 		:location_name => 'West of Buidling No.2',
 		:location_zone => 'Near Classrooms',
 		:location_latitude => 40.000,
@@ -22,7 +19,6 @@ class RestaurantsControllerTest < ActionController::TestCase
 		:average_cost => 5.50,
 		:category => 'Common',
 		:description => 'Very good place',
-		:dishes => '1, 2, 3, 4, 5, 6, 7, 8'
 	}
   end
 

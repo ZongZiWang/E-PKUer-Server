@@ -7,5 +7,6 @@ class DishTest < ActiveSupport::TestCase
 		assert dish.errors[:name].any?
 		assert dish.errors[:image_url].any?
 		assert dish.errors[:evaluation].any?
+		assert dish.errors[:restaurant_id].any?
 	end
 end

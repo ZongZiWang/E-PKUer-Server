@@ -1,15 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
+  restaurant_id: 1
   name: MyString
   category: MyString
   cost: 1.5
   description: MyString
   evaluation: 1.5
+  image_url: 2.jpg
 
 two:
-  name: MyString
+  restaurant_id: 2
+  name: YetAnotherMyString
   category: MyString
   cost: 1.5
   description: MyString
   evaluation: 1.5
+  image_url: 1.jpg

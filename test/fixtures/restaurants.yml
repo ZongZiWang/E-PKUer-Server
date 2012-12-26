@@ -2,36 +2,32 @@
 
 one:
   name: MyString
+  image_url: MyString
+  evaluation: 1.5
+  recommendations: MyString
   location_name: MyString
   location_zone: MyString
   location_latitude: 1.5
   location_longitude: 1.5
-  category: MyString
-  average_cost: 1.5
-  description: MyString
-  evaluation_service: 1.5
-  evaluation_taste: 1.5
-  evaluation_environment: 1.5
-  dishes: MyString
-  recommendations: MyString
   info_time: MyString
   info_tel: MyString
   info_summary: MyString
+  average_cost: 1.5
+  category: MyString
+  description: MyString
 
 two:
   name: MyString
+  image_url: MyString
+  evaluation: 1.5
+  recommendations: MyString
   location_name: MyString
   location_zone: MyString
   location_latitude: 1.5
   location_longitude: 1.5
-  category: MyString
-  average_cost: 1.5
-  description: MyString
-  evaluation_service: 1.5
-  evaluation_taste: 1.5
-  evaluation_environment: 1.5
-  dishes: MyString
-  recommendations: MyString
   info_time: MyString
   info_tel: MyString
   info_summary: MyString
+  average_cost: 1.5
+  category: MyString
+  description: MyString
