@@ -210,6 +210,110 @@ max-width: 300px;
 
 <hr />
 
+<h2>/users</h2>
+
+<table>
+
+<thead>
+<tr>
+<th align="left">Address</th>
+<th align="left">Method</th>
+<th align="left">Parameter</th>
+<th align="left">Return</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody> 
+
+<tr>
+<td align="left">.json/</td>
+<td align="left"><code>GET</code></td>
+<td align="left">none</td>
+<td align="left"><pre>[
+    {
+        "id": 6,
+        "name": "username1",
+    },
+    {
+        "id": 7,
+        "name": "username2",
+    }
+]
+</pre></td>
+<td align="left">返回用户列表。</td>
+</tr>
+
+<tr>
+<td align="left">/signup.json/</td>
+<td align="left"><code>POST</code></td>
+<td align="left">
+<ul>
+<li><code class="required">string</code> name</li>
+<li><code class="required">string</code> password</li>
+<li><code class="required">string</code> passowrd_confirmation</li>
+</ul>
+</td>
+<td align="left">
+<pre>
+{
+    "id": 9,
+    "name": "username4"
+}
+</pre>
+<pre title="404" class="error">{
+    "name": [
+        "has already been taken"
+    ],
+    "password": [
+        "doesn't match confirmation"
+    ]
+}</pre>
+</td>
+<td align="left">注册用户</td>
+</tr>
+
+<tr>
+<td align="left">/login.json/</td>
+<td align="left"><code>POST</code></td>
+<td align="left">
+<ul>
+<li><code class="required">string</code> name</li>
+<li><code class="required">string</code> password</li>
+</ul>
+</td>
+<td align="left">
+<ul>
+  <li><code>0</code> success</li>
+</ul>
+<pre title="404" class="error">{
+    "error": "Invalid user/password combination"
+}</pre>
+</td>
+
+<td align="left">登录用户</td>
+
+</tr>
+<tr>
+<td align="left">/logout.json/</td>
+<td align="left"><code>DELETE</code></td>
+<td align="left">none</td>
+<td align="left">
+<ul>
+  <li><code>0</code> success</li>
+</ul>
+<pre title="404" class="error">{
+    "error": "NotLoggedIn"
+}</pre>
+</td>
+<td align="left">登出用户</td>
+</tr>
+
+</tbody>
+</table>
+
+<hr />
+
 <h2>/restaurants</h2>
 
 <table>
