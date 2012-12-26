@@ -1,6 +1,9 @@
 Epkuer::Application.routes.draw do
 
 
+  resources :dish_comments
+
+
   get 'admin' => 'admin#index'
   post 'users/signup' => 'users#create'
 
@@ -11,6 +14,7 @@ Epkuer::Application.routes.draw do
   end
   
   get 'restaurants/:id/comments' => 'restaurant_comments#recent'
+  get 'dishes/:id/comments' => 'dish_comments#recent'
 
   resources :restaurant_comments
 

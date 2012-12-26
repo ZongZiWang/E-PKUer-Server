@@ -1,0 +1,31 @@
+<h1>Listing dish_comments</h1>
+
+<table>
+  <tr>
+    <th>Dish</th>
+    <th>User</th>
+    <th>Evaluation</th>
+    <th>Time</th>
+    <th>Content</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @dish_comments.each do |dish_comment| %>
+  <tr>
+    <td><%= dish_comment.dish.name %></td>
+    <td><%= dish_comment.user.name %></td>
+    <td><%= dish_comment.evaluation %></td>
+    <td><%= dish_comment.time %></td>
+    <td><%= dish_comment.content %></td>
+    <td><%= link_to 'Show', dish_comment %></td>
+    <td><%= link_to 'Edit', edit_dish_comment_path(dish_comment) %></td>
+    <td><%= link_to 'Destroy', dish_comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Dish comment', new_dish_comment_path %>

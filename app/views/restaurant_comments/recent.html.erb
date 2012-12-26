@@ -5,7 +5,6 @@
 	<th>id</th>
     <th>Restaurant</th>
     <th>User</th>
-    <th>User name</th>
     <th>Evaluation</th>
     <th>Cost</th>
     <th>Time</th>
@@ -18,9 +17,8 @@
 <% @restaurant_comments.each do |restaurant_comment| %>
   <tr>
     <td><%= restaurant_comment.id %></td>
-    <td><%= restaurant_comment.restaurant_id %></td>
-    <td><%= restaurant_comment.user_id %></td>
-    <td><%= restaurant_comment.user_name %></td>
+    <td><%= restaurant_comment.restaurant.name %></td>
+    <td><%= restaurant_comment.user.name %></td>
     <td><%= restaurant_comment.evaluation %></td>
     <td><%= restaurant_comment.cost %></td>
     <td><%= restaurant_comment.time %></td>

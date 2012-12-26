@@ -538,7 +538,7 @@ max-width: 300px;
 <td align="left">返回 <code>id</code> 菜肴的详细信息。</td>
 </tr>
 
-<!--tr>
+<tr>
 <td align="left">/:id/comments.json/</td>
 <td align="left"><code>GET</code></td>
 <td align="left">
@@ -546,30 +546,32 @@ max-width: 300px;
 <li><code class="optional">int</code> start</li>
 </ul>
 </td>
-<td align="left"><pre>[
-  {
-    "id": 2353,
-    "dish_id": 1,
-    "user_id": 1,
-    "user_name": "ZongZi",
-    "evaluation": 5,
-    "time": "2012-07-08 19:03:30",
-    "content": "这个不好吃",
-  },
-  {
-    "id": 2313,
-    "dish_id": 2,
-    "user_id": 79,
-    "user_name": "Who",
-    "evaluation": 9,
-    "time": "2012-07-08 19:03:31",
-    "content": "特别好吃",
-  }
-]</pre>
+<td align="left"><pre>
+[
+    {
+        "content": "这个菜我喜欢",
+        "dish_id": 1,
+        "evaluation": 5,
+        "id": 5,
+        "time": "2012-12-27 01:18:33",
+        "user_id": 1,
+        "user_name": "jimdtc"
+    },
+    {
+        "content": "这个菜我喜欢",
+        "dish_id": 1,
+        "evaluation": 5,
+        "id": 6,
+        "time": "2012-12-27 01:18:33",
+        "user_id": 1,
+        "user_name": "jimdtc"
+    }
+]
+</pre>
 <pre title="404" class="error">{"error_code": "DishNotFound"}</pre>
 </td>
 <td align="left">返回 <code>id</code> 菜肴最近 10 条评论，从第 <code>start</code> 条开始（默认为 0）。<br />若客户端在同一页面加载更多评论，须注意新的评论导致的重复。</td>
-</tr-->
+</tr>
 
 </tbody>
 </table>
