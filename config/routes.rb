@@ -1,11 +1,11 @@
 Epkuer::Application.routes.draw do
   get 'admin' => 'admin#index'
-  post 'user/signup' => 'users#create'
+  post 'users/signup' => 'users#create'
 
   controller :sessions do
-	  get 'user/login' => :new
-	  post 'user/login' => :create
-	  delete 'user/logout' => :destroy
+	  get 'users/login' => :new
+	  post 'users/login' => :create
+	  delete 'users/logout' => :destroy
   end
 
   resources :users

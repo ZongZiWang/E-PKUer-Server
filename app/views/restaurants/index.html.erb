@@ -8,9 +8,6 @@
     <th>Busy</th>
     <th>Recommendations</th>
     <th>Evaluation</th>
-    <th>Evaluation service</th>
-    <th>Evaluation taste</th>
-    <th>Evaluation environment</th>
     <th>Location name</th>
     <th>Location zone</th>
     <th>Location latitude</th>
@@ -35,9 +32,6 @@
     <td><%= restaurant.busy %></td>
     <td><%= restaurant.recommendations %></td>
     <td><%= restaurant.evaluation %></td>
-    <td><%= restaurant.evaluation_service %></td>
-    <td><%= restaurant.evaluation_taste %></td>
-    <td><%= restaurant.evaluation_environment %></td>
     <td><%= restaurant.location_name %></td>
     <td><%= restaurant.location_zone %></td>
     <td><%= restaurant.location_latitude %></td>
@@ -48,7 +42,7 @@
     <td><%= restaurant.average_cost %></td>
     <td><%= restaurant.category %></td>
     <td><%= restaurant.description %></td>
-    <td><%= restaurant.dishes %></td>
+	<td><%= restaurant.dishes %></td>
     <td><%= link_to 'Show', restaurant %></td>
     <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
     <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>

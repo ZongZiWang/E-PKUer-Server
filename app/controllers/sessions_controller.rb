@@ -5,11 +5,11 @@ class SessionsController < ApplicationController
   def create
 	  respond_to do |format|
 		  if params[:name] == nil
-			  format.html { redirect_to login_url, :alert => "Missing username" }
+			  format.html { redirect_to users_login_url, :alert => "Missing username" }
 			  format.json { render json: { error: "Missing username" } }
 		  else
 			  if params[:password] == nil
-				  format.html { redirect_to login_url, :alert => "Missing password" }
+				  format.html { redirect_to users_login_url, :alert => "Missing password" }
 				  format.json { render json: { error: "Missing password" } }
 			  else
 				  if user = User.authenticate(params[:name], params[:password])
@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
 					  format.html { redirect_to admin_url }
 					  format.json { render json: 0 }
 				  else
-					  format.html { redirect_to login_url, :alert => "Invalid user/password combination" }
+					  format.html { redirect_to users_login_url, :alert => "Invalid user/password combination" }
 					  format.json { render json: { error: "Invalid user/password combination" } }
 				  end
 			  end
