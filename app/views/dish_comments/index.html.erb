@@ -16,8 +16,8 @@
 <% @dish_comments.each do |dish_comment| %>
   <tr>
     <td><%= dish_comment.id %></td>  
-	<td><%= link_to dish_comment.dish.name, dish_comment.dish %></td>
-    <td><%= link_to dish_comment.user.name, dish_comment.user%></td>
+	<td><% if dish_comment.dish %><%= link_to dish_comment.dish.name, dish_comment.dish %><% end %></td>
+	<td><% if dish_comment.user %><%= link_to dish_comment.user.name, dish_comment.user %><% end %></td>
     <td><%= dish_comment.evaluation %></td>
     <td><%= dish_comment.time %></td>
     <td><%= dish_comment.content %></td>

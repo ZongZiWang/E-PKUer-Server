@@ -6,7 +6,6 @@ class DishCommentsControllerTest < ActionController::TestCase
 	@update = {
 		:dish_id => dishes(:one)[:id],
 		:user_id => users(:one)[:id],
-		:user_name => users(:one)[:name],
 	   	:evaluation => 4,
 	   	:time => "2012-07-07 10:03:31",
 	   	:content => "Good"

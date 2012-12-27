@@ -6,7 +6,6 @@ class RestaurantCommentTest < ActiveSupport::TestCase
 		assert restaurant_comment.invalid?
 		assert restaurant_comment.errors[:restaurant_id].any?
 		assert restaurant_comment.errors[:user_id].any?
-		assert restaurant_comment.errors[:user_name].any?
 		assert restaurant_comment.errors[:content].any?
 	end
 end

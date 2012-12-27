@@ -41,9 +41,21 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
-	if params[:user] == nil
-		@user = User.new(params.except(:format, :action, :controller))
-	end
+
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to(users_url, notice: "User #{@user.name} was successfully created.") }
+        format.json { render json: @user.to_json(only: [:id, :name]), status: :created, location: @user }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # POST /signup.json
+  def signup
+    @user = User.new({ name: params[:name], password: params[:password], password_confirmation: params[:password] })
 
     respond_to do |format|
       if @user.save

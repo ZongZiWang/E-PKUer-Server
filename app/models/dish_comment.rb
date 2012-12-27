@@ -1,8 +1,8 @@
 class DishComment < ActiveRecord::Base
-  attr_accessible :content, :dish_id, :evaluation, :time, :user_id, :user_name
+  attr_accessible :content, :dish_id, :evaluation, :time, :user_id
   belongs_to :dish
   belongs_to :user
-  validates :dish_id, :user_id, :user_name, :content, :presence => true
+  validates :dish_id, :user_id, :content, :presence => true
   
   class DishValidator < ActiveModel::EachValidator
 	  def validate_each(record, attribute, value)

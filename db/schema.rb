@@ -11,12 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121226170409) do
+ActiveRecord::Schema.define(:version => 20121227073559) do
 
   create_table "dish_comments", :force => true do |t|
     t.integer  "dish_id"
     t.integer  "user_id"
-    t.string   "user_name"
     t.float    "evaluation"
     t.string   "time"
     t.string   "content"
@@ -39,7 +38,6 @@ ActiveRecord::Schema.define(:version => 20121226170409) do
   create_table "restaurant_comments", :force => true do |t|
     t.integer  "restaurant_id"
     t.integer  "user_id"
-    t.string   "user_name"
     t.float    "evaluation"
     t.float    "cost"
     t.string   "time"

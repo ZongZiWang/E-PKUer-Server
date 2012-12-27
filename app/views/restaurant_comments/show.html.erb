@@ -2,12 +2,12 @@
 
 <p>
   <b>Restaurant:</b>
-  <%= link_to @restaurant_comment.restaurant.name, @restaurant_comment.restaurant %>
+  <% if @restaurant_comment.restaurant %><%= link_to @restaurant_comment.restaurant.name, @restaurant_comment.restaurant %><% end %>
 </p>
 
 <p>
   <b>User:</b>
-  <%= link_to @restaurant_comment.user.name, @restaurant_comment.user %>
+  <% if @restaurant_comment.user %><%= link_to @restaurant_comment.user.name, @restaurant_comment.user %><% end %>
 </p>
 
 <p>

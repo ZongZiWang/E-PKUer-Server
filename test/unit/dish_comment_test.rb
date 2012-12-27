@@ -6,7 +6,6 @@ class DishCommentTest < ActiveSupport::TestCase
 		assert dish_comment.invalid?
 		assert dish_comment.errors[:dish_id].any?
 		assert dish_comment.errors[:user_id].any?
-		assert dish_comment.errors[:user_name].any?
 		assert dish_comment.errors[:content].any?
 	end
 end

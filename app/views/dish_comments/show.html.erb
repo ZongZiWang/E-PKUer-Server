@@ -2,12 +2,12 @@
 
 <p>
   <b>Dish:</b>
-  <%= link_to @dish_comment.dish.name, @dish_comment.dish %>
+  <% if @dish_comment.dish %><%= link_to @dish_comment.dish.name, @dish_comment.dish %><% end %>
 </p>
 
 <p>
   <b>User:</b>
-  <%= link_to @dish_comment.user.name, @dish_comment.user %>
+  <% if @dish_comment.user %><%= link_to @dish_comment.user.name, @dish_comment.user %><% end %>
 </p>
 
 <p>

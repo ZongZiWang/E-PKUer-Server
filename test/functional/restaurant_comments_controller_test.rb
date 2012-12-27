@@ -6,7 +6,6 @@ class RestaurantCommentsControllerTest < ActionController::TestCase
 	@update = {
 		:restaurant_id => restaurants(:one)[:id],
 		:user_id => users(:one)[:id],
-		:user_name => users(:one)[:name],
 		:evaluation => 4,
 		:cost => 5.5,
 		:time => "2012-07-07 10:03:31",
