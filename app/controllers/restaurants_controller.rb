@@ -89,7 +89,7 @@ class RestaurantsController < ApplicationController
     respond_to do |format|
       if @restaurant.update_attributes({ busy: params[:busy]})
         format.html { redirect_to @restaurant, notice: 'Restaurant was successfully updated.' }
-a       format.json { head :no_content }
+        format.json { head :no_content }
       else
         format.html { render action: "edit" }
         format.json { render json: @restaurant.errors, status: :unprocessable_entity }
