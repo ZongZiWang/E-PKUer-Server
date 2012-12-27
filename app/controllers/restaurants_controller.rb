@@ -17,7 +17,7 @@ class RestaurantsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @restaurant.to_json(except: [ :created_at, :updated_at ], methods: :dishesID) }
+      format.json { render json: @restaurant.to_json(except: [ :created_at, :updated_at ], methods: [ :dishes_id, :two_comments ]) }
     end
   end
 

@@ -10,12 +10,16 @@ class Restaurant < ActiveRecord::Base
 	  :with => %r{\.(gif|jpg|png)$}i,
 	  :message => 'must be a URL for GIF, JPG or PNG image.'
   }
-  def dishesID  
-	dishes_id = Array.new
+  def dishes_id  
+	_dishes_id = Array.new
 	self.dishes.each do |dish|
-		dishes_id.push dish.id
+		_dishes_id.push dish.id
 	end
-	dishes_id
+	_dishes_id
+  end
+  def two_comments
+	_count = self.restaurant_comments.count
+	self.restaurant_comments[_count-2.._count-1];
   end
 
   private
