@@ -32,9 +32,16 @@
 
 <p>
   <b>Restaurant:</b>
-  <% if @dish.restaurant %><%= @dish.restaurant.name %><% end %>
+  <% if @dish.restaurant %><%= link_to @dish.restaurant.name, @dish.restaurant %><% end %>
+</p>
+
+<p>
+  <b>Comments:</b>
+  <% @dish.dish_comments.each do |comment| %>
+	  <%= link_to comment.content, comment %>
+  <% end %>
 </p>
 
 
 <%= link_to 'Edit', edit_dish_path(@dish) %> |
-<%= link_to 'Back', dishes_path %>
+<%= link_to 'All Dishes', dishes_path %>

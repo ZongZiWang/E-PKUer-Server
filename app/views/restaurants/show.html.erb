@@ -77,13 +77,18 @@
 
 <p>
   <b>Dishes:</b>
-  <% dishes_name = Array.new %>
   <% @restaurant.dishes.each do |dish| %>
-	  <% dishes_name.push dish.name %>
+	  <%= link_to dish.name, dish %>
   <% end %>
-  <%= dishes_name %>
+</p>
+
+<p>
+  <b>Comments:</b>
+  <% @restaurant.restaurant_comments.each do |comment| %>
+	  <%= link_to comment.content, comment %>
+  <% end %>
 </p>
 
 
 <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
-<%= link_to 'Back', restaurants_path %>
+<%= link_to 'All Restaurants', restaurants_path %>

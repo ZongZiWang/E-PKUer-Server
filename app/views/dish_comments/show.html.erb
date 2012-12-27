@@ -2,17 +2,12 @@
 
 <p>
   <b>Dish:</b>
-  <%= @dish_comment.dish_id %>
+  <%= link_to @dish_comment.dish.name, @dish_comment.dish %>
 </p>
 
 <p>
   <b>User:</b>
-  <%= @dish_comment.user_id %>
-</p>
-
-<p>
-  <b>User name:</b>
-  <%= @dish_comment.user_name %>
+  <%= link_to @dish_comment.user.name, @dish_comment.user %>
 </p>
 
 <p>
@@ -32,4 +27,4 @@
 
 
 <%= link_to 'Edit', edit_dish_comment_path(@dish_comment) %> |
-<%= link_to 'Back', dish_comments_path %>
+<%= link_to 'All Dish Comments', dish_comments_path %>

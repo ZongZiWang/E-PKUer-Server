@@ -2,17 +2,12 @@
 
 <p>
   <b>Restaurant:</b>
-  <%= @restaurant_comment.restaurant_id %>
+  <%= link_to @restaurant_comment.restaurant.name, @restaurant_comment.restaurant %>
 </p>
 
 <p>
   <b>User:</b>
-  <%= @restaurant_comment.user_id %>
-</p>
-
-<p>
-  <b>User name:</b>
-  <%= @restaurant_comment.user_name %>
+  <%= link_to @restaurant_comment.user.name, @restaurant_comment.user %>
 </p>
 
 <p>
@@ -37,4 +32,4 @@
 
 
 <%= link_to 'Edit', edit_restaurant_comment_path(@restaurant_comment) %> |
-<%= link_to 'Back', restaurant_comments_path %>
+<%= link_to 'All Restaurant Comments', restaurant_comments_path %>

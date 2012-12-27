@@ -19,6 +19,7 @@
     <th>Category</th>
     <th>Description</th>
     <th>Dishes</th>
+    <th>Comments</th>
     <th></th>
     <th></th>
     <th></th>
@@ -43,11 +44,14 @@
     <td><%= restaurant.category %></td>
     <td><%= restaurant.description %></td>
 	<td>
-		<% dishes_name = Array.new %>
 		<% restaurant.dishes.each do |dish| %>
-			<% dishes_name.push dish.name %>
+			<%= link_to dish.name, dish %>
 		<% end %>
-		<%= dishes_name %>
+	</td>
+	<td>
+		<% restaurant.restaurant_comments.each do |comment| %>
+			<%= link_to comment.content, comment %>
+		<% end %>
 	</td>
     <td><%= link_to 'Show', restaurant %></td>
     <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>

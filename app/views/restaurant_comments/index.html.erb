@@ -17,8 +17,8 @@
 <% @restaurant_comments.each do |restaurant_comment| %>
   <tr>
     <td><%= restaurant_comment.id %></td>
-    <td><%= restaurant_comment.restaurant.name %></td>
-    <td><%= restaurant_comment.user.name %></td>
+    <td><%= link_to restaurant_comment.restaurant.name, restaurant_comment.restaurant %></td>
+    <td><%= link_to restaurant_comment.user.name, restaurant_comment.user %></td>
     <td><%= restaurant_comment.evaluation %></td>
     <td><%= restaurant_comment.cost %></td>
     <td><%= restaurant_comment.time %></td>

@@ -10,6 +10,7 @@
     <th>Category</th>
     <th>Description</th>
 	<th>Restaurant</th>
+	<th>Comments</th>
     <th></th>
     <th></th>
     <th></th>
@@ -24,7 +25,11 @@
     <td><%= dish.cost %></td>
     <td><%= dish.category %></td>
     <td><%= dish.description %></td>
-	<td><% if dish.restaurant %><%= dish.restaurant.name %><% end %></td>
+	<td><% if dish.restaurant %><%= link_to dish.restaurant.name, dish.restaurant %><% end %></td>
+	<td><% dish.dish_comments.each do |comment| %>
+			<%= link_to comment.content, comment %>
+		<% end %>
+	</td>
     <td><%= link_to 'Show', dish %></td>
     <td><%= link_to 'Edit', edit_dish_path(dish) %></td>
     <td><%= link_to 'Destroy', dish, method: :delete, data: { confirm: 'Are you sure?' } %></td>
