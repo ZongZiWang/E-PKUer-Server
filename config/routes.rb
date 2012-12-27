@@ -13,8 +13,8 @@ Epkuer::Application.routes.draw do
 	  delete 'users/logout' => :destroy
   end
   
-  get 'restaurants/:id/comments' => 'restaurant_comments#recent'
-  get 'dishes/:id/comments' => 'dish_comments#recent'
+  get 'restaurants/:id/comments' => 'restaurant_comments#of_restaurant'
+  get 'dishes/:id/comments' => 'dish_comments#of_dish'
 
   resources :restaurant_comments
 

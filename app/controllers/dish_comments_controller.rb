@@ -22,13 +22,13 @@ class DishCommentsController < ApplicationController
   end
 
   # GET /dishes/1/comments
-  def recent
+  def of_dish
 	start = params[:start].to_i
 
 	@dish_comments = Dish.find(params[:id]).dish_comments[start..start+9]
 	
 	respond_to do |format|
-	  format.html # recent.html.erb
+	  format.html # of_dish.html.erb
 	  format.json { render json: @dish_comments.to_json(except: [:created_at, :updated_at]) }
 	end
   end

@@ -22,13 +22,13 @@ class RestaurantCommentsController < ApplicationController
   end
 
   # GET /restaurants/1/comments
-  def recent
+  def of_restaurant
 	start = params[:start].to_i
 
 	@restaurant_comments = Restaurant.find(params[:id]).restaurant_comments[start..start+9]
 	
 	respond_to do |format|
-	  format.html # recent.html.erb
+	  format.html # of_restaurant.html.erb
 	  format.json { render json: @restaurant_comments.to_json(except: [:created_at, :updated_at]) }
 	end
   end
