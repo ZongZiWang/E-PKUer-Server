@@ -13,6 +13,8 @@ Epkuer::Application.routes.draw do
   get 'restaurants/:id/comments' => 'restaurant_comments#of_restaurant'
   get 'dishes/:id/comments' => 'dish_comments#of_dish'
 
+  put 'restaurants/:id/busy' => 'restaurants#busy'
+
   resources :restaurants
   resources :dishes
   resources :users

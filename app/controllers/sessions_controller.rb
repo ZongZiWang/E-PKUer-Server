@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
 				  if user = User.authenticate(params[:name], params[:password])
 					  session[:user_id] = user.id
 					  format.html { redirect_to admin_url }
-					  format.json { render json: 0 }
+					  format.json { render json: user.to_json(only: [ :id, :name ]) }
 				  else
 					  format.html { redirect_to users_login_url, :alert => "Invalid user/password combination" }
 					  format.json { render json: { error: "Invalid user/password combination" } }
@@ -30,7 +30,7 @@ class SessionsController < ApplicationController
 #		  if session[:user_id] != nil
 			  session[:user_id] = nil
 			  format.html { redirect_to restaurants_url, :notice => "Logged out" }
-			  format.json { render json: 0 }
+			  format.json { head :no_content }
 #		  else
 #			  format.html { redirect_to restaurants_url, :alert => "Not logged in" }
 #			  format.json { render json: { error: "Not logged in" } }

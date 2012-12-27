@@ -80,4 +80,21 @@ class RestaurantsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # PUT /restaurants/1/busy
+  # PUT /restaurants/1/busy.json
+  def busy
+    @restaurant = Restaurant.find(params[:id])
+
+    respond_to do |format|
+      if @restaurant.update_attributes({ busy: params[:busy]})
+        format.html { redirect_to @restaurant, notice: 'Restaurant was successfully updated.' }
+a       format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @restaurant.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
 end

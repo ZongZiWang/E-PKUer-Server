@@ -179,7 +179,7 @@ max-width: 300px;
 <body>
 <h1>汴地吃货 API 文档</h1>
 
-<h2>API 版本：1.1</h2>
+<h2>API 版本：1.2</h2>
 
 <pre style="line-height: 20px;"><code>GET*</code>, <code>POST*</code>: need login
 <code class="required">data_type</code>: required parameter
@@ -278,7 +278,7 @@ max-width: 300px;
 </tr>
 
 <tr>
-<td align="left"><code class="updated">1.0 updated</code><br />/signup.json/</td>
+<td align="left"><code class="updated">1.2 updated</code><br />/signup.json/</td>
 <td align="left"><code>POST</code></td>
 <td align="left">
 <ul>
@@ -308,7 +308,7 @@ max-width: 300px;
 </tr>
 
 <tr>
-<td align="left">/login.json/</td>
+<td align="left"><code class="updated">1.2 updated</code><br />/login.json/</td>
 <td align="left"><code>POST</code></td>
 <td align="left">
 <ul>
@@ -317,9 +317,12 @@ max-width: 300px;
 </ul>
 </td>
 <td align="left">
-<ul>
-  <li><code>0</code> success</li>
-</ul>
+<pre>
+{
+    "id": 12,
+    "name": "username7"
+}
+</pre>
 <pre title="404" class="error">
 {
     "error": "Invalid user/password combination"
@@ -335,7 +338,7 @@ max-width: 300px;
 <td align="left">none</td>
 <td align="left">
 <ul>
-  <li><code>0</code> success</li>
+  <li><code>STATUS 204</code> No Content</li>
 </ul>
 <pre title="404" class="error">
 {
@@ -447,7 +450,7 @@ max-width: 300px;
     ]
 }
 </pre>
-<pre title="404" class="error">{"error_code": "RestaurantNotFound"}</pre>
+<pre title="404" class="error">{"error": "RestaurantNotFound"}</pre>
 </td>
 <td align="left">返回 <code>id</code> 食堂的详细信息。</td>
 </tr>
@@ -486,9 +489,26 @@ max-width: 300px;
     }
 ]
 </pre>
-<pre title="404" class="error">{"error_code": "RestaurantNotFound"}</pre>
+<pre title="404" class="error">{"error": "RestaurantNotFound"}</pre>
 </td>
 <td align="left">返回 <code>id</code> 食堂最近 10 条评论，从第 <code>start</code> 条开始（默认为 0）。<br />若客户端在同一页面加载更多评论，须注意新的评论导致的重复。</td>
+</tr>
+
+<tr>
+<td align="left"><code class="updated">1.2 new</code><br />/:id/busy.json/</td>
+<td align="left"><code>PUT</code></td>
+<td align="left">
+<ul>
+<li><code class="required">string</code> busy</li>
+</ul>
+</td>
+<td align="left">
+<ul>
+  <li><code>STATUS 204</code> No Content</li>
+</ul>
+<pre title="404" class="error">{"error": "RestaurantNotFound"}</pre>
+</td>
+<td align="left">将食堂的繁忙程度更新上去</td>
 </tr>
 
 </tbody>
@@ -569,7 +589,7 @@ max-width: 300px;
     "restaurant_id": 1
 }
 </pre>
-<pre title="404" class="error">{"error_code": "DishNotFound"}</pre>
+<pre title="404" class="error">{"error": "DishNotFound"}</pre>
 </td>
 <td align="left">返回 <code>id</code> 菜肴的详细信息。</td>
 </tr>
@@ -606,7 +626,7 @@ max-width: 300px;
     }
 ]
 </pre>
-<pre title="404" class="error">{"error_code": "DishNotFound"}</pre>
+<pre title="404" class="error">{"error": "DishNotFound"}</pre>
 </td>
 <td align="left">返回 <code>id</code> 菜肴最近 10 条评论，从第 <code>start</code> 条开始（默认为 0）。<br />若客户端在同一页面加载更多评论，须注意新的评论导致的重复。</td>
 </tr>
