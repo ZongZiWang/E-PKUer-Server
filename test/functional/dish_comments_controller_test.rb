@@ -7,7 +7,6 @@ class DishCommentsControllerTest < ActionController::TestCase
 		:dish_id => dishes(:one)[:id],
 		:user_id => users(:one)[:id],
 	   	:evaluation => 4,
-	   	:time => "2012-07-07 10:03:31",
 	   	:content => "Good"
    	}
   end

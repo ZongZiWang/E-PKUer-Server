@@ -1,5 +1,5 @@
 class DishComment < ActiveRecord::Base
-  attr_accessible :content, :dish_id, :evaluation, :time, :user_id
+  attr_accessible :content, :dish_id, :evaluation, :user_id
   belongs_to :dish
   belongs_to :user
   validates :dish_id, :user_id, :content, :presence => true

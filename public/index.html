@@ -179,13 +179,13 @@ max-width: 300px;
 <body>
 <h1>汴地吃货 API 文档</h1>
 
-<h2>API 版本：1</h2>
+<h2>API 版本：1.1</h2>
 
 <pre style="line-height: 20px;"><code>GET*</code>, <code>POST*</code>: need login
 <code class="required">data_type</code>: required parameter
 <code class="optional">data_type</code>: optional parameter
-<code class="updated">updated</code> or <code class="updated">new</code>: updated or new API
-<code class="deprecated">deprecated</code>: deprecated API
+<code class="updated">x.y updated</code> or <code class="updated">x.y new</code>: updated or new API since x.y
+<code class="deprecated">x.y deprecated</code>: deprecated API since x.y
 </pre>
 
 <hr />
@@ -278,7 +278,7 @@ max-width: 300px;
 </tr>
 
 <tr>
-<td align="left"><code class="updated">updated</code><br />/signup.json/</td>
+<td align="left"><code class="updated">1.0 updated</code><br />/signup.json/</td>
 <td align="left"><code>POST</code></td>
 <td align="left">
 <ul>
@@ -330,7 +330,7 @@ max-width: 300px;
 </tr>
 
 <tr>
-<td align="left"><code class="deprecated">deprecated</code><br />/logout.json/</td>
+<td align="left"><code class="deprecated">1.0 deprecated</code><br />/logout.json/</td>
 <td align="left"><code>DELETE</code></td>
 <td align="left">none</td>
 <td align="left">
@@ -395,7 +395,7 @@ max-width: 300px;
 </tr>
 
 <tr>
-<td align="left"><code class="updated">updated</code><br />/:id.json/</td>
+<td align="left"><code class="updated">1.1 updated</code><br />/:id.json/</td>
 <td align="left"><code>GET</code></td>
 <td align="left">none</td>
 <td align="left">
@@ -429,9 +429,9 @@ max-width: 300px;
             "evaluation": 4,
             "id": 14,
             "restaurant_id": 1,
-            "time": "2012-12-27 00:49:36",
             "updated_at": "2012-12-26T17:00:18Z",
-            "user_id": 3
+            "user_id": 3,
+            "user_name": "jim"
         },
         {
             "content": "这也是好东西",
@@ -440,9 +440,9 @@ max-width: 300px;
             "evaluation": 4,
             "id": 15,
             "restaurant_id": 1,
-            "time": "2012-12-27 00:49:36",
             "updated_at": "2012-12-26T17:00:20Z",
-            "user_id": 3
+            "user_id": 3,
+            "user_name": "jim"
         }
     ]
 }
@@ -453,7 +453,7 @@ max-width: 300px;
 </tr>
 
 <tr>
-<td align="left">/:id/comments.json/</td>
+<td align="left"><code class="updated">1.1 updated</code><br />/:id/comments.json/</td>
 <td align="left"><code>GET</code></td>
 <td align="left">
 <ul>
@@ -465,20 +465,22 @@ max-width: 300px;
     {
         "content": "好吃哈哈哈",
         "cost": 5,
+        "created_at": "2012-12-26T16:49:42Z",
         "evaluation": 5,
         "id": 1,
         "restaurant_id": 1,
-        "time": "2012-12-27 00:49:36",
+        "updated_at": "2012-12-26T16:49:42Z",
         "user_id": 1,
         "user_name": "jimdtc"
     },
     {
         "content": "这也是好东西",
         "cost": 4,
+        "created_at": "2012-12-26T16:59:56Z",
         "evaluation": 4,
         "id": 3,
         "restaurant_id": 1,
-        "time": "2012-12-27 00:49:36",
+        "updated_at": "2012-12-26T16:59:56Z",
         "user_id": 3,
         "user_name": "jim"
     }
@@ -509,7 +511,7 @@ max-width: 300px;
 </thead>
 
 <tr>
-<td align="left"><code class="deprecated">deprecated</code><br />.json/</td>
+<td align="left"><code class="deprecated">1.0 deprecated</code><br />.json/</td>
 <td align="left"><code>GET</code></td>
 <td align="left">none</td>
 <td align="left">
@@ -573,7 +575,7 @@ max-width: 300px;
 </tr>
 
 <tr>
-<td align="left">/:id/comments.json/</td>
+<td align="left"><code class="updated">1.1 updated</code><br />/:id/comments.json/</td>
 <td align="left"><code>GET</code></td>
 <td align="left">
 <ul>
@@ -584,19 +586,21 @@ max-width: 300px;
 [
     {
         "content": "这个菜我喜欢",
+        "created_at": "2012-12-26T17:18:54Z",
         "dish_id": 1,
         "evaluation": 5,
         "id": 5,
-        "time": "2012-12-27 01:18:33",
+        "updated_at": "2012-12-26T17:18:54Z",
         "user_id": 1,
         "user_name": "jimdtc"
     },
     {
         "content": "这个菜我喜欢",
+        "created_at": "2012-12-26T17:18:56Z",
         "dish_id": 1,
         "evaluation": 5,
         "id": 6,
-        "time": "2012-12-27 01:18:33",
+        "updated_at": "2012-12-26T17:18:56Z",
         "user_id": 1,
         "user_name": "jimdtc"
     }

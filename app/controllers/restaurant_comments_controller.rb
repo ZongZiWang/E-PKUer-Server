@@ -26,10 +26,13 @@ class RestaurantCommentsController < ApplicationController
 	start = params[:start].to_i
 
 	@restaurant_comments = Restaurant.find(params[:id]).restaurant_comments[start..start+9]
+	@restaurant_comments.each do |comment|
+		comment[:user_name] = comment.user.name
+	end
 	
 	respond_to do |format|
 	  format.html # of_restaurant.html.erb
-	  format.json { render json: @restaurant_comments.to_json(except: [:created_at, :updated_at]) }
+	  format.json { render json: @restaurant_comments }
 	end
   end
 

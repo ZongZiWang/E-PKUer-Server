@@ -21,7 +21,7 @@
 	<td><% if restaurant_comment.user %><%= link_to restaurant_comment.user.name, restaurant_comment.user %><% end %></td>
     <td><%= restaurant_comment.evaluation %></td>
     <td><%= restaurant_comment.cost %></td>
-    <td><%= restaurant_comment.time %></td>
+    <td><%= restaurant_comment.created_at %></td>
     <td><%= restaurant_comment.content %></td>
     <td><%= link_to 'Show', restaurant_comment %></td>
     <td><%= link_to 'Edit', edit_restaurant_comment_path(restaurant_comment) %></td>

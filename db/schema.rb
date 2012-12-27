@@ -11,13 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121227073559) do
+ActiveRecord::Schema.define(:version => 20121227090227) do
 
   create_table "dish_comments", :force => true do |t|
     t.integer  "dish_id"
     t.integer  "user_id"
     t.float    "evaluation"
-    t.string   "time"
     t.string   "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -40,7 +39,6 @@ ActiveRecord::Schema.define(:version => 20121227073559) do
     t.integer  "user_id"
     t.float    "evaluation"
     t.float    "cost"
-    t.string   "time"
     t.string   "content"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
