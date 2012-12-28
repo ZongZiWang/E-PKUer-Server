@@ -45,12 +45,12 @@
     <td><%= restaurant.description %></td>
 	<td>
 		<% restaurant.dishes.each do |dish| %>
-			<%= link_to dish.name, dish %>
+			<%= link_to dish.name, restaurant_dish_path(restaurant, dish) %>
 		<% end %>
 	</td>
 	<td>
 		<% restaurant.restaurant_comments.each do |comment| %>
-			<%= link_to comment.content, comment %>
+			<%= link_to comment.content, restaurant_comment_path(restaurant, comment) %>
 		<% end %>
 	</td>
     <td><%= link_to 'Show', restaurant %></td>

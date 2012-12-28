@@ -23,13 +23,13 @@
     <td><%= restaurant_comment.cost %></td>
     <td><%= restaurant_comment.created_at %></td>
     <td><%= restaurant_comment.content %></td>
-    <td><%= link_to 'Show', restaurant_comment %></td>
-    <td><%= link_to 'Edit', edit_restaurant_comment_path(restaurant_comment) %></td>
-    <td><%= link_to 'Destroy', restaurant_comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', restaurant_comment_path(@restaurant, restaurant_comment) %></td>
+    <td><%= link_to 'Edit', edit_restaurant_comment_path(@restaurant, restaurant_comment) %></td>
+    <td><%= link_to 'Destroy', [@restaurant, restaurant_comment], method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Restaurant comment', new_restaurant_comment_path %>
+<%= link_to 'New Restaurant comment', new_restaurant_comment_path(@restaurant) %>

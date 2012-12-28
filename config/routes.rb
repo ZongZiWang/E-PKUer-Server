@@ -14,13 +14,12 @@ Epkuer::Application.routes.draw do
   resources :restaurants do
 	  put 'busy', :on => :member
 	  resources :dishes
-	  resources :comments, :controller => 'restaurant_comments', :as => "restaurant_comments"
+	  resources :comments, :controller => 'restaurant_comments'
   end
   resources :users do
 	  post 'signup', :on => :collection
   end
 	
-  resources :restaurant_comments
   resources :dish_comments
 
 

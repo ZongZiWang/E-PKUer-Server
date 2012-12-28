@@ -1,8 +1,11 @@
 class RestaurantCommentsController < ApplicationController
+
+  before_filter :load_restaurant
+
   # GET /restaurant_comments
   # GET /restaurant_comments.json
   def index
-    @restaurant_comments = RestaurantComment.all
+    @restaurant_comments = @restaurant.restaurant_comments.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +16,7 @@ class RestaurantCommentsController < ApplicationController
   # GET /restaurant_comments/1
   # GET /restaurant_comments/1.json
   def show
-    @restaurant_comment = RestaurantComment.find(params[:id])
+    @restaurant_comment = @restaurant.restaurant_comments.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +27,7 @@ class RestaurantCommentsController < ApplicationController
   # GET /restaurant_comments/new
   # GET /restaurant_comments/new.json
   def new
-    @restaurant_comment = RestaurantComment.new
+    @restaurant_comment = @restaurant.restaurant_comments.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,13 +37,13 @@ class RestaurantCommentsController < ApplicationController
 
   # GET /restaurant_comments/1/edit
   def edit
-    @restaurant_comment = RestaurantComment.find(params[:id])
+    @restaurant_comment = @restaurant.restaurant_comments.find(params[:id])
   end
 
   # POST /restaurant_comments
   # POST /restaurant_comments.json
   def create
-    @restaurant_comment = RestaurantComment.new(params[:restaurant_comment])
+    @restaurant_comment = @restaurant.restaurant_comments.new(params[:restaurant_comment])
 
     respond_to do |format|
       if @restaurant_comment.save
@@ -56,7 +59,7 @@ class RestaurantCommentsController < ApplicationController
   # PUT /restaurant_comments/1
   # PUT /restaurant_comments/1.json
   def update
-    @restaurant_comment = RestaurantComment.find(params[:id])
+    @restaurant_comment = @restaurant.restaurant_comments.find(params[:id])
 
     respond_to do |format|
       if @restaurant_comment.update_attributes(params[:restaurant_comment])
@@ -72,7 +75,7 @@ class RestaurantCommentsController < ApplicationController
   # DELETE /restaurant_comments/1
   # DELETE /restaurant_comments/1.json
   def destroy
-    @restaurant_comment = RestaurantComment.find(params[:id])
+    @restaurant_comment = @restaurant.restaurant_comments.find(params[:id])
     @restaurant_comment.destroy
 
     respond_to do |format|
@@ -80,4 +83,11 @@ class RestaurantCommentsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+
+  def load_restaurant
+	  @restaurant = Restaurant.find(params[:restaurant_id])
+  end
+
 end
