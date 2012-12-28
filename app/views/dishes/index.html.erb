@@ -30,13 +30,13 @@
 			<%= link_to comment.content, comment %>
 		<% end %>
 	</td>
-    <td><%= link_to 'Show', dish %></td>
-    <td><%= link_to 'Edit', edit_dish_path(dish) %></td>
-    <td><%= link_to 'Destroy', dish, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	<td><%= link_to 'Show', restaurant_dish_path(@restaurant, dish) %></td>
+    <td><%= link_to 'Edit', edit_restaurant_dish_path(@restaurant, dish) %></td>
+    <td><%= link_to 'Destroy', [@restaurant, dish], method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Dish', new_dish_path %>
+<%= link_to 'New Dish', new_restaurant_dish_path(@restaurant) %>

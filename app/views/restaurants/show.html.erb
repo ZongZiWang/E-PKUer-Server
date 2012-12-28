@@ -78,7 +78,7 @@
 <p>
   <b><%= link_to 'Dishes:', restaurant_dishes_path(@restaurant) %></b>
   <% @restaurant.dishes.each do |dish| %>
-	  <%= link_to dish.name, dish %>
+	  <%= link_to dish.name, restaurant_dish_path(@restaurant, dish) %>
   <% end %>
 </p>
 
