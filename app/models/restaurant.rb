@@ -10,20 +10,21 @@ class Restaurant < ActiveRecord::Base
 	  :with => %r{\.(gif|jpg|png)$}i,
 	  :message => 'must be a URL for GIF, JPG or PNG image.'
   }
-  def dishes_id  
-	_dishes_id = Array.new
-	self.dishes.each do |dish|
-		_dishes_id.push dish.id
+  def partial_dishes 
+	_count = self.dishes.count
+	_partial_dishes = Array.new
+	self.dishes.last(3).each do |dish|
+		_partial_dishes.push({ id: dish.id, name: dish.name })
 	end
-	_dishes_id
+	_partial_dishes
   end
-  def two_comments
+  def partial_comments
 	_count = self.restaurant_comments.count
-	_two_comments = self.restaurant_comments[_count-2.._count-1]
-	_two_comments = Array.new unless _two_comments != nil
-	_two_comments.each do |comment|
-		comment[:user_name] = comment.user.name
+	_partial_comments = Array.new
+	self.restaurant_comments.last(2).each do |comment|
+		_partial_comments.push({ id: comment.id, user_name: comment.user.name, evaluation: comment.evaluation, content: comment.content })
 	end
+	_partial_comments
   end
 
   private

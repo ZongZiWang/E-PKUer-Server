@@ -179,7 +179,7 @@ max-width: 300px;
 <body>
 <h1>汴地吃货 API 文档</h1>
 
-<h2>API 版本：1.2</h2>
+<h2>API 版本：1.3</h2>
 
 <pre style="line-height: 20px;"><code>GET*</code>, <code>POST*</code>: need login
 <code class="required">data_type</code>: required parameter
@@ -278,7 +278,7 @@ max-width: 300px;
 </tr>
 
 <tr>
-<td align="left"><code class="updated">1.2 updated</code><br />/signup.json/</td>
+<td align="left">/signup.json/</td>
 <td align="left"><code>POST</code></td>
 <td align="left">
 <ul>
@@ -308,7 +308,7 @@ max-width: 300px;
 </tr>
 
 <tr>
-<td align="left"><code class="updated">1.2 updated</code><br />/login.json/</td>
+<td align="left">/login.json/</td>
 <td align="left"><code>POST</code></td>
 <td align="left">
 <ul>
@@ -380,7 +380,7 @@ max-width: 300px;
         "busy": "忙死了",
         "evaluation": "3.0",
         "id": 1,
-        "image_url": "http://photo.8j.com/2/07/03/30/8/1-07033014076604018.jpg",
+        "image_url": "image/nongyuan.jpg",
         "name": "农园",
         "recommendations": "麻辣香锅, 煲汤"
     },
@@ -388,7 +388,7 @@ max-width: 300px;
         "busy": "不忙",
         "evaluation": "5",
         "id": 2,
-        "image_url": "http://img.blog.163.com/photo/PDETsugPWr_9KqVlFqHyaA==/2852185939009525547.jpg",
+        "image_url": "image/campus.png",
         "name": "康博斯",
         "recommendations": "鸡腿饭"
     }
@@ -398,7 +398,7 @@ max-width: 300px;
 </tr>
 
 <tr>
-<td align="left"><code class="updated">1.1 updated</code><br />/:id.json/</td>
+<td align="left"><code class="updated">1.3 updated</code><br />/:id.json/</td>
 <td align="left"><code>GET</code></td>
 <td align="left">none</td>
 <td align="left">
@@ -410,7 +410,7 @@ max-width: 300px;
     "description": "农园这个地方真不错，到处的饭菜都是自己选的",
     "evaluation": "3.0",
     "id": 1,
-    "image_url": "http://photo.8j.com/2/07/03/30/8/1-07033014076604018.jpg",
+    "image_url": "http://i2.sinaimg.cn/edu/2009/0417/2009417195017.jpg",
     "info_summary": "离教学楼最近的地方",
     "info_tel": "62750000",
     "info_time": "11:30-13:00 17:00-19:00",
@@ -420,43 +420,39 @@ max-width: 300px;
     "location_zone": "近教学楼",
     "name": "农园",
     "recommendations": "麻辣香锅, 煲汤",
-    "dishes_id": [
-        1,
-        2
-    ],
-    "two_comments": [
+    "partial_dishes": [
         {
-            "content": "这也是好东西",
-            "cost": 4,
-            "created_at": "2012-12-26T17:00:18Z",
-            "evaluation": 4,
-            "id": 14,
-            "restaurant_id": 1,
-            "updated_at": "2012-12-26T17:00:18Z",
-            "user_id": 3,
-            "user_name": "jim"
+            "id": 1,
+            "name": "粽子"
         },
         {
-            "content": "这也是好东西",
-            "cost": 4,
-            "created_at": "2012-12-26T17:00:20Z",
+            "id": 2,
+            "name": "咖喱牛肉铁板饭"
+        }
+    ],
+    "partial_comments": [
+        {
+            "id": 14,
+            "user_name": "jim",
             "evaluation": 4,
+            "content": "这也是好东西"
+        },
+        {
             "id": 15,
-            "restaurant_id": 1,
-            "updated_at": "2012-12-26T17:00:20Z",
-            "user_id": 3,
-            "user_name": "jim"
+            "user_name": "jim",
+            "evaluation": 4,
+            "content": "这也是好东西"
         }
     ]
 }
 </pre>
 <pre title="404" class="error">{"error": "RestaurantNotFound"}</pre>
 </td>
-<td align="left">返回 <code>id</code> 食堂的详细信息。</td>
+<td align="left">返回 <code>id</code> 食堂的详细信息。<code>busy</code>有三种："拥挤"、"还好"、"宽松"。<code>partial_dishes</code>返回最后3道菜。<code>partial_comments</code>返回最后2条评论。</td>
 </tr>
 
 <tr>
-<td align="left"><code class="updated">1.1 updated</code><br />/:id/comments.json/</td>
+<td align="left">/:id/comments.json/</td>
 <td align="left"><code>GET</code></td>
 <td align="left">
 <ul>
@@ -495,7 +491,7 @@ max-width: 300px;
 </tr>
 
 <tr>
-<td align="left"><code class="updated">1.2 new</code><br />/:id/busy.json/</td>
+<td align="left">/:id/busy.json/</td>
 <td align="left"><code>PUT</code></td>
 <td align="left">
 <ul>
@@ -595,7 +591,7 @@ max-width: 300px;
 </tr>
 
 <tr>
-<td align="left"><code class="updated">1.1 updated</code><br />/:id/comments.json/</td>
+<td align="left">/:id/comments.json/</td>
 <td align="left"><code>GET</code></td>
 <td align="left">
 <ul>
