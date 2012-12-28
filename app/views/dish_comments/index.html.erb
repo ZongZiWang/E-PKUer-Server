@@ -16,18 +16,18 @@
 <% @dish_comments.each do |dish_comment| %>
   <tr>
     <td><%= dish_comment.id %></td>  
-	<td><% if dish_comment.dish %><%= link_to dish_comment.dish.name, dish_comment.dish %><% end %></td>
+	<td><% if dish_comment.dish %><%= link_to dish_comment.dish.name, restaurant_dish_path(dish_comment.dish.restaurant, dish_comment.dish) %><% end %></td>
 	<td><% if dish_comment.user %><%= link_to dish_comment.user.name, dish_comment.user %><% end %></td>
     <td><%= dish_comment.evaluation %></td>
     <td><%= dish_comment.created_at %></td>
     <td><%= dish_comment.content %></td>
-    <td><%= link_to 'Show', dish_comment %></td>
-    <td><%= link_to 'Edit', edit_dish_comment_path(dish_comment) %></td>
-    <td><%= link_to 'Destroy', dish_comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', dish_comment_path(@dish, dish_comment) %></td>
+    <td><%= link_to 'Edit', edit_dish_comment_path(@dish, dish_comment) %></td>
+    <td><%= link_to 'Destroy', [@dish, dish_comment], method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Dish comment', new_dish_comment_path %>
+<%= link_to 'New Dish comment', new_dish_comment_path(@dish) %>

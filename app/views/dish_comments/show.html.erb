@@ -2,7 +2,7 @@
 
 <p>
   <b>Dish:</b>
-  <% if @dish_comment.dish %><%= link_to @dish_comment.dish.name, @dish_comment.dish %><% end %>
+  <% if @dish_comment.dish %><%= link_to @dish_comment.dish.name, restaurant_dish_path(@dish_comment.dish.restaurant, @dish_comment.dish) %><% end %>
 </p>
 
 <p>
@@ -26,5 +26,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_dish_comment_path(@dish_comment) %> |
-<%= link_to 'All Dish Comments', dish_comments_path %>
+<%= link_to 'Edit', edit_dish_comment_path(@dish, @dish_comment) %> |
+<%= link_to 'Back', dish_comments_path(@dish) %>

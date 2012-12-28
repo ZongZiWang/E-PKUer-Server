@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @dish_comment %> |
-<%= link_to 'Back', dish_comments_path %>
+<%= link_to 'Show', dish_comment_path(@dish, @dish_comment) %> |
+<%= link_to 'Back', dish_comments_path(@dish) %>

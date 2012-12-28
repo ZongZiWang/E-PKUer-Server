@@ -8,16 +8,16 @@
 <p>
 	<b>Restaurant Comments:</b>
 	<% @user.restaurant_comments.each do |comment| %>
-		<%= link_to comment.content, comment %>
+		<%= link_to comment.content, restaurant_comment_path(comment.restaurant, comment) %>
 	<% end %>
 </p>
 
 <p>
 	<b>Dish Comments:</b>
 	<% @user.dish_comments.each do |comment| %>
-		<%= link_to comment.content, comment %>
+		<%= link_to comment.content, dish_comment_path(comment.dish, comment) %>
 	<% end %>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'All Users', users_path %>
+<%= link_to 'Back', users_path %>

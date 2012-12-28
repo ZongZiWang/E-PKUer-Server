@@ -19,11 +19,11 @@
     <td><%= user.id %></td>
     <td><%= user.name %></td>
 	<td><% user.restaurant_comments.each do |comment| %>
-			<%= link_to comment.content, comment %>
+			<%= link_to comment.content, restaurant_comment_path(comment.restaurant, comment) %>
 		<% end %>
 	</td>
 	<td><% user.dish_comments.each do |comment| %>
-			<%= link_to comment.content, comment %>
+			<%= link_to comment.content, dish_comment_path(comment.dish, comment) %>
 		<% end %>
 	</td>
     <td><%= link_to 'Show', user %></td>

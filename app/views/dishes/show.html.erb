@@ -36,12 +36,12 @@
 </p>
 
 <p>
-  <b><%= link_to 'Comments:', dish_dish_comments_path(@dish) %></b>
+  <b><%= link_to 'Comments:', dish_comments_path(@dish) %></b>
   <% @dish.dish_comments.each do |comment| %>
-	  <%= link_to comment.content, comment %>
+	  <%= link_to comment.content, dish_comment_path(@dish) %>
   <% end %>
 </p>
 
 
 <%= link_to 'Edit', edit_restaurant_dish_path(@restaurant, @dish) %> |
-<%= link_to 'All Dishes', restaurant_dishes_path(@restaurant) %>
+<%= link_to 'Back', restaurant_dishes_path(@restaurant) %>

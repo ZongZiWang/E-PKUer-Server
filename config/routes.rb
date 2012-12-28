@@ -9,7 +9,7 @@ Epkuer::Application.routes.draw do
   end
 
   resources :dishes do
-	  resources :comments, :controller => 'dish_comments', :as => "dish_comments"
+	  resources :comments, :controller => 'dish_comments'
   end
   resources :restaurants do
 	  put 'busy', :on => :member
@@ -19,8 +19,6 @@ Epkuer::Application.routes.draw do
   resources :users do
 	  post 'signup', :on => :collection
   end
-	
-  resources :dish_comments
 
 
   # The priority is based upon order of creation:

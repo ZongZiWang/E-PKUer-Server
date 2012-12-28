@@ -1,8 +1,11 @@
 class DishCommentsController < ApplicationController
+
+  before_filter :load_dish
+
   # GET /dish_comments
   # GET /dish_comments.json
   def index
-    @dish_comments = DishComment.all
+    @dish_comments = @dish.dish_comments.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +16,7 @@ class DishCommentsController < ApplicationController
   # GET /dish_comments/1
   # GET /dish_comments/1.json
   def show
-    @dish_comment = DishComment.find(params[:id])
+    @dish_comment = @dish.dish_comments.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +27,7 @@ class DishCommentsController < ApplicationController
   # GET /dish_comments/new
   # GET /dish_comments/new.json
   def new
-    @dish_comment = DishComment.new
+    @dish_comment = @dish.dish_comments.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,13 +37,13 @@ class DishCommentsController < ApplicationController
 
   # GET /dish_comments/1/edit
   def edit
-    @dish_comment = DishComment.find(params[:id])
+    @dish_comment = @dish.dish_comments.find(params[:id])
   end
 
   # POST /dish_comments
   # POST /dish_comments.json
   def create
-    @dish_comment = DishComment.new(params[:dish_comment])
+    @dish_comment = @dish.dish_comments.new(params[:dish_comment])
 
     respond_to do |format|
       if @dish_comment.save
@@ -56,7 +59,7 @@ class DishCommentsController < ApplicationController
   # PUT /dish_comments/1
   # PUT /dish_comments/1.json
   def update
-    @dish_comment = DishComment.find(params[:id])
+    @dish_comment = @dish.dish_comments.find(params[:id])
 
     respond_to do |format|
       if @dish_comment.update_attributes(params[:dish_comment])
@@ -72,7 +75,7 @@ class DishCommentsController < ApplicationController
   # DELETE /dish_comments/1
   # DELETE /dish_comments/1.json
   def destroy
-    @dish_comment = DishComment.find(params[:id])
+    @dish_comment = @dish.dish_comments.find(params[:id])
     @dish_comment.destroy
 
     respond_to do |format|
@@ -80,4 +83,11 @@ class DishCommentsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+
+  def load_dish
+	  @dish = Dish.find(params[:dish_id])
+  end
+
 end
