@@ -47,8 +47,23 @@ class RestaurantCommentsController < ApplicationController
 
     respond_to do |format|
       if @restaurant_comment.save
-        format.html { redirect_to @restaurant_comment, notice: 'Restaurant comment was successfully created.' }
-        format.json { render json: @restaurant_comment, status: :created, location: @restaurant_comment }
+        format.html { redirect_to restaurant_comment_path(@restaurant, @restaurant_comment), notice: 'Restaurant comment was successfully created.' }
+        format.json { render json: @restaurant_comment, status: :created, location: restaurant_comment_path(@restaurant, @restaurant_comment) }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @restaurant_comment.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # POST /restaurant_comments/upload.json
+  def upload
+    @restaurant_comment = @restaurant.restaurant_comments.new(params.except(:action, :controller, :format))
+
+    respond_to do |format|
+      if @restaurant_comment.save
+        format.html { redirect_to restaurant_comment_path(@restaurant, @restaurant_comment), notice: 'Restaurant comment was successfully created.' }
+        format.json { render json: @restaurant_comment, status: :created, location: restaurant_comment_path(@restaurant, @restaurant_comment) }
       else
         format.html { render action: "new" }
         format.json { render json: @restaurant_comment.errors, status: :unprocessable_entity }
@@ -63,7 +78,7 @@ class RestaurantCommentsController < ApplicationController
 
     respond_to do |format|
       if @restaurant_comment.update_attributes(params[:restaurant_comment])
-        format.html { redirect_to @restaurant_comment, notice: 'Restaurant comment was successfully updated.' }
+        format.html { redirect_to restaurant_comment_path(@restaurant, @restaurant_comment), notice: 'Restaurant comment was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -79,7 +94,7 @@ class RestaurantCommentsController < ApplicationController
     @restaurant_comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to restaurant_comments_url }
+      format.html { redirect_to restaurant_comments_url(@restaurant) }
       format.json { head :no_content }
     end
   end

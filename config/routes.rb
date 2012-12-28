@@ -9,12 +9,16 @@ Epkuer::Application.routes.draw do
   end
 
   resources :dishes do
-	  resources :comments, :controller => 'dish_comments'
+	  resources :comments, :controller => 'dish_comments' do
+		  post 'upload', :on => :collection
+      end
   end
   resources :restaurants do
 	  put 'busy', :on => :member
 	  resources :dishes
-	  resources :comments, :controller => 'restaurant_comments'
+	  resources :comments, :controller => 'restaurant_comments' do
+		  post 'upload', :on => :collection
+	  end
   end
   resources :users do
 	  post 'signup', :on => :collection

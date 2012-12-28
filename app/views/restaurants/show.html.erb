@@ -83,7 +83,7 @@
 </p>
 
 <p>
-  <b><%= link_to 'Comments:', restaurant_restaurant_comments_path(@restaurant) %></b>
+  <b><%= link_to 'Comments:', restaurant_comments_path(@restaurant) %></b>
   <% @restaurant.restaurant_comments.each do |comment| %>
 	  <%= link_to comment.content, restaurant_comment_path(@restaurant, comment) %>
   <% end %>
