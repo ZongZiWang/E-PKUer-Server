@@ -2,24 +2,26 @@ Epkuer::Application.routes.draw do
 
   get 'admin' => 'admin#index'
   
-  get 'restaurants/:id/comments' => 'restaurant_comments#of_restaurant'
-  get 'dishes/:id/comments' => 'dish_comments#of_dish'
-
   controller :sessions do
 	  get 'users/login' => :new
 	  post 'users/login' => :create
 	  delete 'users/logout' => :destroy
   end
 
-  resources :dishes
+  resources :dishes do
+	  resources :comments, :controller => 'dish_comments', :as => "dish_comments"
+  end
   resources :restaurants do
-	put 'busy', :on => :member
+	  put 'busy', :on => :member
+	  resources :dishes
+	  resources :comments, :controller => 'restaurant_comments', :as => "restaurant_comments"
   end
   resources :users do
-	post 'signup', :on => :collection
+	  post 'signup', :on => :collection
   end
-  resources :dish_comments
+	
   resources :restaurant_comments
+  resources :dish_comments
 
 
   # The priority is based upon order of creation:

@@ -21,21 +21,6 @@ class DishCommentsController < ApplicationController
     end
   end
 
-  # GET /dishes/1/comments
-  def of_dish
-	start = params[:start].to_i
-
-	@dish_comments = Dish.find(params[:id]).dish_comments[start..start+9]
-	@dish_comments.each do |comment|
-		comment[:user_name] = comment.user.name
-	end
-	
-	respond_to do |format|
-	  format.html # of_dish.html.erb
-	  format.json { render json: @dish_comments }
-	end
-  end
-
   # GET /dish_comments/new
   # GET /dish_comments/new.json
   def new

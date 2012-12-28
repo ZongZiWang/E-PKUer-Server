@@ -36,7 +36,7 @@
 </p>
 
 <p>
-  <b>Comments:</b>
+  <b><%= link_to 'Comments:', dish_dish_comments_path(@dish) %></b>
   <% @dish.dish_comments.each do |comment| %>
 	  <%= link_to comment.content, comment %>
   <% end %>

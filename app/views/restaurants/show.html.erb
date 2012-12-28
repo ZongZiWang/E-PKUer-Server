@@ -76,14 +76,14 @@
 </p>
 
 <p>
-  <b>Dishes:</b>
+  <b><%= link_to 'Dishes:', restaurant_dishes_path(@restaurant) %></b>
   <% @restaurant.dishes.each do |dish| %>
 	  <%= link_to dish.name, dish %>
   <% end %>
 </p>
 
 <p>
-  <b>Comments:</b>
+  <b><%= link_to 'Comments:', restaurant_restaurant_comments_path(@restaurant) %></b>
   <% @restaurant.restaurant_comments.each do |comment| %>
 	  <%= link_to comment.content, comment %>
   <% end %>

@@ -21,21 +21,6 @@ class RestaurantCommentsController < ApplicationController
     end
   end
 
-  # GET /restaurants/1/comments
-  def of_restaurant
-	start = params[:start].to_i
-
-	@restaurant_comments = Restaurant.find(params[:id]).restaurant_comments[start..start+9]
-	@restaurant_comments.each do |comment|
-		comment[:user_name] = comment.user.name
-	end
-	
-	respond_to do |format|
-	  format.html # of_restaurant.html.erb
-	  format.json { render json: @restaurant_comments }
-	end
-  end
-
   # GET /restaurant_comments/new
   # GET /restaurant_comments/new.json
   def new
