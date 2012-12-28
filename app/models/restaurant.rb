@@ -20,6 +20,7 @@ class Restaurant < ActiveRecord::Base
   def two_comments
 	_count = self.restaurant_comments.count
 	_two_comments = self.restaurant_comments[_count-2.._count-1]
+	_two_comments = Array.new unless _two_comments != nil
 	_two_comments.each do |comment|
 		comment[:user_name] = comment.user.name
 	end
