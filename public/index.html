@@ -371,24 +371,26 @@ max-width: 300px;
 <tbody> 
 
 <tr>
-<td align="left">.json/</td>
+<td align="left"><code class="updated">1.4 updated</code><br />.json/</td>
 <td align="left"><code>GET</code></td>
 <td align="left">none</td>
 <td align="left"><pre>
 [
     {
-        "busy": "忙死了",
+        <span class="updated">"average_cost": 5.5,</span>
+        "busy": "啦啦",
         "evaluation": "3.0",
         "id": 1,
-        "image_url": "image/nongyuan.jpg",
+        "image_url": "http://i2.sinaimg.cn/edu/2009/0417/2009417195017.jpg",
         "name": "农园",
         "recommendations": "麻辣香锅, 煲汤"
     },
     {
+        <span class="updated">"average_cost": 6,</span>
         "busy": "不忙",
         "evaluation": "5",
         "id": 2,
-        "image_url": "image/campus.png",
+        "image_url": "images/campus.jpg",
         "name": "康博斯",
         "recommendations": "鸡腿饭"
     }
@@ -421,7 +423,7 @@ max-width: 300px;
     "location_zone": "近教学楼",
     "name": "农园",
     "recommendations": "麻辣香锅, 煲汤",
-    "partial_dishes": [
+    <span class="updated">"partial_dishes": [
         {
             "id": 1,
             "name": "粽子"
@@ -444,12 +446,12 @@ max-width: 300px;
             "evaluation": 4,
             "content": "这也是好东西"
         }
-    ]
+    ]</span>
 }
 </pre>
 <pre title="404" class="error">{"error": "RestaurantNotFound"}</pre>
 </td>
-<td align="left">返回 <code>id</code> 食堂的详细信息。<code>busy</code>有三种："拥挤"、"还好"、"宽松"。<code>partial_dishes</code>返回最后3道菜。<code>partial_comments</code>返回最后2条评论。</td>
+<td align="left">返回 <code>id</code> 食堂的详细信息。<span class="updated"><code>busy</code>有三种："拥挤"、"还好"、"宽松"。<code>partial_dishes</code>返回最后3道菜。<code>partial_comments</code>返回最后2条评论。</span></td>
 </tr>
 
 <tr>
