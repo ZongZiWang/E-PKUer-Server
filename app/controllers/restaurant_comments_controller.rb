@@ -9,7 +9,7 @@ class RestaurantCommentsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @restaurant_comments }
+      format.json { render json: @restaurant_comments[((params[:start]).to_i)..((params[:start]).to_i+9)] }
     end
   end
 

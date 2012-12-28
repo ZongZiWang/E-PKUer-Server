@@ -1,0 +1,27 @@
+<h1>Listing complaints</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Restaurant</th>
+    <th>Content</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @complaints.each do |complaint| %>
+  <tr>
+    <td><% if complaint.user %><%= complaint.user.name %><% end %></td>
+    <td><% if complaint.restaurant %><%= complaint.restaurant.name %><% end %></td>
+    <td><%= complaint.content %></td>
+    <td><%= link_to 'Show', restaurant_complaint_path(@restaurant, complaint) %></td>
+    <td><%= link_to 'Edit', edit_restaurant_complaint_path(@restaurant, complaint) %></td>
+    <td><%= link_to 'Destroy', [@restaurant, complaint], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Complaint', new_restaurant_complaint_path(@restaurant) %>

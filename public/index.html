@@ -179,7 +179,7 @@ max-width: 300px;
 <body>
 <h1>汴地吃货 API 文档</h1>
 
-<h2>API 版本：1.4</h2>
+<h2>API 版本：1.5</h2>
 
 <pre style="line-height: 20px;"><code>GET*</code>, <code>POST*</code>: need login
 <code class="required">data_type</code>: required parameter
@@ -455,7 +455,45 @@ max-width: 300px;
 </tr>
 
 <tr>
-<td align="left"><code class="updated">1.4 new</code><br />/:id/dishes.json/</td>
+<td align="left">/:id/busy.json/</td>
+<td align="left"><code>PUT</code></td>
+<td align="left">
+<ul>
+<li><code class="required">string</code> busy</li>
+</ul>
+</td>
+<td align="left">
+<ul>
+  <li><code>STATUS 204</code> No Content</li>
+</ul>
+<pre title="404" class="error">{"error": "RestaurantNotFound"}</pre>
+</td>
+<td align="left">将食堂的繁忙程度更新上去</td>
+</tr>
+
+</tbody>
+</table>
+
+<hr />
+
+<h2>/restaurants/:restaurant_id/dishes</h2>
+
+<table>
+
+<thead>
+<tr>
+<th align="left">Address</th>
+<th align="left">Method</th>
+<th align="left">Parameter</th>
+<th align="left">Return</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody> 
+
+<tr>
+<td align="left"><code class="updated">1.4 new</code><br />.json/</td>
 <td align="left"><code>GET</code></td>
 <td align="left">none</td>
 <td align="left">
@@ -485,11 +523,11 @@ max-width: 300px;
 </pre>
 <pre title="404" class="error">{"error": "RestaurantNotFound"}</pre>
 </td>
-<td align="left">返回 <code>id</code> 食堂支持的菜肴列表。</td>
+<td align="left">返回 <code>restaurant_id</code> 食堂支持的菜肴列表。</td>
 </tr>
 
 <tr>
-<td align="left"><code class="updated">1.4 new</code><br />/:restaurant_id/dishes/:id.json/</td>
+<td align="left"><code class="updated">1.4 new</code><br />/:id.json/</td>
 <td align="left"><code>GET</code></td>
 <td align="left">none</td>
 <td align="left">
@@ -510,8 +548,29 @@ max-width: 300px;
 <td align="left">返回 <code>restaurant_id</code> 食堂 <code>id</code> 菜肴的详细信息。</td>
 </tr>
 
+</tbody>
+</table>
+
+<hr />
+
+<h2>/restaurants/:restaurant_id/comments</h2>
+
+<table>
+
+<thead>
 <tr>
-<td align="left">/:id/comments.json/</td>
+<th align="left">Address</th>
+<th align="left">Method</th>
+<th align="left">Parameter</th>
+<th align="left">Return</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td align="left">.json/</td>
 <td align="left"><code>GET</code></td>
 <td align="left">
 <ul>
@@ -546,11 +605,11 @@ max-width: 300px;
 </pre>
 <pre title="404" class="error">{"error": "RestaurantNotFound"}</pre>
 </td>
-<td align="left">返回 <code>id</code> 食堂最近 10 条评论，从第 <code>start</code> 条开始（默认为 0）。<br />若客户端在同一页面加载更多评论，须注意新的评论导致的重复。</td>
+<td align="left">返回 <code>restaurant_id</code> 食堂最近 10 条评论，从第 <code>start</code> 条开始（默认为 0）。<br />若客户端在同一页面加载更多评论，须注意新的评论导致的重复。</td>
 </tr>
 
 <tr>
-<td align="left"><code class="updated">1.4 new</code><br />/:restaurant_id/comments/:id.json/</td>
+<td align="left"><code class="updated">1.4 new</code><br />/:id.json/</td>
 <td align="left"><code>GET</code></td>
 <td align="left">none</td>
 <td align="left">
@@ -573,7 +632,7 @@ max-width: 300px;
 </tr>
 
 <tr>
-<td align="left"><code class="updated">1.4 new</code><br />/:restaurant_id/comments/upload.json/</td>
+<td align="left"><code class="updated">1.4 new</code><br />/upload.json/</td>
 <td align="left"><code>POST*</code></td>
 <td align="left">
 <ul>
@@ -608,21 +667,110 @@ max-width: 300px;
 <td align="left">给 <code>restaurant_id</code> 食堂 <code>id</code> 提交评论。</td>
 </tr>
 
+</tbody>
+</table>
+
+<hr />
+
+<h2>/restaurants/:restaurant_id/complaints</h2>
+
+<table>
+
+<thead>
 <tr>
-<td align="left">/:id/busy.json/</td>
-<td align="left"><code>PUT</code></td>
+<th align="left">Address</th>
+<th align="left">Method</th>
+<th align="left">Parameter</th>
+<th align="left">Return</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody> 
+
+<tr>
+<td align="left"><code class="updated">1.5 new</code><br />.json/</td>
+<td align="left"><code>GET</code></td>
 <td align="left">
 <ul>
-<li><code class="required">string</code> busy</li>
+<li><code class="optional">int</code> start</li>
 </ul>
 </td>
-<td align="left">
-<ul>
-  <li><code>STATUS 204</code> No Content</li>
-</ul>
+<td align="left"><pre>
+[
+    {
+        "content": "太差啦",
+        "created_at": "2012-12-28T17:03:59Z",
+        "id": 1,
+        "restaurant_id": 2,
+        "updated_at": "2012-12-28T17:03:59Z",
+        "user_id": 3
+    },
+    {
+        "content": "试试投诉",
+        "created_at": "2012-12-28T17:08:50Z",
+        "id": 2,
+        "restaurant_id": 2,
+        "updated_at": "2012-12-28T17:08:50Z",
+        "user_id": 5
+    }
+]
+</pre>
 <pre title="404" class="error">{"error": "RestaurantNotFound"}</pre>
 </td>
-<td align="left">将食堂的繁忙程度更新上去</td>
+<td align="left">返回 <code>restaurant_id</code> 食堂最近 10 条投诉，从第 <code>start</code> 条开始（默认为 0）。<br />若客户端在同一页面加载更多投诉，须注意新的投诉导致的重复。</td>
+</tr>
+
+<tr>
+<td align="left"><code class="updated">1.5 new</code><br />/:id.json/</td>
+<td align="left"><code>GET</code></td>
+<td align="left">none</td>
+<td align="left">
+<pre>
+{
+    "content": "试试投诉",
+    "created_at": "2012-12-28T17:08:50Z",
+    "id": 2,
+    "restaurant_id": 2,
+    "updated_at": "2012-12-28T17:08:50Z",
+    "user_id": 5
+}
+</pre>
+<pre title="404" class="error">{"error": "ComplaintNotFound"}</pre>
+</td>
+<td align="left">返回 <code>restaurant_id</code> 食堂 <code>id</code> 投诉的详细信息。</td>
+</tr>
+
+<tr>
+<td align="left"><code class="updated">1.5 new</code><br />/upload.json/</td>
+<td align="left"><code>POST*</code></td>
+<td align="left">
+<ul>
+<li><code class="required">string</code> content</li>
+<li><code class="required">int</code> user_id</li>
+</ul>
+</td>
+<td align="left">
+<pre>
+{
+    "content": "试试投诉",
+    "created_at": "2012-12-28T17:08:50Z",
+    "id": 2,
+    "restaurant_id": 2,
+    "updated_at": "2012-12-28T17:08:50Z",
+    "user_id": 5
+}
+</pre>
+<pre title="404" class="error">
+{
+    "user_id": [
+        "can't be blank",
+        "with id= is not defined"
+    ]
+}
+</pre>
+</td>
+<td align="left">给 <code>restaurant_id</code> 食堂 <code>id</code> 投诉。</td>
 </tr>
 
 </tbody>
@@ -630,7 +778,7 @@ max-width: 300px;
 
 <hr />
 
-<h2>/dishes</h2>
+<h2>/dishes/:dish_id/comments</h2>
 
 <table>
 
@@ -645,7 +793,7 @@ max-width: 300px;
 </thead>
 
 <tr>
-<td align="left">/:id/comments.json/</td>
+<td align="left">.json/</td>
 <td align="left"><code>GET</code></td>
 <td align="left">
 <ul>
@@ -678,11 +826,11 @@ max-width: 300px;
 </pre>
 <pre title="404" class="error">{"error": "DishNotFound"}</pre>
 </td>
-<td align="left">返回 <code>id</code> 菜肴最近 10 条评论，从第 <code>start</code> 条开始（默认为 0）。<br />若客户端在同一页面加载更多评论，须注意新的评论导致的重复。</td>
+<td align="left">返回 <code>dish_id</code> 菜肴最近 10 条评论，从第 <code>start</code> 条开始（默认为 0）。<br />若客户端在同一页面加载更多评论，须注意新的评论导致的重复。</td>
 </tr>
 
 <tr>
-<td align="left"><code class="updated">1.4 new</code><br />/:dish_id/comments/:id.json/</td>
+<td align="left"><code class="updated">1.4 new</code><br />/:id.json/</td>
 <td align="left"><code>GET</code></td>
 <td align="left">none</td>
 <td align="left">
@@ -704,7 +852,7 @@ max-width: 300px;
 </tr>
 
 <tr>
-<td align="left"><code class="updated">1.4 new</code><br />/:dish_id/comments/upload.json/</td>
+<td align="left"><code class="updated">1.4 new</code><br />/upload.json/</td>
 <td align="left"><code>POST*</code></td>
 <td align="left">
 <ul>

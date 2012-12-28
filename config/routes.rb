@@ -1,5 +1,7 @@
 Epkuer::Application.routes.draw do
 
+
+
   get 'admin' => 'admin#index'
   
   controller :sessions do
@@ -16,6 +18,9 @@ Epkuer::Application.routes.draw do
   resources :restaurants do
 	  put 'busy', :on => :member
 	  resources :dishes
+	  resources :complaints do
+		  post 'upload', :on => :collection
+	  end
 	  resources :comments, :controller => 'restaurant_comments' do
 		  post 'upload', :on => :collection
 	  end
