@@ -58,14 +58,15 @@ class RestaurantCommentsController < ApplicationController
 
   # POST /restaurant_comments/upload.json
   def upload
-    @restaurant_comment = @restaurant.restaurant_comments.new(params.except(:action, :controller, :format, :recommendation_dishes, :other_dishes))
+    @restaurant_comment = @restaurant.restaurant_comments.new(params.except(:action, :controller, :format, :recommendation_dishes, :other_dishes, :seperator ))
 	@restaurant_comment.recommendation_dishes = ''
-	_recommendation_dishes = params[:recommendation_dishes].split(',').each do |dish_id|
+	_seperator = params[:seperator] == nil ? ' ' : params[:seperator]
+	_recommendation_dishes = params[:recommendation_dishes].split(_seperator).each do |dish_id|
 		dish = Dish.find(dish_id.to_i)
 		dish.recommendation_count += 1
 		dish.save
 		@restaurant_comment.recommendation_dishes.concat(dish.name)
-		@restaurant_comment.recommendation_dishes.concat(',')
+		@restaurant_comment.recommendation_dishes.concat(_seperator)
 	end
 	@restaurant_comment.recommendation_dishes.concat(params[:other_dishes])
 
