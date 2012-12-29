@@ -1,4 +1,5 @@
-<%= form_for(dish_comment_path(@dish, @dish_comment)) do |f| %>
+<% url = (action_name == "new" ? {:action=>"create", :controller=>"dish_comments"} : {:action=>"update", :controller=>"dish_comments"})%>
+<%= form_for([@dish, @dish_comment], url: url) do |f| %>
   <% if @dish_comment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@dish_comment.errors.count, "error") %> prohibited this dish_comment from being saved:</h2>
