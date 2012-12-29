@@ -8,6 +8,7 @@
     <th>Evaluation</th>
     <th>Cost</th>
     <th>Time</th>
+    <th>Recommendation Dishes</th>
     <th>Content</th>
     <th></th>
     <th></th>
@@ -22,6 +23,7 @@
     <td><%= restaurant_comment.evaluation %></td>
     <td><%= restaurant_comment.cost %></td>
     <td><%= restaurant_comment.created_at %></td>
+    <td><%= restaurant_comment.recommendation_dishes %></td>
     <td><%= restaurant_comment.content %></td>
     <td><%= link_to 'Show', restaurant_comment_path(@restaurant, restaurant_comment) %></td>
     <td><%= link_to 'Edit', edit_restaurant_comment_path(@restaurant, restaurant_comment) %></td>

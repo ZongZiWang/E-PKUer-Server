@@ -10,7 +10,8 @@ class DishesControllerTest < ActionController::TestCase
 		:evaluation => 8,
 		:cost => 6.0,
 		:category => 'Rice',
-		:description => 'Good food'
+		:description => 'Good food',
+		:recommendation_count => 1
 	}
   end
 

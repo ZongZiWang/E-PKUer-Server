@@ -8,7 +8,8 @@ class RestaurantCommentsControllerTest < ActionController::TestCase
 		:user_id => users(:one)[:id],
 		:evaluation => 4,
 		:cost => 5.5,
-		:content => "Good"
+		:content => "Good",
+		:recommendation_dishes => "Food1, Dish2"
 	}
   end
 

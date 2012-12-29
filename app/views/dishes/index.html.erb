@@ -9,6 +9,7 @@
     <th>Cost</th>
     <th>Category</th>
     <th>Description</th>
+	<th>Recommendation Count</th>
 	<th>Restaurant</th>
 	<th>Comments</th>
     <th></th>
@@ -25,6 +26,7 @@
     <td><%= dish.cost %></td>
     <td><%= dish.category %></td>
     <td><%= dish.description %></td>
+    <td><%= dish.recommendation_count %></td>
 	<td><% if dish.restaurant %><%= link_to dish.restaurant.name, dish.restaurant %><% end %></td>
 	<td><% dish.dish_comments.each do |comment| %>
 			<%= link_to comment.content, dish_comment_path(dish, comment) %>

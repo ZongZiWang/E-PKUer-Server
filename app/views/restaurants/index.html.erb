@@ -30,8 +30,12 @@
     <td><%= restaurant.id %></td>
     <td><%= restaurant.name %></td>
     <td><%= image_tag(restaurant.image_url) %></td>
-    <td><%= restaurant.busy %></td>
-    <td><%= restaurant.recommendations %></td>
+	<td><% if restaurant.busy == 0 %>繁忙<% end %><% if restaurant.busy == 1 %>还行<% end %><% if restaurant.busy == 2 %>宽松<% end %></td>
+	<td>
+		<% restaurant.recommendations.each do |dish| %>
+			<%= link_to dish[:name], restaurant_dish_path(restaurant, dish[:id]) %>
+		<% end %>
+	</td>
     <td><%= restaurant.evaluation %></td>
     <td><%= restaurant.location_name %></td>
     <td><%= restaurant.location_zone %></td>

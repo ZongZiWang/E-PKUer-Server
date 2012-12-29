@@ -25,7 +25,7 @@ class Restaurant < ActiveRecord::Base
   end
   
   def recommendations
-	_dishes = self.dishes.sort { |dish1, dish2| dish1.recommendation_count <=> dish2.recommendation_count }
+	_dishes = self.dishes.sort { |dish1, dish2| dish2.recommendation_count <=> dish1.recommendation_count }
 	_dishes.delete_if { |dish| dish.recommendation_count == 0 }
 	_recommendations = Array.new
 	_dishes.each do |dish|

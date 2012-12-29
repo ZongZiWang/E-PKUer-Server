@@ -6,6 +6,7 @@ one:
   evaluation: 1.5
   cost: 1.5
   content: MyString
+  recommendation_dishes: MyString
 
 two:
   restaurant_id: 980190962
@@ -13,3 +14,4 @@ two:
   evaluation: 1.5
   cost: 1.5
   content: MyString
+  recommendation_dishes: MyString

@@ -12,12 +12,14 @@
 
 <p>
   <b>Busy:</b>
-  <%= @restaurant.busy %>
+  <% if @restaurant.busy == 0 %>繁忙<% end %><% if @restaurant.busy == 1 %>还行<% end %><% if @restaurant.busy == 2 %>宽松<% end %>
 </p>
 
 <p>
   <b>Recommendations:</b>
-  <%= @restaurant.recommendations %>
+  <% @restaurant.recommendations.each do |dish| %>
+	  <%= link_to dish[:name], restaurant_dish_path(@restaurant, dish[:id]) %>
+  <% end %>
 </p>
 
 <p>

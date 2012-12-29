@@ -4,7 +4,9 @@ one:
   name: MyString
   image_url: MyString
   evaluation: 1.5
-  recommendations: MyString
+  status_busy: 1
+  status_normal: 2
+  status_loose: 3
   location_name: MyString
   location_zone: MyString
   location_latitude: 1.5
@@ -20,7 +22,9 @@ two:
   name: MyString
   image_url: MyString
   evaluation: 1.5
-  recommendations: MyString
+  status_busy: 1
+  status_normal: 2
+  status_loose: 3
   location_name: MyString
   location_zone: MyString
   location_latitude: 1.5

@@ -31,6 +31,11 @@
 </p>
 
 <p>
+  <b>Recommendation Count:</b>
+  <%= @dish.recommendation_count %>
+</p>
+
+<p>
   <b>Restaurant:</b>
   <% if @dish.restaurant %><%= link_to @dish.restaurant.name, @dish.restaurant %><% end %>
 </p>

@@ -6,8 +6,6 @@ class RestaurantsControllerTest < ActionController::TestCase
 	@update = {
 		:name => 'Nongyuan',
 		:image_url => 'images/nongyuan.jpg',
-		:busy => 'loose',
-		:recommendations => 'Malaxiangguo, baotang',
 		:evaluation => 3.0,
 		:location_name => 'West of Buidling No.2',
 		:location_zone => 'Near Classrooms',
@@ -19,6 +17,9 @@ class RestaurantsControllerTest < ActionController::TestCase
 		:average_cost => 5.50,
 		:category => 'Common',
 		:description => 'Very good place',
+		:status_busy => 1,
+		:status_normal => 2,
+		:status_loose => 3
 	}
   end
 

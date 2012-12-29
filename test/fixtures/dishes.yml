@@ -8,6 +8,7 @@ one:
   description: MyString
   evaluation: 1.5
   image_url: 2.jpg
+  recommendation_count: 1
 
 two:
   restaurant_id: 980190962
@@ -17,3 +18,4 @@ two:
   description: MyString
   evaluation: 1.5
   image_url: 1.jpg
+  recommendation_count: 1
