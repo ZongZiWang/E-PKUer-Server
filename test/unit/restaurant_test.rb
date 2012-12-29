@@ -7,7 +7,5 @@ class RestaurantTest < ActiveSupport::TestCase
 		assert restaurant.errors[:name].any?
 		assert restaurant.errors[:image_url].any?
 		assert restaurant.errors[:evaluation].any?
-		assert restaurant.errors[:busy].any?
-		assert restaurant.errors[:recommendations].any?
 	end
 end
