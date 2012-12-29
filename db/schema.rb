@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121228164625) do
+ActiveRecord::Schema.define(:version => 20121229084339) do
 
   create_table "complaints", :force => true do |t|
     t.integer  "user_id"
@@ -36,10 +36,11 @@ ActiveRecord::Schema.define(:version => 20121228164625) do
     t.float    "cost"
     t.string   "description"
     t.float    "evaluation"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
     t.string   "image_url"
     t.integer  "restaurant_id"
+    t.integer  "recommendation_count", :default => 0
   end
 
   create_table "restaurant_comments", :force => true do |t|
@@ -48,8 +49,9 @@ ActiveRecord::Schema.define(:version => 20121228164625) do
     t.float    "evaluation"
     t.float    "cost"
     t.string   "content"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+    t.string   "recommendation_dishes"
   end
 
   create_table "restaurants", :force => true do |t|
@@ -61,15 +63,16 @@ ActiveRecord::Schema.define(:version => 20121228164625) do
     t.string   "category"
     t.float    "average_cost"
     t.string   "description"
-    t.string   "recommendations"
     t.string   "info_time"
     t.string   "info_tel"
     t.string   "info_summary"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-    t.string   "busy"
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
     t.string   "image_url"
     t.string   "evaluation"
+    t.integer  "status_busy",        :default => 0
+    t.integer  "status_normal",      :default => 0
+    t.integer  "status_loose",       :default => 0
   end
 
   create_table "users", :force => true do |t|

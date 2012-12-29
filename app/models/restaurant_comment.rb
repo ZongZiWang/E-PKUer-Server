@@ -1,5 +1,5 @@
 class RestaurantComment < ActiveRecord::Base
-  attr_accessible :content, :cost, :evaluation, :restaurant_id, :user_id
+  attr_accessible :content, :cost, :evaluation, :restaurant_id, :user_id, :recommendation_dishes
   belongs_to :restaurant
   belongs_to :user
   validates :restaurant_id, :user_id, :content, :presence => true

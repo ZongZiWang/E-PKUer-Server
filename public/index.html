@@ -179,7 +179,7 @@ max-width: 300px;
 <body>
 <h1>汴地吃货 API 文档</h1>
 
-<h2>API 版本：1.5</h2>
+<h2>API 版本：1.6</h2>
 
 <pre style="line-height: 20px;"><code>GET*</code>, <code>POST*</code>: need login
 <code class="required">data_type</code>: required parameter
@@ -371,44 +371,60 @@ max-width: 300px;
 <tbody> 
 
 <tr>
-<td align="left"><code class="updated">1.4 updated</code><br />.json/</td>
+<td align="left"><code class="updated">1.6 updated</code><br />.json/</td>
 <td align="left"><code>GET</code></td>
 <td align="left">none</td>
 <td align="left"><pre>
 [
     {
-        <span class="updated">"average_cost": 5.5,</span>
-        "busy": "啦啦",
+        "average_cost": 5.5,
         "evaluation": "3.0",
         "id": 1,
         "image_url": "http://i2.sinaimg.cn/edu/2009/0417/2009417195017.jpg",
         "name": "农园",
-        "recommendations": "麻辣香锅, 煲汤"
+        <span class="updated">busy": 0,
+        "recommendations": [
+            {
+                "id": 1,
+                "name": "粽子",
+                "recommendation_count": 1
+            },
+            {
+                "id": 2,
+                "name": "咖喱牛肉铁板饭",
+                "recommendation_count": 1
+            }
+        ]</span>
     },
     {
-        <span class="updated">"average_cost": 6,</span>
-        "busy": "不忙",
+        "average_cost": 6,
         "evaluation": "5",
         "id": 2,
         "image_url": "images/campus.jpg",
         "name": "康博斯",
-        "recommendations": "鸡腿饭"
+         <span class="updated">"busy": 1,
+        "recommendations": [
+            {
+                "id": 4,
+                "name": "鱼香肉丝饭",
+                "recommendation_count": 2
+            }
+        ]</span>
     }
 ]
 </pre>
 </td>
-<td align="left">返回支持的食堂列表。</td>
+<td align="left">返回支持的食堂列表。<span class="updated">具体参数解释见下一个API。</span></td>
 </tr>
 
 <tr>
-<td align="left">/:id.json/</td>
+<td align="left"><code class="updated">1.6 updated</code><br />/:id.json/</td>
 <td align="left"><code>GET</code></td>
 <td align="left">none</td>
 <td align="left">
 <pre>
 {
     "average_cost": 5.5,
-    "busy": "忙死了",
     "category": "大众",
     "description": "农园这个地方真不错，到处的饭菜都是自己选的",
     "evaluation": "3.0",
@@ -422,7 +438,9 @@ max-width: 300px;
     "location_name": "二教西侧",
     "location_zone": "近教学楼",
     "name": "农园",
-    "recommendations": "麻辣香锅, 煲汤",
+    <span class="updated">"status_busy": 3,
+    "status_loose": 1,
+    "status_normal": 0,</span>
     "partial_dishes": [
         {
             "id": 1,
@@ -435,31 +453,44 @@ max-width: 300px;
     ],
     "partial_comments": [
         {
-            "id": 14,
+            "id": 23,
             "user_name": "jim",
-            "evaluation": 4,
-            "content": "这也是好东西"
+            "evaluation": 5,
+            "content": "试试评论"
         },
         {
-            "id": 15,
-            "user_name": "jim",
+            "id": 24,
+            "user_name": "zongzi",
             "evaluation": 4,
-            "content": "这也是好东西"
+            "content": "看看能不能推荐"
         }
-    ]
+    ],
+    <span class="updated">"busy": 0,
+    "recommendations": [
+        {
+            "id": 1,
+            "name": "粽子",
+            "recommendation_count": 1
+        },
+        {
+            "id": 2,
+            "name": "咖喱牛肉铁板饭",
+            "recommendation_count": 1
+        }
+    ]</span>
 }
 </pre>
 <pre title="404" class="error">{"error": "RestaurantNotFound"}</pre>
 </td>
-<td align="left">返回 <code>id</code> 食堂的详细信息。<code>busy</code>有三种："拥挤"、"还好"、"宽松"。<code>partial_dishes</code>返回最后3道菜。<code>partial_comments</code>返回最后2条评论。</td>
+<td align="left">返回 <code>id</code> 食堂的详细信息。<span class="updated"> <code>busy</code> 有三种：0="拥挤"、1="还好"、2="宽松"。 <code>status_busy</code> <code>status_normal</code> <code>status_loose</code> 表示三种状态分别的计数。 <code>recommendations</code> 返回推荐菜列表。</span> <code>partial_dishes</code> 返回最后3道菜。 <code>partial_comments</code> 返回最后2条评论。</td>
 </tr>
 
 <tr>
-<td align="left">/:id/busy.json/</td>
+<td align="left"><code class="updated">1.6 updated</code><br />/:id/busy.json/</td>
 <td align="left"><code>PUT</code></td>
 <td align="left">
 <ul>
-<li><code class="required">string</code> busy</li>
+<li class="updated"><code class="required">int</code> busy</li>
 </ul>
 </td>
 <td align="left">
@@ -468,7 +499,7 @@ max-width: 300px;
 </ul>
 <pre title="404" class="error">{"error": "RestaurantNotFound"}</pre>
 </td>
-<td align="left">将食堂的繁忙程度更新上去</td>
+<td align="left">将食堂的繁忙程度更新上去。<span class="updated"> <code>busy</code> 有三种：0="拥挤"、1="还好"、2="宽松"。</td>
 </tr>
 
 </tbody>
@@ -493,7 +524,7 @@ max-width: 300px;
 <tbody> 
 
 <tr>
-<td align="left"><code class="updated">1.4 new</code><br />.json/</td>
+<td align="left"><code class="updated">1.6 updated</code><br />.json/</td>
 <td align="left"><code>GET</code></td>
 <td align="left">none</td>
 <td align="left">
@@ -507,6 +538,7 @@ max-width: 300px;
         "id": 1,
         "image_url": "http://sms.jmcatv.com.cn/09duanwu/images/2008528104427759.jpg",
         "name": "粽子",
+        <span class="updated">"recommendation_count": 1,</span>
         "restaurant_id": 1
     },
     {
@@ -517,6 +549,7 @@ max-width: 300px;
         "id": 2,
         "image_url": "http://i2.dpfile.com/2011-07-08/8599217_b.jpg",
         "name": "咖喱牛肉铁板饭",
+        <span class="updated">"recommendation_count": 1,</span>
         "restaurant_id": 1
     }
 ]
@@ -527,7 +560,7 @@ max-width: 300px;
 </tr>
 
 <tr>
-<td align="left"><code class="updated">1.4 new</code><br />/:id.json/</td>
+<td align="left"><code class="updated">1.6 updated</code><br />/:id.json/</td>
 <td align="left"><code>GET</code></td>
 <td align="left">none</td>
 <td align="left">
@@ -540,6 +573,7 @@ max-width: 300px;
     "id": 1,
     "image_url": "http://sms.jmcatv.com.cn/09duanwu/images/2008528104427759.jpg",
     "name": "粽子",
+    <span class="updated">"recommendation_count": 1,</span>
     "restaurant_id": 1
 }
 </pre>
@@ -570,7 +604,7 @@ max-width: 300px;
 <tbody>
 
 <tr>
-<td align="left">.json/</td>
+<td align="left"><code class="updated">1.6 updated</code><br />.json/</td>
 <td align="left"><code>GET</code></td>
 <td align="left">
 <ul>
@@ -580,26 +614,28 @@ max-width: 300px;
 <td align="left"><pre>
 [
     {
-        "content": "好吃哈哈哈",
+        "content": "看看能不能推荐",
         "cost": 5,
-        "created_at": "2012-12-26T16:49:42Z",
-        "evaluation": 5,
-        "id": 1,
-        "restaurant_id": 1,
-        "updated_at": "2012-12-26T16:49:42Z",
-        "user_id": 1,
-        "user_name": "jimdtc"
+        "created_at": "2012-12-29T15:16:04Z",
+        "evaluation": 4,
+        "id": 26,
+        <span class="updated">"recommendation_dishes": "粽子,咖喱牛肉铁板饭,宫保鸡丁,鱼香肉丝",</span>
+        "restaurant_id": 2,
+        "updated_at": "2012-12-29T15:16:04Z",
+        "user_id": 2,
+        "user_name": "zongzi"
     },
     {
-        "content": "这也是好东西",
-        "cost": 4,
-        "created_at": "2012-12-26T16:59:56Z",
+        "content": "看看能不能推荐",
+        "cost": 5,
+        "created_at": "2012-12-29T15:21:15Z",
         "evaluation": 4,
-        "id": 3,
-        "restaurant_id": 1,
-        "updated_at": "2012-12-26T16:59:56Z",
-        "user_id": 3,
-        "user_name": "jim"
+        "id": 27,
+        <span class="updated">"recommendation_dishes": "鱼香肉丝饭,宫保鸡丁",</span>
+        "restaurant_id": 2,
+        "updated_at": "2012-12-29T15:21:15Z",
+        "user_id": 2,
+        "user_name": "zongzi"
     }
 ]
 </pre>
@@ -609,21 +645,22 @@ max-width: 300px;
 </tr>
 
 <tr>
-<td align="left"><code class="updated">1.4 new</code><br />/:id.json/</td>
+<td align="left"><code class="updated">1.6 updated</code><br />/:id.json/</td>
 <td align="left"><code>GET</code></td>
 <td align="left">none</td>
 <td align="left">
 <pre>
 {
-    "content": "好吃哈哈哈",
+    "content": "看看能不能推荐",
     "cost": 5,
-    "created_at": "2012-12-26T16:49:42Z",
-    "evaluation": 5,
-    "id": 1,
-    "restaurant_id": 1,
-    "updated_at": "2012-12-26T16:49:42Z",
-    "user_id": 1,
-    "user_name": "jimdtc"
+    "created_at": "2012-12-29T15:16:04Z",
+    "evaluation": 4,
+    "id": 26,
+    <span class="updated">"recommendation_dishes": "粽子,咖喱牛肉铁板饭,宫保鸡丁,鱼香肉丝",</span>
+    "restaurant_id": 2,
+    "updated_at": "2012-12-29T15:16:04Z",
+    "user_id": 2,
+    "user_name": "zongzi"
 }
 </pre>
 <pre title="404" class="error">{"error": "CommentNotFound"}</pre>
@@ -632,7 +669,7 @@ max-width: 300px;
 </tr>
 
 <tr>
-<td align="left"><code class="updated">1.4 new</code><br />/upload.json/</td>
+<td align="left"><code class="updated">1.6 updated</code><br />/upload.json/</td>
 <td align="left"><code>POST*</code></td>
 <td align="left">
 <ul>
@@ -640,19 +677,22 @@ max-width: 300px;
 <li><code class="required">float</code> cost</li>
 <li><code class="required">float</code> evaluation</li>
 <li><code class="required">int</code> user_id</li>
+<li class="updated"><code class="required">string</code> recommendation_dishes</li>
+<li class="updated"><code class="required">string</code> other_dishes</li>
 </ul>
 </td>
 <td align="left">
 <pre>
 {
-    "content": "试试评论",
+    "content": "看看能不能推荐",
     "cost": 5,
-    "created_at": "2012-12-28T16:32:17Z",
-    "evaluation": 5,
-    "id": 22,
+    "created_at": "2012-12-29T15:33:55Z",
+    "evaluation": 4,
+    "id": 29,
+    <span class="updated">"recommendation_dishes": "粽子,咖喱牛肉铁板饭,宫保鸡丁",</span>
     "restaurant_id": 1,
-    "updated_at": "2012-12-28T16:32:17Z",
-    "user_id": 3
+    "updated_at": "2012-12-29T15:33:55Z",
+    "user_id": 2
 }
 </pre>
 <pre title="404" class="error">
@@ -664,7 +704,7 @@ max-width: 300px;
 }
 </pre>
 </td>
-<td align="left">给 <code>restaurant_id</code> 食堂 <code>id</code> 提交评论。</td>
+<td align="left">给 <code>restaurant_id</code> 食堂 <code>id</code> 提交评论。<span class="updated"> <code>recommendation_dishes</code> 参数形如'2,3,4'，描述推荐菜的dish_id们； <code>other_dishes</code> 参数形如‘其他推荐菜1,其他推荐菜2’。</span></td>
 </tr>
 
 </tbody>
@@ -689,7 +729,7 @@ max-width: 300px;
 <tbody> 
 
 <tr>
-<td align="left"><code class="updated">1.5 new</code><br />.json/</td>
+<td align="left">.json/</td>
 <td align="left"><code>GET</code></td>
 <td align="left">
 <ul>
@@ -724,7 +764,7 @@ max-width: 300px;
 </tr>
 
 <tr>
-<td align="left"><code class="updated">1.5 new</code><br />/:id.json/</td>
+<td align="left">/:id.json/</td>
 <td align="left"><code>GET</code></td>
 <td align="left">none</td>
 <td align="left">
@@ -745,7 +785,7 @@ max-width: 300px;
 </tr>
 
 <tr>
-<td align="left"><code class="updated">1.5 new</code><br />/upload.json/</td>
+<td align="left">/upload.json/</td>
 <td align="left"><code>POST*</code></td>
 <td align="left">
 <ul>
@@ -833,7 +873,7 @@ max-width: 300px;
 </tr>
 
 <tr>
-<td align="left"><code class="updated">1.4 new</code><br />/:id.json/</td>
+<td align="left">/:id.json/</td>
 <td align="left"><code>GET</code></td>
 <td align="left">none</td>
 <td align="left">
@@ -855,7 +895,7 @@ max-width: 300px;
 </tr>
 
 <tr>
-<td align="left"><code class="updated">1.4 new</code><br />/upload.json/</td>
+<td align="left">/upload.json/</td>
 <td align="left"><code>POST*</code></td>
 <td align="left">
 <ul>

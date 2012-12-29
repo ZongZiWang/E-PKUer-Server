@@ -1,5 +1,5 @@
 class Dish < ActiveRecord::Base
-  attr_accessible :category, :cost, :description, :evaluation, :image_url, :name, :restaurant_id
+  attr_accessible :category, :cost, :description, :evaluation, :image_url, :name, :restaurant_id, :recommendation_count
   belongs_to :restaurant
   has_many :dish_comments, :dependent => :destroy
   before_destroy :ensure_not_referenced_by_any_comment

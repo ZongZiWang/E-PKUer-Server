@@ -1,16 +1,39 @@
 class Restaurant < ActiveRecord::Base
-  attr_accessible :average_cost, :busy, :category, :description, :dishes, :evaluation, :image_url, :info_summary, :info_tel, :info_time, :location_latitude, :location_longitude, :location_name, :location_zone, :name, :recommendations
+  attr_accessible :average_cost, :status_busy, :status_normal, :status_loose, :category, :description, :dishes, :evaluation, :image_url, :info_summary, :info_tel, :info_time, :location_latitude, :location_longitude, :location_name, :location_zone, :name
   has_many :dishes, :dependent => :destroy
   has_many :restaurant_comments, :dependent => :destroy
   has_many :complaints, :dependent => :destroy
   before_destroy :ensure_not_referenced_by_any_dish_or_comment_or_complaint
-  validates :name, :image_url, :busy, :recommendations, :evaluation, :presence => true
+  validates :name, :image_url, :evaluation, :presence => true
   validates :average_cost, :numericality => {:greater_than_or_equal_to => 0.01}
   validates :name, :uniqueness => true
   validates :image_url, :format => {
 	  :with => %r{\.(gif|jpg|png)$}i,
 	  :message => 'must be a URL for GIF, JPG or PNG image.'
   }
+
+  def busy
+	if self.status_normal >= self.status_busy && self.status_normal >= self.status_loose
+		return 1
+	else
+		if self.status_loose >= self.status_busy
+			return 2
+		else
+			return 0
+		end
+	end
+  end
+  
+  def recommendations
+	_dishes = self.dishes.sort { |dish1, dish2| dish1.recommendation_count <=> dish2.recommendation_count }
+	_dishes.delete_if { |dish| dish.recommendation_count == 0 }
+	_recommendations = Array.new
+	_dishes.each do |dish|
+		_recommendations.push({ id: dish.id, name: dish.name, recommendation_count: dish.recommendation_count })
+	end
+	_recommendations
+  end
+
   def partial_dishes 
 	_count = self.dishes.count
 	_partial_dishes = Array.new
@@ -19,6 +42,7 @@ class Restaurant < ActiveRecord::Base
 	end
 	_partial_dishes
   end
+  
   def partial_comments
 	_count = self.restaurant_comments.count
 	_partial_comments = Array.new

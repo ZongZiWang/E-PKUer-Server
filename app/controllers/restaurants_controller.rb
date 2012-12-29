@@ -6,7 +6,7 @@ class RestaurantsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @restaurants.to_json(only: [ :id, :name, :image_url, :busy, :recommendations, :evaluation, :average_cost ]) }
+      format.json { render json: @restaurants.to_json(only: [ :id, :name, :image_url, :evaluation, :average_cost ], methods: [ :busy, :recommendations ]) }
     end
   end
 
@@ -17,7 +17,7 @@ class RestaurantsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @restaurant.to_json(except: [ :created_at, :updated_at ], methods: [ :partial_dishes, :partial_comments ]) }
+      format.json { render json: @restaurant.to_json(except: [ :created_at, :updated_at ], methods: [ :partial_dishes, :partial_comments, :busy, :recommendations ]) }
     end
   end
 
@@ -85,9 +85,14 @@ class RestaurantsController < ApplicationController
   # PUT /restaurants/1/busy.json
   def busy
     @restaurant = Restaurant.find(params[:id])
+	_status = params[:busy].to_i
+	_attributes = Hash.new
+	if _status == 0 then _attributes[:status_busy] = @restaurant.status_busy + 1 end
+	if _status == 1 then _attributes[:status_normal] = @restaurant.status_normal + 1 end
+	if _status == 2 then _attributes[:status_loose] = @restaurant.status_loose + 1 end
 
     respond_to do |format|
-      if @restaurant.update_attributes({ busy: params[:busy]})
+      if @restaurant.update_attributes(_attributes)
         format.html { redirect_to @restaurant, notice: 'Restaurant was successfully updated.' }
         format.json { head :no_content }
       else
