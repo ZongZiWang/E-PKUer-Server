@@ -3,7 +3,7 @@ class Restaurant < ActiveRecord::Base
   has_many :dishes, :dependent => :destroy
   has_many :restaurant_comments, :dependent => :destroy
   has_many :complaints, :dependent => :destroy
-  before_destroy :ensure_not_referenced_by_any_dish_or_comment_or_complaints
+  before_destroy :ensure_not_referenced_by_any_dish_or_comment_or_complaint
   validates :name, :image_url, :busy, :recommendations, :evaluation, :presence => true
   validates :average_cost, :numericality => {:greater_than_or_equal_to => 0.01}
   validates :name, :uniqueness => true
@@ -29,7 +29,7 @@ class Restaurant < ActiveRecord::Base
   end
 
   private
-  def ensure_not_referenced_by_any_dish_or_comment
+  def ensure_not_referenced_by_any_dish_or_comment_or_complaint
 	  if dishes.empty? && restaurant_comments.empty? && complaints.empty?
 		  return true
 	  else

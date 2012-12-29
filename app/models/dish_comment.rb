@@ -15,6 +15,10 @@ class DishComment < ActiveRecord::Base
 	  end
   end
   
+  def user_name
+	  self.user.name
+  end
+
   validates :dish_id, :dish => true
   validates :user_id, :user => true
 end

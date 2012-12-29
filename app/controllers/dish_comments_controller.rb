@@ -9,7 +9,7 @@ class DishCommentsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @dish_comments }
+      format.json { render json: @dish_comments[((params[:start]).to_i)..((params[:start]).to_i+9)].to_json(methods: :user_name) }
     end
   end
 
@@ -20,7 +20,7 @@ class DishCommentsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @dish_comment }
+      format.json { render json: @dish_comment.to_json(methods: :user_name) }
     end
   end
 

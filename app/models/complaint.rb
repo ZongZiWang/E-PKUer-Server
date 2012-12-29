@@ -14,6 +14,10 @@ class Complaint < ActiveRecord::Base
 		  record.errors.add attribute, "with id=#{value} is not defined" unless User.exists?(value)
 	  end
   end
+
+  def user_name
+	  self.user.name
+  end
   
   validates :restaurant_id, :restaurant => true
   validates :user_id, :user => true

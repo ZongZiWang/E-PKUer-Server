@@ -16,6 +16,10 @@ class RestaurantComment < ActiveRecord::Base
 	  end
   end
   
+  def user_name
+	  self.user.name
+  end
+  
   validates :restaurant_id, :restaurant => true
   validates :user_id, :user => true
 end

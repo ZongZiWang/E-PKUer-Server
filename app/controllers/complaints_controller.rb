@@ -9,7 +9,7 @@ class ComplaintsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @complaints[((params[:start]).to_i)..((params[:start]).to_i+9)] }
+      format.json { render json: @complaints[((params[:start]).to_i)..((params[:start]).to_i+9)].to_json(methods: :user_name) }
     end
   end
 
@@ -20,7 +20,7 @@ class ComplaintsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @complaint }
+      format.json { render json: @complaint.to_json(methods: :user_name) }
     end
   end
 

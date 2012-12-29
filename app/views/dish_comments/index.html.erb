@@ -23,7 +23,7 @@
     <td><%= dish_comment.content %></td>
     <td><%= link_to 'Show', dish_comment_path(@dish, dish_comment) %></td>
     <td><%= link_to 'Edit', edit_dish_comment_path(@dish, dish_comment) %></td>
-    <td><%= link_to 'Destroy', [@dish, dish_comment], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Destroy', dish_comment_path(@dish, dish_comment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

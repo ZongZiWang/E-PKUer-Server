@@ -25,7 +25,7 @@
     <td><%= restaurant_comment.content %></td>
     <td><%= link_to 'Show', restaurant_comment_path(@restaurant, restaurant_comment) %></td>
     <td><%= link_to 'Edit', edit_restaurant_comment_path(@restaurant, restaurant_comment) %></td>
-    <td><%= link_to 'Destroy', [@restaurant, restaurant_comment], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Destroy', restaurant_comment_path(@restaurant, restaurant_comment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
