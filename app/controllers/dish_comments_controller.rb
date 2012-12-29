@@ -45,30 +45,14 @@ class DishCommentsController < ApplicationController
   def create
     @dish_comment = @dish.dish_comments.new(params[:dish_comment])
 
-    respond_to do |format|
-      if @dish_comment.save
-        format.html { redirect_to dish_comment_path(@dish, @dish_comment), notice: 'Dish comment was successfully created.' }
-        format.json { render json: @dish_comment, status: :created, location: dish_comment_path(@dish, @dish_comment) }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @dish_comment.errors, status: :unprocessable_entity }
-      end
-    end
+	_save
   end
 
   # POST /dish_comments/upload.json
   def upload
     @dish_comment = @dish.dish_comments.new(params.except(:action, :controller, :format))
 
-    respond_to do |format|
-      if @dish_comment.save
-        format.html { redirect_to dish_comment_path(@dish, @dish_comment), notice: 'Dish comment was successfully created.' }
-        format.json { render json: @dish_comment, status: :created, location: dish_comment_path(@dish, @dish_comment) }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @dish_comment.errors, status: :unprocessable_entity }
-      end
-    end
+	_save
   end
   # PUT /dish_comments/1
   # PUT /dish_comments/1.json
@@ -102,6 +86,18 @@ class DishCommentsController < ApplicationController
 
   def load_dish
 	  @dish = Dish.find(params[:dish_id])
+  end
+
+  def _save
+    respond_to do |format|
+      if @dish_comment.save
+        format.html { redirect_to dish_comment_path(@dish, @dish_comment), notice: 'Dish comment was successfully created.' }
+        format.json { render json: @dish_comment, status: :created, location: dish_comment_path(@dish, @dish_comment) }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @dish_comment.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
 end

@@ -42,30 +42,14 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
 
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to(users_url, notice: "User #{@user.name} was successfully created.") }
-        format.json { render json: @user.to_json(only: [:id, :name]), status: :created, location: @user }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
+	_save
   end
 
   # POST /signup.json
   def signup
     @user = User.new({ name: params[:name], password: params[:password], password_confirmation: params[:password] })
 
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to(users_url, notice: "User #{@user.name} was successfully created.") }
-        format.json { render json: @user.to_json(only: [:id, :name]), status: :created, location: @user }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
+	_save
   end
 
   # PUT /users/1
@@ -95,4 +79,19 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+
+  def _save
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to(users_url, notice: "User #{@user.name} was successfully created.") }
+        format.json { render json: @user.to_json(only: [:id, :name]), status: :created, location: @user }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
 end

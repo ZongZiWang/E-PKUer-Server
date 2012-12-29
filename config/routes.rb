@@ -24,6 +24,7 @@ Epkuer::Application.routes.draw do
 		  post 'upload', :on => :collection
 	  end
 	  put 'busy', :on => :member
+	  get 'recommendations', :on => :member
   end
   resources :users do
 	  post 'signup', :on => :collection

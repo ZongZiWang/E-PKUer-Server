@@ -45,30 +45,14 @@ class ComplaintsController < ApplicationController
   def create
     @complaint = @restaurant.complaints.new(params[:complaint])
 
-    respond_to do |format|
-      if @complaint.save
-        format.html { redirect_to restaurant_complaint_path(@restaurant, @complaint), notice: '@restaurant.complaints was successfully created.' }
-        format.json { render json: @complaint, status: :created, location: restaurant_complaint_path(@restaurant, @complaint) }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @complaint.errors, status: :unprocessable_entity }
-      end
-    end
+	_save
   end
 
   # POST /complaints/upload.json
   def upload
     @complaint = @restaurant.complaints.new(params.except(:action, :controller, :format))
 
-    respond_to do |format|
-      if @complaint.save
-        format.html { redirect_to restaurant_complaint_path(@restaurant, @complaint), notice: '@restaurant.complaints was successfully created.' }
-        format.json { render json: @complaint, status: :created, location: restaurant_complaint_path(@restaurant, @complaint) }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @complaint.errors, status: :unprocessable_entity }
-      end
-    end
+	_save
   end
 
   # PUT /complaints/1
@@ -78,7 +62,7 @@ class ComplaintsController < ApplicationController
 
     respond_to do |format|
       if @complaint.update_attributes(params[:complaint])
-        format.html { redirect_to restaurant_complaint_path(@restaurant, @complaint), notice: '@restaurant.complaints was successfully updated.' }
+        format.html { redirect_to restaurant_complaint_path(@restaurant, @complaint), notice: 'Complaint was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -103,6 +87,18 @@ class ComplaintsController < ApplicationController
 
   def load_restaurant
 	  @restaurant = Restaurant.find(params[:restaurant_id])
+  end
+
+  def _save
+    respond_to do |format|
+      if @complaint.save
+        format.html { redirect_to restaurant_complaint_path(@restaurant, @complaint), notice: 'Complaint was successfully created.' }
+        format.json { render json: @complaint, status: :created, location: restaurant_complaint_path(@restaurant, @complaint) }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @complaint.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
 end

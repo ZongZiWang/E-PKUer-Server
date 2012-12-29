@@ -179,7 +179,7 @@ max-width: 300px;
 <body>
 <h1>汴地吃货 API 文档</h1>
 
-<h2>API 版本：1.7</h2>
+<h2>API 版本：1.8</h2>
 
 <pre style="line-height: 20px;"><code>GET*</code>, <code>POST*</code>: need login
 <code class="required">data_type</code>: required parameter
@@ -371,7 +371,7 @@ max-width: 300px;
 <tbody> 
 
 <tr>
-<td align="left">.json/</td>
+<td align="left"><code class="updated">1.8 updated</code><br />.json/</td>
 <td align="left"><code>GET</code></td>
 <td align="left">none</td>
 <td align="left"><pre>
@@ -382,17 +382,22 @@ max-width: 300px;
         "id": 1,
         "image_url": "http://i2.sinaimg.cn/edu/2009/0417/2009417195017.jpg",
         "name": "农园",
-        busy": 0,
-        "recommendations": [
-            {
-                "id": 1,
-                "name": "粽子",
-                "recommendation_count": 1
-            },
+        "busy": 0,
+        <span class="updated">partial_recommendations"</span>: [
             {
                 "id": 2,
                 "name": "咖喱牛肉铁板饭",
-                "recommendation_count": 1
+                "recommendation_count": 27
+            },
+            {
+                "id": 1,
+                "name": "粽子",
+                "recommendation_count": 18
+            },
+            {
+                "id": 5,
+                "name": "黑椒牛柳",
+                "recommendation_count": 10
             }
         ]
     },
@@ -400,25 +405,25 @@ max-width: 300px;
         "average_cost": 6,
         "evaluation": "5",
         "id": 2,
-        "image_url": "images/campus.jpg",
+        "image_url": "404.jpg",
         "name": "康博斯",
-        "busy": 1,
-        "recommendations": [
+        "busy": 0,
+        <span class="updated">"partial_recommendations"</span>: [
             {
                 "id": 4,
                 "name": "鱼香肉丝饭",
-                "recommendation_count": 2
+                "recommendation_count": 3
             }
         ]
     }
 ]
 </pre>
 </td>
-<td align="left">返回支持的食堂列表。具体参数解释见下一个API。</td>
+<td align="left">返回支持的食堂列表。 <code>busy</code> 有三种：0="拥挤"、1="还好"、2="宽松"。 <code>status_busy</code> <code>status_normal</code> <code>status_loose</code> 表示三种状态分别的计数。<span class="updated"> <code>partial_recommendations</code> 返回推荐最多的3道推荐菜。</span></td>
 </tr>
 
 <tr>
-<td align="left">/:id.json/</td>
+<td align="left"><code class="updated">1.8 updated</code><br />/:id.json/</td>
 <td align="left"><code>GET</code></td>
 <td align="left">none</td>
 <td align="left">
@@ -443,46 +448,55 @@ max-width: 300px;
     "status_normal": 0,
     "partial_dishes": [
         {
-            "id": 1,
-            "name": "粽子"
+            "id": 8,
+            "name": "麻辣香锅"
         },
         {
-            "id": 2,
-            "name": "咖喱牛肉铁板饭"
+            "id": 9,
+            "name": "小龙虾"
+        },
+        {
+            "id": 10,
+            "name": "鱼香肉丝"
         }
     ],
     "partial_comments": [
         {
-            "id": 23,
-            "user_name": "jim",
-            "evaluation": 5,
-            "content": "试试评论"
-        },
-        {
-            "id": 24,
+            "id": 69,
             "user_name": "zongzi",
             "evaluation": 4,
             "content": "看看能不能推荐"
+        },
+        {
+            "id": 70,
+            "user_name": "jim",
+            "evaluation": 5,
+            "content": "!!!太棒了"
         }
     ],
     "busy": 0,
-    "recommendations": [
-        {
-            "id": 1,
-            "name": "粽子",
-            "recommendation_count": 1
-        },
+    <span class="updated">"partial_recommendations"</span>: [
         {
             "id": 2,
             "name": "咖喱牛肉铁板饭",
-            "recommendation_count": 1
+            "recommendation_count": 27
+        },
+        {
+            "id": 1,
+            "name": "粽子",
+            "recommendation_count": 18
+        },
+        {
+            "id": 5,
+            "name": "黑椒牛柳",
+            "recommendation_count": 10
         }
     ]
 }
 </pre>
 <pre title="404" class="error">{"error": "RestaurantNotFound"}</pre>
 </td>
-<td align="left">返回 <code>id</code> 食堂的详细信息。 <code>busy</code> 有三种：0="拥挤"、1="还好"、2="宽松"。 <code>status_busy</code> <code>status_normal</code> <code>status_loose</code> 表示三种状态分别的计数。 <code>recommendations</code> 返回推荐菜列表。 <code>partial_dishes</code> 返回最后3道菜。 <code>partial_comments</code> 返回最后2条评论。</td>
+<td align="left">返回 <code>id</code> 食堂的详细信息。 <code>busy</code> 有三种：0="拥挤"、1="还好"、2="宽松"。 <code>status_busy</code> <code>status_normal</code> <code>status_loose</code> 表示三种状态分别的计数。<span class="updated"> <code>partial_recommendations</code> 返回推荐最多的3道推荐菜。</span> <code>partial_dishes</code> 返回最后3道菜。 <code>partial_comments</code> 返回最后2条评论。</td>
 </tr>
 
 <tr>
@@ -500,6 +514,42 @@ max-width: 300px;
 <pre title="404" class="error">{"error": "RestaurantNotFound"}</pre>
 </td>
 <td align="left">将食堂的繁忙程度更新上去。 <code>busy</code> 有三种：0="拥挤"、1="还好"、2="宽松"。</td>
+</tr>
+
+<tr>
+<td align="left"><code class="updated">1.8 new</code><br />/:id/recommendations.json/</td>
+<td align="left"><code>GET</code></td>
+<td align="left">none</td>
+<td align="left">
+<pre>
+[
+    {
+        "category": "饭",
+        "cost": 6,
+        "description": "顾名思义就是咖喱牛肉放在铁板上",
+        "evaluation": 8,
+        "id": 2,
+        "image_url": "http://i2.dpfile.com/2011-07-08/8599217_b.jpg",
+        "name": "咖喱牛肉铁板饭",
+        "recommendation_count": 27,
+        "restaurant_id": 1
+    },
+    {
+        "category": "好吃的",
+        "cost": 5,
+        "description": "太好吃了",
+        "evaluation": 10,
+        "id": 1,
+        "image_url": "http://sms.jmcatv.com.cn/09duanwu/images/2008528104427759.jpg",
+        "name": "粽子",
+        "recommendation_count": 18,
+        "restaurant_id": 1
+    }
+]
+</pre>
+<pre title="404" class="error">{"error": "RestaurantNotFound"}</pre>
+</td>
+<td align="left">返回 <code>id</code> 食堂的推荐菜肴列表。</td>
 </tr>
 
 </tbody>
@@ -669,7 +719,7 @@ max-width: 300px;
 </tr>
 
 <tr>
-<td align="left"><code class="updated">1.7 updated</code><br />/upload.json/</td>
+<td align="left">/upload.json/</td>
 <td align="left"><code>POST*</code></td>
 <td align="left">
 <ul>
@@ -679,7 +729,7 @@ max-width: 300px;
 <li><code class="required">int</code> user_id</li>
 <li><code class="required">string</code> recommendation_dishes</li>
 <li><code class="required">string</code> other_dishes</li>
-<li class="updated"><code class="optional">string</code> seperator</li>
+<li><code class="optional">string</code> seperator</li>
 </ul>
 </td>
 <td align="left">
@@ -705,7 +755,7 @@ max-width: 300px;
 }
 </pre>
 </td>
-<td align="left">给 <code>restaurant_id</code> 食堂 <code>id</code> 提交评论。<code>recommendation_dishes</code> 参数形如<code>'2分隔符3分隔符4'</code>，描述推荐菜的dish_id们； <code>other_dishes</code> 参数形如<code>'dish1分隔符dish2'</code>，描述其他推荐菜的名字列表。<span class="updated"> <code>seperator</code> 描述recommendation_dishes和other_dishes中的分隔符，默认空格' '。 </span></td>
+<td align="left">给 <code>restaurant_id</code> 食堂 <code>id</code> 提交评论。<code>recommendation_dishes</code> 参数形如 <code>'2$3$4' ('$'表示分隔符)</code> ，描述推荐菜的dish_id们； <code>other_dishes</code> 参数形如 <code>'dish1$dish2' ('$'表示分隔符)</code> ，描述其他推荐菜的名字列表。 <code>seperator</code> 描述recommendation_dishes和other_dishes中的分隔符，默认为空格' '。 </td>
 </tr>
 
 </tbody>

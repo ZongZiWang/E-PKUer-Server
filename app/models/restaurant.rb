@@ -25,13 +25,18 @@ class Restaurant < ActiveRecord::Base
   end
   
   def recommendations
+	_recommendations = self.dishes.sort { |dish1, dish2| dish2.recommendation_count <=> dish1.recommendation_count }
+	_recommendations.delete_if { |dish| dish.recommendation_count == 0 }
+  end
+
+  def partial_recommendations
 	_dishes = self.dishes.sort { |dish1, dish2| dish2.recommendation_count <=> dish1.recommendation_count }
 	_dishes.delete_if { |dish| dish.recommendation_count == 0 }
-	_recommendations = Array.new
-	_dishes.each do |dish|
-		_recommendations.push({ id: dish.id, name: dish.name, recommendation_count: dish.recommendation_count })
+	_partial_recommendations = Array.new
+	_dishes.first(3).each do |dish|
+		_partial_recommendations.push({ id: dish.id, name: dish.name, recommendation_count: dish.recommendation_count })
 	end
-	_recommendations
+	_partial_recommendations
   end
 
   def partial_dishes 

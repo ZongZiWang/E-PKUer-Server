@@ -45,15 +45,7 @@ class RestaurantCommentsController < ApplicationController
   def create
     @restaurant_comment = @restaurant.restaurant_comments.new(params[:restaurant_comment])
 
-    respond_to do |format|
-      if @restaurant_comment.save
-        format.html { redirect_to restaurant_comment_path(@restaurant, @restaurant_comment), notice: 'Restaurant comment was successfully created.' }
-        format.json { render json: @restaurant_comment, status: :created, location: restaurant_comment_path(@restaurant, @restaurant_comment) }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @restaurant_comment.errors, status: :unprocessable_entity }
-      end
-    end
+	_save
   end
 
   # POST /restaurant_comments/upload.json
@@ -62,23 +54,13 @@ class RestaurantCommentsController < ApplicationController
 	@restaurant_comment.recommendation_dishes = ''
 	_seperator = params[:seperator] == nil ? ' ' : params[:seperator]
 	_recommendation_dishes = params[:recommendation_dishes].split(_seperator).each do |dish_id|
-		dish = Dish.find(dish_id.to_i)
-		dish.recommendation_count += 1
-		dish.save
+		dish = @restaurant.dishes.find(dish_id.to_i)
 		@restaurant_comment.recommendation_dishes.concat(dish.name)
 		@restaurant_comment.recommendation_dishes.concat(_seperator)
 	end
 	@restaurant_comment.recommendation_dishes.concat(params[:other_dishes])
 
-    respond_to do |format|
-      if @restaurant_comment.save
-        format.html { redirect_to restaurant_comment_path(@restaurant, @restaurant_comment), notice: 'Restaurant comment was successfully created.' }
-        format.json { render json: @restaurant_comment, status: :created, location: restaurant_comment_path(@restaurant, @restaurant_comment) }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @restaurant_comment.errors, status: :unprocessable_entity }
-      end
-    end
+	_save
   end
 
   # PUT /restaurant_comments/1
@@ -113,6 +95,26 @@ class RestaurantCommentsController < ApplicationController
 
   def load_restaurant
 	  @restaurant = Restaurant.find(params[:restaurant_id])
+  end
+
+  def _save
+    respond_to do |format|
+      if @restaurant_comment.save
+		@restaurant_comment.recommendation_dishes.split(' ').each do |dish_name|
+			if dish = @restaurant.dishes.where(name: dish_name).first
+				dish.recommendation_count += 1
+				dish.save
+			else
+				@restaurant.dishes.create(name: dish_name, recommendation_count: 1)
+			end
+		end
+        format.html { redirect_to restaurant_comment_path(@restaurant, @restaurant_comment), notice: 'Restaurant comment was successfully created.' }
+        format.json { render json: @restaurant_comment, status: :created, location: restaurant_comment_path(@restaurant, @restaurant_comment) }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @restaurant_comment.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
 end

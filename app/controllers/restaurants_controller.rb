@@ -6,7 +6,7 @@ class RestaurantsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @restaurants.to_json(only: [ :id, :name, :image_url, :evaluation, :average_cost ], methods: [ :busy, :recommendations ]) }
+      format.json { render json: @restaurants.to_json(only: [ :id, :name, :image_url, :evaluation, :average_cost ], methods: [ :busy, :partial_recommendations ]) }
     end
   end
 
@@ -17,7 +17,7 @@ class RestaurantsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @restaurant.to_json(except: [ :created_at, :updated_at ], methods: [ :partial_dishes, :partial_comments, :busy, :recommendations ]) }
+      format.json { render json: @restaurant.to_json(except: [ :created_at, :updated_at ], methods: [ :partial_dishes, :partial_comments, :busy, :partial_recommendations ]) }
     end
   end
 
@@ -100,6 +100,17 @@ class RestaurantsController < ApplicationController
         format.json { render json: @restaurant.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  # GET /restaurants/1/recommendations
+  # GET /restaurants/1/recommendations.json
+  def recommendations
+	  @recommendations = Restaurant.find(params[:id]).recommendations
+	  
+	  respond_to do |format|
+		  format.html # recommendations.html.erb
+	 	  format.json { render json: @recommendations.to_json(except: [ :created_at, :updated_at ]) }
+	  end
   end
 
 end
