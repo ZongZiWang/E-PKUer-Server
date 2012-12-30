@@ -179,7 +179,7 @@ max-width: 300px;
 <body>
 <h1>汴地吃货 API 文档</h1>
 
-<h2>API 版本：1.8</h2>
+<h2>API 版本：1.9</h2>
 
 <pre style="line-height: 20px;"><code>GET*</code>, <code>POST*</code>: need login
 <code class="required">data_type</code>: required parameter
@@ -719,7 +719,7 @@ max-width: 300px;
 </tr>
 
 <tr>
-<td align="left">/upload.json/</td>
+<td align="left"><code class="updated">1.9 updated</code><br />/upload.json/</td>
 <td align="left"><code>POST*</code></td>
 <td align="left">
 <ul>
@@ -728,7 +728,7 @@ max-width: 300px;
 <li><code class="required">float</code> evaluation</li>
 <li><code class="required">int</code> user_id</li>
 <li><code class="required">string</code> recommendation_dishes</li>
-<li><code class="required">string</code> other_dishes</li>
+<li><code class="deprecated">deprecated</code> other_dishes</li>
 <li><code class="optional">string</code> seperator</li>
 </ul>
 </td>
@@ -740,7 +740,7 @@ max-width: 300px;
     "created_at": "2012-12-29T15:33:55Z",
     "evaluation": 4,
     "id": 29,
-    "recommendation_dishes": "粽子,咖喱牛肉铁板饭,宫保鸡丁",
+    "recommendation_dishes": "粽子 咖喱牛肉铁板饭 宫保鸡丁",
     "restaurant_id": 1,
     "updated_at": "2012-12-29T15:33:55Z",
     "user_id": 2
@@ -755,7 +755,7 @@ max-width: 300px;
 }
 </pre>
 </td>
-<td align="left">给 <code>restaurant_id</code> 食堂 <code>id</code> 提交评论。<code>recommendation_dishes</code> 参数形如 <code>'2$3$4' ('$'表示分隔符)</code> ，描述推荐菜的dish_id们； <code>other_dishes</code> 参数形如 <code>'dish1$dish2' ('$'表示分隔符)</code> ，描述其他推荐菜的名字列表。 <code>seperator</code> 描述recommendation_dishes和other_dishes中的分隔符，默认为空格' '。 </td>
+<td align="left">给 <code>restaurant_id</code> 食堂 <code>id</code> 提交评论。<span class="updated"> <code>recommendation_dishes</code> 参数形如 <code>'已有菜肴￥新加菜肴一￥新家菜肴二' ('￥'表示分隔符)</code> ，描述推荐菜的名字列表。 <code>seperator</code> 描述recommendation_dishes中的分隔符，默认为空格' '。</span></td>
 </tr>
 
 </tbody>
