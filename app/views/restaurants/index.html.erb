@@ -50,7 +50,7 @@
 <% end %>
 </table>
 
-<p><%= link_to 'New Restaurant', new_restaurant_path %></p>
+<p><% if User.find(session[:user_id]).name == 'admin' %><%= link_to 'New Restaurant', new_restaurant_path %><% end %></p>
 </div>
 <div id ="footer">
 <p>2012 北京大学信息科学技术学院© 王仲禹 阳泓吉 刘芸</p>
