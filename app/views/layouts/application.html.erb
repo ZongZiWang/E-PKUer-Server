@@ -7,6 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<div id="navigation-bar">
+		<% if session[:user_id] %>
+			<%= User.find(session[:user_id]).name %>
+			<%= link_to "logout", users_logout_url, :method => :delete %>
+		<% end %>
+	</div>
 
 <%= yield %>
 
