@@ -1,3 +1,8 @@
+<body class="thrColElsHdr">
+<div id="container">
+  <div id="header">
+	<h1>汴地吃货 - 登录</h1></div>
+	<div id="mainContent">
 <div class="depot_form">
 	<% if flash[:alert] %>
 		<p id="notice"><%= flash[:alert] %></p>
@@ -8,16 +13,27 @@
 			<legend>Please Log In</legend>
 			
 			<div>
-				<label for="name">Name:</label>
-				<%= text_field_tag :name, params[:name] %>
+				<label for="name">Name:</label><label1>
+				<%= text_field_tag :name, params[:name] %></label1>
+			</div>
+<br />
+			<div>
+				<label for="password">Password:</label><label1>
+				<%= password_field_tag :password, params[:password] %></label1>
 			</div>
 			<div>
-				<label for="password">Password:</label>
-				<%= password_field_tag :password, params[:password] %>
+				<%= submit_tag "Login", :class=>"submit"%>
 			</div>
+<br />
 			<div>
-				<%= submit_tag "Login" %>
+				<%= submit_tag "Signup", :class=>"submit"%>
 			</div>
 		</fieldset>
 	<% end %>
 </div>
+</div>
+<div id ="footer">
+<p>2012 北京大学信息科学技术学院© 王仲禹 阳泓吉 刘芸</p>
+</div>
+</div>
+</body>
