@@ -1,23 +1,38 @@
+<body class="thrColElsHdr">
+<div id="container">
+  <div id="header">
+	<h1>汴地吃货 - 用户详情</h1></div>
+	<div id="mainContent">
 <p id="notice"><%= notice %></p>
-
-<p>
-  <b>Name:</b>
+<label>Name:</label><label1>
   <%= @user.name %>
-</p>
+</label1>
+<br />
 
-<p>
-	<b>Restaurant Comments:</b>
+<label>
+Restaurant Comments:</label><label1>
 	<% @user.restaurant_comments.each do |comment| %>
 		<%= link_to comment.content, restaurant_comment_path(comment.restaurant, comment) %>
 	<% end %>
-</p>
+</label1>
+<br />
 
-<p>
-	<b>Dish Comments:</b>
+<label>
+Dish Comments:</label><label1>
 	<% @user.dish_comments.each do |comment| %>
 		<%= link_to comment.content, dish_comment_path(comment.dish, comment) %>
 	<% end %>
-</p>
+</label1>
+<br />
 
+<p>
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+</p>
+
+</div>
+<div id ="footer">
+<p>2012 北京大学信息科学技术学院© 王仲禹 阳泓吉 刘芸</p>
+</div>
+</div>
+</body>

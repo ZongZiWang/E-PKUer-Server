@@ -1,5 +1,8 @@
-<h1>Listing dishes</h1>
-
+<body class="thrColElsHdr">
+<div id="container">
+  <div id="header">
+	<h1>汴地吃货 - 菜肴列表</h1></div>
+	<div id="mainContent">
 <table>
   <tr>
     <th>id</th>
@@ -16,9 +19,15 @@
     <th></th>
     <th></th>
   </tr>
+ <%
+  odd_or_even = 0
+  %>
 
 <% @dishes.each do |dish| %>
-  <tr>
+  <%
+  odd_or_even = 1-odd_or_even
+  %>
+  <tr  class = "ListLine<%= odd_or_even %>" >
     <td><%= dish.id %></td>
     <td><%= dish.name %></td>
     <td><%= image_tag(dish.image_url) %></td>
@@ -40,5 +49,13 @@
 </table>
 
 <br />
-
+<p>
 <%= link_to 'New Dish', new_restaurant_dish_path(@restaurant) %>
+</p>
+</div>
+<div id ="footer">
+<p>2012 北京大学信息科学技术学院© 王仲禹 阳泓吉 刘芸</p>
+</div>
+</div>
+</body>
+

@@ -1,4 +1,8 @@
-<h1>Listing users</h1>
+<body class="thrColElsHdr">
+<div id="container">
+  <div id="header">
+	<h1>汴地吃货 - 用户列表</h1></div>
+	<div id="mainContent">
 <% if notice %>
 	<p id="notice"><%= notice %></p>
 <% end %>
@@ -13,9 +17,14 @@
     <th></th>
     <th></th>
   </tr>
-
+  <%
+  odd_or_even = 0
+  %>
 <% @users.each do |user| %>
-  <tr>
+  <%
+  odd_or_even = 1-odd_or_even
+  %>
+   <tr class = "ListLine<%= odd_or_even %>" >
     <td><%= user.id %></td>
     <td><%= user.name %></td>
 	<td><% user.restaurant_comments.each do |comment| %>
@@ -34,5 +43,12 @@
 </table>
 
 <br />
-
+<p>
 <%= link_to 'New User', new_user_path %>
+</p>
+</div>
+<div id ="footer">
+<p>2012 北京大学信息科学技术学院© 王仲禹 阳泓吉 刘芸</p>
+</div>
+</div>
+</body>
