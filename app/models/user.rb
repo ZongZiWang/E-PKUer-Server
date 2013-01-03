@@ -12,6 +12,22 @@ class User < ActiveRecord::Base
 
 	validate  :password_must_be_present
 
+	def recommendation_restaurants
+		restaurants = Restaurant.all
+		restaurants.sort! do |a, b|
+			_evaluation_a = 0
+			_comments_a = a.restaurant_comments.where( user_id: id)
+			_comments_a.each { |comment| _evaluation_a += comment.evaluation }
+			if _comments_a.count > 0 then _evaluation_a /= _comments_a.count end
+			_evaluation_b = 0
+			_comments_b = b.restaurant_comments.where( user_id: id)
+			_comments_b.each { |comment| _evaluation_b += comment.evaluation }
+			if _comments_b.count > 0 then _evaluation_b /= _comments_b.count end
+			_evaluation_b <=> _evaluation_a
+		end
+		restaurants.delete_if { |restaurant| restaurant.restaurant_comments.where( user_id: id).count == 0 }
+	end
+
 	def User.authenticate(name, password)
 		if user = find_by_name(name)
 			if user.hashed_password == encrypt_password(password, user.salt)

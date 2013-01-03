@@ -26,6 +26,7 @@ Epkuer::Application.routes.draw do
   end
   resources :users do
 	  post 'signup', :on => :collection
+	  get 'recommendation_restaurants', :on => :member
   end
 
 

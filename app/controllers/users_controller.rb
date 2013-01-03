@@ -23,6 +23,16 @@ class UsersController < ApplicationController
     end
   end
 
+  # GET /users/:id/recommentdation_restaurants.json
+  def recommendation_restaurants
+	  @user = User.find(params[:id])
+
+	  respond_to do |format|
+		  format.json { render json: @user.recommendation_restaurants.to_json(only: [ :id, :name, :image_url, :evaluation, :average_cost ], methods: [ :busy, :partial_recommendations ]) }
+	  end
+  end
+
+
   # GET /users/new
   # GET /users/new.json
   def new

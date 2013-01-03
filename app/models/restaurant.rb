@@ -12,6 +12,20 @@ class Restaurant < ActiveRecord::Base
 	  :message => 'must be a URL for GIF, JPG or PNG image.'
   }
 
+  def evaluation
+	  if self.restaurant_comments.count == 0 then return 0 end
+	  _evaluation = 0
+	  self.restaurant_comments.each { |comment| _evaluation += comment.evaluation }
+	  return _evaluation / self.restaurant_comments.count
+  end
+
+  def average_cost
+	  if self.restaurant_comments.count == 0 then return 0 end
+	  _average_cost = 0
+	  self.restaurant_comments.each { |comment| _average_cost += comment.cost }
+	  return _average_cost / self.restaurant_comments.count
+  end
+
   def busy
 	if self.status_normal >= self.status_busy && self.status_normal >= self.status_loose
 		return 1

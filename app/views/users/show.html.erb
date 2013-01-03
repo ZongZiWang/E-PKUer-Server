@@ -25,6 +25,14 @@ Dish Comments:</label><label1>
 </label1>
 <br />
 
+<label>
+Recommendation Restaurants:</label><label1>
+	<% @user.recommendation_restaurants.each do |restaurant| %>
+		<%= link_to restaurant.name, restaurant %>
+	<% end %>
+</label1>
+<br />
+
 <p>
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
