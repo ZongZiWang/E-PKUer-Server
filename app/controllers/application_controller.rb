@@ -5,7 +5,10 @@ class ApplicationController < ActionController::Base
 	protected
 	def authorize
 		unless User.find_by_id(session[:user_id])
-			redirect_to users_login_url, :notice => "Please log in"
+			respond_to do |format|
+				format.html { redirect_to users_login_url, :notice => "Please log in" }
+				format.json { render json: { error: "NotLoggedIn" }, status: :unprocessable_entity }
+			end
 		end
 	end
 
