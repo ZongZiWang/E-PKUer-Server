@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  skip_before_filter :authorize
   def new
   end
 
@@ -14,7 +15,7 @@ class SessionsController < ApplicationController
 			  else
 				  if user = User.authenticate(params[:name], params[:password])
 					  session[:user_id] = user.id
-					  format.html { redirect_to admin_url }
+					  format.html { redirect_to restaurants_url }
 					  format.json { render json: user.to_json(only: [ :id, :name ]) }
 				  else
 					  format.html { redirect_to users_login_url, :alert => "Invalid user/password combination" }

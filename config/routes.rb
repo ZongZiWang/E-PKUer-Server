@@ -1,7 +1,5 @@
 Epkuer::Application.routes.draw do
 
-
-
   get 'admin' => 'admin#index'
   
   controller :sessions do
