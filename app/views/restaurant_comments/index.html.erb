@@ -1,5 +1,8 @@
-<h1>Listing restaurant_comments</h1>
-
+<body class="thrColElsHdr">
+<div id="container">
+  <div id="header">
+	<h1>汴地吃货 - 食堂点评列表</h1></div>
+	<div id="mainContent">
 <table>
   <tr>
 	<th>id</th>
@@ -14,9 +17,14 @@
     <th></th>
     <th></th>
   </tr>
-
+  <%
+  odd_or_even = 0
+  %>
 <% @restaurant_comments.each do |restaurant_comment| %>
-  <tr>
+ <%
+  odd_or_even = 1-odd_or_even
+  %>
+  <tr class = "ListLine<%= odd_or_even %>" >
     <td><%= restaurant_comment.id %></td>
 	<td><% if restaurant_comment.restaurant %><%= link_to restaurant_comment.restaurant.name, restaurant_comment.restaurant %><% end %></td>
 	<td><% if restaurant_comment.user %><%= link_to restaurant_comment.user.name, restaurant_comment.user %><% end %></td>
@@ -33,5 +41,13 @@
 </table>
 
 <br />
-
+<p>
 <%= link_to 'New Restaurant comment', new_restaurant_comment_path(@restaurant) %>
+</p>
+</div>
+<div id ="footer">
+<p>2012 北京大学信息科学技术学院© 王仲禹 阳泓吉 刘芸</p>
+</div>
+</div>
+</body>
+

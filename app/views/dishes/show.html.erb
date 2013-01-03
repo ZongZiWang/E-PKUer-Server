@@ -1,52 +1,66 @@
+<body class="thrColElsHdr">
+<div id="container">
+  <div id="header">
+	<h1>汴地吃货 - 菜肴详情</h1></div>
+	<div id="mainContent">
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
+<label>Name:</label><label1>
   <%= @dish.name %>
-</p>
+</label1>
+<br />
 
-<p>
-  <b>Image:</b>
+<label>
+Image:</label><label1>
   <%= image_tag(@dish.image_url) %>
-</p>
+</label1>
+<br />
 
-<p>
-  <b>Evaluation:</b>
+<label>Evaluation:</label><label1>
   <%= @dish.evaluation %>
-</p>
+</label1>
+<br />
 
-<p>
-  <b>Cost:</b>
+<label>Cost:</label><label1>
   <%= @dish.cost %>
-</p>
+</label1>
+<br />
 
-<p>
-  <b>Category:</b>
+<label>Category:</label><label1>
   <%= @dish.category %>
-</p>
+</label1>
+<br />
 
-<p>
-  <b>Description:</b>
+<label>Description:</label><label1>
   <%= @dish.description %>
-</p>
+</label1>
+<br />
 
-<p>
-  <b>Recommendation Count:</b>
+<label>Recommendation Count:</label><label1>
   <%= @dish.recommendation_count %>
-</p>
+</label1>
+<br />
 
-<p>
-  <b>Restaurant:</b>
+<label>Restaurant:</label><label1>
   <% if @dish.restaurant %><%= link_to @dish.restaurant.name, @dish.restaurant %><% end %>
-</p>
+</label1>
+<br />
 
-<p>
-  <b><%= link_to 'Comments:', dish_comments_path(@dish) %></b>
+<label><%= link_to 'Comments:', dish_comments_path(@dish) %></label><label1>
   <% @dish.dish_comments.each do |comment| %>
 	  <%= link_to comment.content, dish_comment_path(@dish) %>
   <% end %>
-</p>
+</label1>
+<br />
 
-
+<p>
 <%= link_to 'Edit', edit_restaurant_dish_path(@restaurant, @dish) %> |
 <%= link_to 'Back', restaurant_dishes_path(@restaurant) %>
+</p>
+
+</div>
+<div id ="footer">
+<p>2012 北京大学信息科学技术学院© 王仲禹 阳泓吉 刘芸</p>
+</div>
+</div>
+</body>

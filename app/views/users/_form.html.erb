@@ -14,20 +14,24 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :name %>
 	<%= f.text_field :name, :size => 40 %>
   </div>
+<br />
   <div class="field">
-    <%= f.label :password, 'Password' %><br />
+    <%= f.label :password, 'Password' %>
 	<%= f.password_field :password, :size => 40 %>
   </div>
+<br />
   <div class="field">
-    <%= f.label :password_confirmation, 'Confirm' %><br />
+    <%= f.label :password_confirmation, 'Confirm' %>
 	<%= f.password_field :password_confirmation, :size => 40 %>
   </div>
+<br />
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit"Upload the User Info", :class=>"submit"%>
   </div>
+<br />
 <% end %>
 
 </div>

@@ -32,13 +32,13 @@ ActiveRecord::Schema.define(:version => 20121229181202) do
 
   create_table "dishes", :force => true do |t|
     t.string   "name"
-    t.string   "category",             :default => "Normal"
-    t.float    "cost",                 :default => 5.0
-    t.string   "description",          :default => "Recommended"
+    t.string   "image_url",            :default => "404.png"
     t.float    "evaluation",           :default => 5.0
+    t.float    "cost",                 :default => 5.0
+    t.string   "category",             :default => "Normal"
+    t.string   "description",          :default => "Recommended"
     t.datetime "created_at",                                      :null => false
     t.datetime "updated_at",                                      :null => false
-    t.string   "image_url",            :default => "404.png"
     t.integer  "restaurant_id"
     t.integer  "recommendation_count", :default => 0
   end
@@ -56,20 +56,20 @@ ActiveRecord::Schema.define(:version => 20121229181202) do
 
   create_table "restaurants", :force => true do |t|
     t.string   "name"
+    t.string   "image_url"
+    t.float    "evaluation"
     t.string   "location_name"
     t.string   "location_zone"
     t.float    "location_latitude"
     t.float    "location_longitude"
-    t.string   "category"
-    t.float    "average_cost"
-    t.string   "description"
     t.string   "info_time"
     t.string   "info_tel"
     t.string   "info_summary"
+    t.float    "average_cost"
+    t.string   "category"
+    t.string   "description"
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
-    t.string   "image_url"
-    t.string   "evaluation"
     t.integer  "status_busy",        :default => 0
     t.integer  "status_normal",      :default => 0
     t.integer  "status_loose",       :default => 0

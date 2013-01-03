@@ -1,69 +1,59 @@
-<h1>Listing restaurants</h1>
-
+<body class="thrColElsHdr">
+<div id="container">
+  <div id="header">
+	<h1>汴地吃货 - 食堂列表</h1></div>
+	<div id="mainContent">
 <table>
   <tr>
     <th>id</th>
     <th>Name</th>
     <th>Image</th>
     <th>Busy</th>
-    <th>Recommendations</th>
     <th>Evaluation</th>
-    <th>Location name</th>
-    <th>Location zone</th>
-    <th>Location latitude</th>
-    <th>Location longitude</th>
-    <th>Info time</th>
-    <th>Info tel</th>
-    <th>Info summary</th>
     <th>Average cost</th>
-    <th>Category</th>
     <th>Description</th>
     <th>Dishes</th>
     <th>Comments</th>
     <th></th>
-    <th></th>
-    <th></th>
   </tr>
-
+  <%
+  odd_or_even = 0
+  %>
 <% @restaurants.each do |restaurant| %>
-  <tr>
+  <%
+  odd_or_even = 1-odd_or_even
+  %>
+  <tr class = "ListLine<%= odd_or_even %>" >
     <td><%= restaurant.id %></td>
     <td><%= restaurant.name %></td>
     <td><%= image_tag(restaurant.image_url) %></td>
-	<td><% if restaurant.busy == 0 %>繁忙<% end %><% if restaurant.busy == 1 %>还行<% end %><% if restaurant.busy == 2 %>宽松<% end %></td>
-	<td>
-		<% restaurant.recommendations.each do |dish| %>
-			<%= link_to dish[:name], restaurant_dish_path(restaurant, dish[:id]) %>
-		<% end %>
-	</td>
+	<td><% if restaurant.busy == 0 %>拥挤<% end %><% if restaurant.busy == 1 %>还行<% end %><% if restaurant.busy == 2 %>宽松<% end %></td>
     <td><%= restaurant.evaluation %></td>
-    <td><%= restaurant.location_name %></td>
-    <td><%= restaurant.location_zone %></td>
-    <td><%= restaurant.location_latitude %></td>
-    <td><%= restaurant.location_longitude %></td>
-    <td><%= restaurant.info_time %></td>
-    <td><%= restaurant.info_tel %></td>
-    <td><%= restaurant.info_summary %></td>
     <td><%= restaurant.average_cost %></td>
-    <td><%= restaurant.category %></td>
     <td><%= restaurant.description %></td>
 	<td>
 		<% restaurant.dishes.each do |dish| %>
-			<%= link_to dish.name, restaurant_dish_path(restaurant, dish) %>
+			<%= link_to dish.name, restaurant_dish_path(restaurant, dish) %><br />
 		<% end %>
 	</td>
 	<td>
 		<% restaurant.restaurant_comments.each do |comment| %>
-			<%= link_to comment.content, restaurant_comment_path(restaurant, comment) %>
+			<%= link_to comment.content, restaurant_comment_path(restaurant, comment) %><br />
 		<% end %>
 	</td>
-    <td><%= link_to 'Show', restaurant %></td>
-    <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
-    <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td class = ListActions">
+	<%= link_to 'Show', restaurant %><br />
+    	<%= link_to 'Edit', edit_restaurant_path(restaurant) %><br />
+    	<%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </td>
   </tr>
 <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New Restaurant', new_restaurant_path %>
+<p><%= link_to 'New Restaurant', new_restaurant_path %></p>
+</div>
+<div id ="footer">
+<p>2012 北京大学信息科学技术学院© 王仲禹 阳泓吉 刘芸</p>
+</div>
+</div>
+</body>

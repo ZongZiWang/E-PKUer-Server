@@ -12,34 +12,42 @@
   <% end %>
 
   <div class="field">
-	<%= f.label :restaurant_id %><br />
-	<%= f.text_field :restaurant_id %><br />
+	<%= f.label :restaurant_id %>
+	<%= f.text_field :restaurant_id %>
   </div>
+<br />
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
+<br />
   <div class="field">
-    <%= f.label :image_url %><br />
+    <%= f.label :image_url %>
     <%= f.text_field :image_url %>
   </div>
+<br />
   <div class="field">
-    <%= f.label :evaluation %><br />
+    <%= f.label :evaluation %>
     <%= f.text_field :evaluation %>
   </div>
+<br />
   <div class="field">
-    <%= f.label :cost %><br />
+    <%= f.label :cost %>
     <%= f.text_field :cost %>
   </div>
+<br />
   <div class="field">
-    <%= f.label :category %><br />
+    <%= f.label :category %>
     <%= f.text_field :category %>
+<br />
   </div>
   <div class="field">
-    <%= f.label :description %><br />
+    <%= f.label :description %>
     <%= f.text_field :description %>
+<br />
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Upload the Dish Info", :class=>"submit"%>
   </div>
+<br />
 <% end %>

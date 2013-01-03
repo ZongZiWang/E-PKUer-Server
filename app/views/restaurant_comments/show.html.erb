@@ -1,40 +1,57 @@
+<body class="thrColElsHdr">
+<div id="container">
+  <div id="header">
+	<h1>汴地吃货 - 食堂详情</h1></div>
+	<div id="mainContent">
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Restaurant:</b>
+<label>Restaurant:</label><label1>
   <% if @restaurant_comment.restaurant %><%= link_to @restaurant_comment.restaurant.name, @restaurant_comment.restaurant %><% end %>
-</p>
+</label1>
+<br />
 
-<p>
-  <b>User:</b>
+<label>User:</label><label1>
   <% if @restaurant_comment.user %><%= link_to @restaurant_comment.user.name, @restaurant_comment.user %><% end %>
-</p>
+</label1>
+<br />
 
-<p>
-  <b>Evaluation:</b>
+<label>
+Evaluation:</label><label1>
   <%= @restaurant_comment.evaluation %>
-</p>
+</label1>
+<br />
 
-<p>
-  <b>Cost:</b>
+<label>
+Cost:</label><label1>
   <%= @restaurant_comment.cost %>
-</p>
+</label1>
+<br />
 
-<p>
-  <b>Time:</b>
+<label>
+Time:</label><label1>
   <%= @restaurant_comment.created_at %>
-</p>
+</label1>
+<br />
 
-<p>
-  <b>Recommendation Dishes:</b>
+<label>
+Recommendation Dishes:</label><label1>
   <%= @restaurant_comment.recommendation_dishes %>
-</p>
+</label1>
+<br />
 
-<p>
-  <b>Content:</b>
+<label>
+Content:</label><label1>
   <%= @restaurant_comment.content %>
-</p>
-
-
+</label1>
+<br />
+<p>
 <%= link_to 'Edit', edit_restaurant_comment_path(@restaurant, @restaurant_comment) %> |
 <%= link_to 'Back', restaurant_comments_path(@restaurant) %>
+</p>
+
+</div>
+<div id ="footer">
+<p>2012 北京大学信息科学技术学院© 王仲禹 阳泓吉 刘芸</p>
+</div>
+</div>
+</body>

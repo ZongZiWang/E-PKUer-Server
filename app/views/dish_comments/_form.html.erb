@@ -13,22 +13,27 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :dish_id %><br />
+    <%= f.label :dish_id %>
     <%= f.number_field :dish_id %>
   </div>
+<br />
   <div class="field">
-    <%= f.label :user_id %><br />
+    <%= f.label :user_id %>
     <%= f.number_field :user_id %>
   </div>
+<br />
   <div class="field">
-    <%= f.label :evaluation %><br />
+    <%= f.label :evaluation %>
     <%= f.text_field :evaluation %>
   </div>
+<br />
   <div class="field">
-    <%= f.label :content %><br />
+    <%= f.label :content %>
     <%= f.text_field :content %>
   </div>
+<br />
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Upload the Comment Info", :class=>"submit"%>
   </div>
+<br />
 <% end %>
