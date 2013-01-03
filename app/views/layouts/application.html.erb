@@ -9,8 +9,12 @@
 <body>
 	<div id="navigation-bar">
 		<% if session[:user_id] %>
-			<%= User.find(session[:user_id]).name %>
-			<%= link_to "logout", users_logout_url, :method => :delete %>
+			<span id="user-name">
+				<%= User.find(session[:user_id]).name %>
+			</span>
+			<span id="user-logout">
+				<%= link_to "logout", users_logout_url, :method => :delete %>
+			</span>
 		<% end %>
 	</div>
 
