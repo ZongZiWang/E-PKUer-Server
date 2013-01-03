@@ -6,6 +6,5 @@ class RestaurantTest < ActiveSupport::TestCase
 		assert restaurant.invalid?
 		assert restaurant.errors[:name].any?
 		assert restaurant.errors[:image_url].any?
-		assert restaurant.errors[:evaluation].any?
 	end
 end
