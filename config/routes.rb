@@ -21,7 +21,7 @@ Epkuer::Application.routes.draw do
 	  resources :comments, :controller => 'restaurant_comments' do
 		  post 'upload', :on => :collection
 	  end
-	  put 'busy', :on => :member
+	  post 'busy', :on => :member
 	  get 'recommendations', :on => :member
   end
   resources :users do

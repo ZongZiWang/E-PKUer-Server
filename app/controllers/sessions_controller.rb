@@ -7,11 +7,11 @@ class SessionsController < ApplicationController
 	  respond_to do |format|
 		  if params[:name] == nil
 			  format.html { redirect_to users_login_url, :alert => "Missing username" }
-			  format.json { render json: { error: "Missing username" } }
+			  format.json { render json: { error: "Missing username" }, status: :unprocessable_entity }
 		  else
 			  if params[:password] == nil
 				  format.html { redirect_to users_login_url, :alert => "Missing password" }
-				  format.json { render json: { error: "Missing password" } }
+				  format.json { render json: { error: "Missing password" }, status: :unprocessable_entity }
 			  else
 				  if user = User.authenticate(params[:name], params[:password])
 					  session[:user_id] = user.id
@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
 					  format.json { render json: user.to_json(only: [ :id, :name ]) }
 				  else
 					  format.html { redirect_to users_login_url, :alert => "Invalid user/password combination" }
-					  format.json { render json: { error: "Invalid user/password combination" } }
+					  format.json { render json: { error: "Invalid user/password combination" }, status: :unprocessable_entity }
 				  end
 			  end
 		  end

@@ -81,8 +81,8 @@ class RestaurantsController < ApplicationController
     end
   end
 
-  # PUT /restaurants/1/busy
-  # PUT /restaurants/1/busy.json
+  # POST /restaurants/1/busy
+  # POST /restaurants/1/busy.json
   def busy
     @restaurant = Restaurant.find(params[:id])
 	_status = params[:busy].to_i
