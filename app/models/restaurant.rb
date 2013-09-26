@@ -65,7 +65,7 @@ class Restaurant < ActiveRecord::Base
   def partial_comments
 	_count = self.restaurant_comments.count
 	_partial_comments = Array.new
-	self.restaurant_comments.last(2).each do |comment|
+	self.restaurant_comments.last(3).each do |comment|
 		_partial_comments.push({ id: comment.id, user_name: comment.user.name, evaluation: comment.evaluation, content: comment.content })
 	end
 	_partial_comments
